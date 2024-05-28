@@ -1,7 +1,7 @@
 import os
 import asyncio
 from dotenv import load_dotenv
-from Recommender import Recommender
+from preprocesses.Recommender import Recommender
 from itertools import product
 import csv
 import sys
