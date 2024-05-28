@@ -1,4 +1,4 @@
-### To speed along development or any Issues, consider sponsoring https://github.com/sponsors/eliataylor
+### To speed along development or any Issues, consider [sponsoring](https://github.com/sponsors/eliataylor)
 
 -----
 
