@@ -1,0 +1,67 @@
+{
+  "ms": {
+    "field": "ms",
+    "headerName": "Ms",
+    "type": "number",
+    "sortable": true,
+    "filterable": false
+  },
+  "started": {
+    "field": "started",
+    "headerName": "Started",
+    "type": "time",
+    "sortable": true,
+    "filterable": false,
+    "showing": false
+  },
+  "ended": {
+    "field": "ended",
+    "headerName": "Ended",
+    "type": "time",
+    "sortable": true,
+    "filterable": false,
+    "showing": false
+  },
+  "model": {
+    "field": "model",
+    "headerName": "Model",
+    "type": "string",
+    "sortable": true,
+    "filterable": true
+  },
+  "prompt": {
+    "field": "prompt",
+    "headerName": "Prompt",
+    "type": "string",
+    "sortable": true,
+    "filterable": true
+  },
+  "survey_id": {
+    "field": "survey_id",
+    "headerName": "Survey",
+    "type": "string",
+    "sortable": true,
+    "filterable": true
+  },
+  "instructions": {
+    "field": "instructions",
+    "headerName": "Instructions",
+    "type": "string",
+    "sortable": true,
+    "filterable": true
+  },
+  "config": {
+    "field": "config",
+    "headerName": "Config",
+    "type": "object",
+    "sortable": true,
+    "filterable": true
+  },
+  "results": {
+    "field": "results",
+    "headerName": "Results",
+    "type": "string",
+    "sortable": true,
+    "filterable": true
+  }
+}

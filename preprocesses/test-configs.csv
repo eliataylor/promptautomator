@@ -1,0 +1,7 @@
+Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter
+gpt-3.5-turbo,Completion,file-huvdO653IMUXW9KGPzwZVpdS,,TRUE,FALSE,FALSE
+gpt-3.5-turbo,Thread,file-huvdO653IMUXW9KGPzwZVpdS,TRUE,TRUE,TRUE,FALSE
+gpt-3.5-turbo,Embeddings,file-huvdO653IMUXW9KGPzwZVpdS,,,,
+gpt-4-turbo,Completion,file-huvdO653IMUXW9KGPzwZVpdS,,TRUE,FALSE,FALSE
+gpt-4-turbo,Thread,file-huvdO653IMUXW9KGPzwZVpdS,TRUE,TRUE,TRUE,FALSE
+gpt-4-turbo,Embeddings,file-huvdO653IMUXW9KGPzwZVpdS,,,,

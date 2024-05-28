@@ -1,0 +1,17 @@
+# Deny direct access to index.html
+<Files "index.html">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Ensure that the PHP script can be accessed
+<Files "serve-index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Optional: Ensure all other PHP files are accessible
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

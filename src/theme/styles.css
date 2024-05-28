@@ -1,0 +1,9 @@
+.textContainer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+}
+
+.textContainer.expanded {
+  max-height: 1000px; /* Set a high value to ensure it can expand fully */
+}
