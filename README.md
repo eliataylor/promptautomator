@@ -3,7 +3,7 @@
 -----
 
 ## Environment Setup 
-- `git clone git@github.com:eliataylor/openai-api-tester.git`
+- `git clone git@github.com:eliataylor/promptautomator.git`
 - create `.env` file with `OPENAI_KEY=you-api-key`
 - `python3.9 -m venv .venv`
 - `source .venv/bin/activate`
@@ -19,8 +19,8 @@
 - `python data-transformer.py products_export.json` > will create a products_export.pkl (necessary for testing Embeddings)
 
 ## Run Prompt Tests 
-- `python test.py test-prompts.csv test-configs.csv test-survey.csv`
-- `python test.py test-prompts-makesurvey.csv test-configs.csv`
+- `python main.py test-prompts.csv test-configs.csv test-survey.csv`
+- `python main.py test-prompts-makesurvey.csv test-configs.csv`
 
 
 #### Config Rules using Threads
