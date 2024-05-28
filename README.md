@@ -1,3 +1,7 @@
+### To speed along development or any Issues, consider sponsoring https://github.com/sponsors/eliataylor
+
+-----
+
 ## Environment Setup 
 - `git clone git@github.com:eliataylor/openai-api-tester.git`
 - create `.env` file with `OPENAI_KEY=you-api-key`
