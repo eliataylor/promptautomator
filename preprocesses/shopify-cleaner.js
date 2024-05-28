@@ -1,3 +1,7 @@
+/****
+ Removes irrelevant meta data from Shopify product exports
+****/
+
 const fs = require('fs');
 const csv = require('csv-parser');
 

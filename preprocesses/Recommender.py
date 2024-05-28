@@ -3,7 +3,7 @@ import hashlib
 import json
 import os
 import sys
-from Embeddings import Embeddings
+from preprocesses.Embeddings import Embeddings
 
 from openai import AssistantEventHandler
 from openai import OpenAI
@@ -66,7 +66,7 @@ class Recommender:
 
         self.test_id = self.adler32(json.dumps(self.prompt) + json.dumps(self.config) + self.survey_str)
 
-        results_dir = os.path.join(os.path.dirname(__file__), 'public/results')
+        results_dir = os.path.join(os.path.dirname(__file__), '../public/results')
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
 
