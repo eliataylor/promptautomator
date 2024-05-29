@@ -320,7 +320,7 @@ class Recommender:
                 product_json = json.load(file)
 
             if isinstance(response_json, list):
-                key = self.find_id_property(response_json[0].keys())
+                key = self.find_id_property(response_json[0])
                 if key:
                     for resp in response_json:
                         has_id = any(p[key] == resp[key] for p in product_json)

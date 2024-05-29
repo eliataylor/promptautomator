@@ -1,2 +1,3 @@
 "Prompt","Instruction"
 "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format `[{title, description}]`","You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format `[{title, description}]`"
+"Write 3 survey questions to determine a user's music tastes and their setting.","You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format `[{title, description}]`"
