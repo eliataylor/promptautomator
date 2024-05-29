@@ -234,20 +234,14 @@ def parse_date(date_string):
         return None
 
 
-def find_nearby_file(filename, start_dir=''):
-    matches = []
+def find_nearby_file(filename, base_dir):
+    skips = ['dist', 'node_modules', 'vendor', 'build', "__pycache__"]
 
-    # Search from one directory up to the root
-    current_dir = os.path.abspath(start_dir)
-    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+    for root, dirnames, filenames in os.walk(base_dir):
+        # Filter out hidden directories and directories in the skips list
+        dirnames[:] = [d for d in dirnames if not d.startswith('.') and d not in skips]
 
-    while True:
-        for root, dirnames, filenames in os.walk(current_dir):
-            for name in fnmatch.filter(filenames, filename):
-                matches.append(os.path.join(root, name))
+        for name in fnmatch.filter(filenames, filename):
+            return os.path.join(os.path.abspath(root), name)
 
-        if current_dir == parent_dir:  # If reached the root directory, stop
-            break
-        current_dir, parent_dir = parent_dir, os.path.abspath(os.path.join(parent_dir, os.pardir))
-
-    return matches
+    return None

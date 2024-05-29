@@ -152,7 +152,7 @@ class Prompter:
 
     def get_dataset(self):
         if self.file and self.file.purpose == 'assistants': # cannot download these
-            files = find_nearby_file(self.file.filename, '')
+            files = find_nearby_file(self.file.filename, os.path.join(os.path.dirname(__file__), '..'))
             if len(files) > 0:
                 with open(files[0], 'r') as file:
                     return json.load(file)
