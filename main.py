@@ -1,11 +1,9 @@
-import os
-import asyncio
 from dotenv import load_dotenv
 from preprocesses.Recommender import Recommender
 from itertools import product
 import csv
 import sys
-from collections import namedtuple
+import asyncio
 import re
 
 load_dotenv()
@@ -15,10 +13,14 @@ def sanitize_header(header):
     return re.sub(r'\W|^(?=\d)', '_', header.lower())
 
 def cast_to_boolean(value):
-    if value in ['false', '0', '']:
-        return False
-    elif value in ['true', '1', '-1']:
+    # Implement this function to cast 'true'/'false' like values to boolean
+    true_values = ['true', 'yes', '1']
+    false_values = ['false', 'no', '0']
+    value_lower = value.lower()
+    if value_lower in true_values:
         return True
+    elif value_lower in false_values:
+        return False
     return value
 
 def read_csv(file_path):
@@ -27,18 +29,15 @@ def read_csv(file_path):
             reader = csv.reader(csvfile)
             headers = next(reader)
             headers = [sanitize_header(header) for header in headers]
-            Row = namedtuple('Row', headers)
             rows = []
             for row in reader:
-                # Cast each value to boolean if it's a boolean-like value
-                cleanrow = Row(*[cast_to_boolean(value) for value in row])
+                cleanrow = {header: cast_to_boolean(value) for header, value in zip(headers, row)}
                 rows.append(cleanrow)
             return rows
 
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         sys.exit(1)
-
 
 def build_survey(csv_file_path):
     try:
@@ -80,13 +79,10 @@ async def main():
     else:
         survey_json = [False]
 
-    tasks = []
     for prompt, config, survey in product(prompt_csv, config_csv, survey_json):
         recommender = Recommender(prompt, config, survey)
-        tasks.append(recommender.complete())
+        await recommender.complete()
 
-    # Run the asynchronous event loop
-    await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
     asyncio.run(main())

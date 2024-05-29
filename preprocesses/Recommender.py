@@ -1,6 +1,6 @@
 import datetime
 import hashlib
-import json
+import json, csv
 import os
 import sys
 from preprocesses.Embeddings import Embeddings
@@ -20,10 +20,17 @@ class Recommender:
         self.assistant = None
         self.vector = None
 
-        if os.path.exists(self.config.file_path):
-            self.file_path = os.path.join(os.path.dirname(__file__), 'products_export.json')
-            if self.config.executable == 'Embeddings':
-                base, _ = os.path.splitext(self.file_path)
+        if os.path.exists(self.config["file_path"]):
+            if ".csv" in self.config["file_path"]: # csv can be retrieved: https://platform.openai.com/docs/assistants/tools/file-search/supported-files
+                base, _ = os.path.splitext(self.config["file_path"])
+                self.config["file_path"] = base + '.json'
+                if os.path.exists(self.config["file_path"]) is False:
+                    json_data = json.dumps([row for row in csv.DictReader(open(self.config["file_path"]))])
+                    with open(self.config["file_path"], 'w') as json_file:
+                        json_file.write(json_data)
+
+            if self.config["executable"] == 'Embeddings':
+                base, _ = os.path.splitext(self.config["file_path"])
                 embeddings_file = base + '.pkl'
                 if os.path.exists(embeddings_file) is False:
                     print(f"Missing PKL file. First run `python data-transformer.py products_export.json`")
@@ -31,8 +38,8 @@ class Recommender:
                 else:
                     self.embeddings = Embeddings(embeddings_file)
 
-        elif self.config.file_path[0:5] != 'file-':
-            print(f"Missing file data reading: {self.config.file_path}")
+        elif self.config["file_path"][0:5] != 'file-':
+            print(f"Missing file data reading: {self.config['file_path']}")
             sys.exit(1)
 
         self.survey = survey
@@ -40,31 +47,33 @@ class Recommender:
 
         self.opts_assistant = {
             "name": f"Prompt Automator",
-            "instructions": self.prompt.instruction,
-            "model": self.config.model
+            "instructions": self.prompt["instruction"],
+            "model": self.config["model"]
         }
 
         self.opts_thread = {
             "messages": [
                 {
                     "role": "user",
-                    "content": self.prompt.prompt
+                    "content": self.prompt["prompt"]
                 }
             ]
         }
 
-        if "__USERDATA__" in self.prompt.prompt:
-            self.opts_thread["messages"][0]["content"] = self.prompt.prompt.replace('__USERDATA__', self.survey_str)
-        elif "__USERDATA__" in self.prompt.instruction:
-            self.opts_assistant["instructions"] = self.prompt.instruction.replace('__USERDATA__', self.survey_str)
+        if "__USERDATA__" in self.prompt["prompt"]:
+            self.opts_thread["messages"][0]["content"] = self.prompt["prompt"].replace('__USERDATA__', self.survey_str)
+        elif "__USERDATA__" in self.prompt["instruction"]:
+            self.opts_assistant["instructions"] = self.prompt["instruction"].replace('__USERDATA__', self.survey_str)
         else:
             self.survey = False
             self.survey_str = ""
 
         if "__FILENAME__" in self.opts_assistant["instructions"]:
-            self.opts_assistant["instructions"] = self.opts_assistant["instructions"].replace('__FILENAME__', self.config.file_path)
+            self.opts_assistant["instructions"] = self.opts_assistant["instructions"].replace('__FILENAME__', self.config["file_path"])
 
         self.test_id = self.adler32(json.dumps(self.prompt) + json.dumps(self.config) + self.survey_str)
+
+        self.opts_assistant["name"] += " - " + self.test_id
 
         results_dir = os.path.join(os.path.dirname(__file__), '../public/results')
         if not os.path.exists(results_dir):
@@ -102,10 +111,10 @@ class Recommender:
         self.started = datetime.datetime.now()
         self.ended = datetime.datetime.now()
 
-        if self.config.executable == 'Thread':
+        if self.config["executable"] == 'Thread':
             await self.create_file()
             if self.file is None:
-                print(f"Failed to get file: {self.config.file_path}")
+                print(f"Failed to get file: {self.config['file_path']}")
             else:
                 await self.create_vector_store()
                 await self.create_assistant()
@@ -113,27 +122,28 @@ class Recommender:
                 await self.create_thread()
                 # await self.create_embeddings_withasst() # not sure if this is possible or practical
                 await self.run_thread()
-        elif self.config.executable == 'Embeddings':
+        elif self.config["executable"] == 'Embeddings':
             self.create_embeddings()
         else:
             await self.run_completion()
 
     async def run_completion(self):
-
         self.started = datetime.datetime.now()
-        f = open(self.file_path, "r")
-        content = f.read()
 
-        if len(content) > 16385:
-            content = json.dumps(json.loads(content)) # strip pretty print if too long
-        #if len(content) > 16385:
-        #    maybe try csv instead?
+        message = [{"role": "system", "content": self.opts_assistant["instructions"]}]
 
-        message = [
-                {"role": "system", "content": self.opts_assistant["instructions"]},
-                {"role": "system", "content": f"Make your recommendation based on this data: \n\n {content}"},
-                {"role": "user", "content": self.opts_thread["messages"][0]["content"]}
-        ]
+        if self.config["file_path"]:
+            f = open(self.config["file_path"], "r")
+            content = f.read()
+
+            if len(content) > 16385:
+                content = json.dumps(json.loads(content)) # strip pretty print if too long
+            #if len(content) > 16385:
+            #    maybe try csv instead?
+
+            message.append({"role": "system", "content": f"Make your recommendation based on this data: \n\n {content}"})
+
+        message.append({"role": "user", "content": self.opts_thread["messages"][0]["content"]})
 
         try:
             response_str = self.openai.chat.completions.create(
@@ -151,38 +161,38 @@ class Recommender:
             self.validate_response(None, str(e))
 
     async def create_file(self):
-        if self.config.file_path[0:5] == 'file-':
-            self.file = self.openai.files.retrieve(self.config.file_path)
-        elif os.path.exists(self.config.file_path) is False:
+        if self.config["file_path"][0:5] == 'file-':
+            self.file = self.openai.files.retrieve(self.config["file_path"])
+        elif os.path.exists(self.config["file_path"]) is False:
             files = self.openai.files.list()
             for file in files:
-                if file.filename == os.path.basename(self.config.file_path):
+                if file.filename == os.path.basename(self.config["file_path"]):
                     self.file = file
                     break
         else:
-            self.file = self.openai.files.create(file=open(self.file_path, 'rb'), purpose="assistants")
+            self.file = self.openai.files.create(file=open(self.config["file_path"], 'rb'), purpose="assistants")
 
 
     async def create_assistant(self):
-        if type(self.config.assistant) is str and self.config.assistant[0:len("asst_")] == 'asst_':
-            self.assistant = {"id": self.config.assistant}
+        if type(self.config["assistant"]) is str and self.config["assistant"][0:len("asst_")] == 'asst_':
+            self.assistant = {"id": self.config["assistant"]}
         else:
-            if self.config.code_interpreter or self.config.file_search:
+            if self.config["code_interpreter"] or self.config["file_search"]:
                 self.opts_assistant['tools'] = []
                 self.opts_assistant['tool_resources'] = {}
 
-            if self.config.code_interpreter:
+            if self.config["code_interpreter"]:
                 self.opts_assistant['tools'].append({"type": "code_interpreter"})
                 self.opts_assistant['tool_resources']['code_interpreter'] = {"file_ids": [self.file.id]}
 
-            if self.config.file_search:
+            if self.config["file_search"]:
                 self.opts_assistant['tools'].append({"type": "file_search"})
                 self.opts_assistant['tool_resources']['file_search'] = {"vector_store_ids": [self.vector.id]}
 
             self.assistant = self.openai.beta.assistants.create(**self.opts_assistant)
 
-            if self.config.file_search:
-                if self.config.assistant:
+            if self.config["file_search"]:
+                if self.config["assistant"]:
                     self.openai.beta.assistants.update(self.assistant.id,
                                                              tool_resources={"file_search": {
                                                                  "vector_store_ids": [self.vector.id]}}
@@ -193,36 +203,36 @@ class Recommender:
                                                               "file_search": {"vector_store_ids": [self.vector.id]}})
 
     async def create_thread(self):
-#        if self.config.thread is str and self.config.thread[0:7] == 'thread_':
-#            self.thread = await self.openai.beta.threads.retrieve(self.config.thread)
+#        if self.config["thread"] is str and self.config["thread"][0:7] == 'thread_':
+#            self.thread = await self.openai.beta.threads.retrieve(self.config["thread"])
 #        else:
-        if self.config.code_interpreter or self.config.file_search:
+        if self.config["code_interpreter"] or self.config["file_search"]:
             self.opts_thread['messages'][0]['attachments'] = [
                 {"file_id": self.file.id, "tools": self.opts_assistant['tools']}]
         self.thread = self.openai.beta.threads.create(**self.opts_thread)
 
     async def create_vector_store(self):
-        if type(self.config.vector_store) is str and self.config.vector_store[0:3] == 'vs_':
-            self.vector = self.openai.beta.vector_stores.retrieve(self.config.vector_store)
+        if type(self.config["vector_store"]) is str and self.config["vector_store"][0:3] == 'vs_':
+            self.vector = self.openai.beta.vector_stores.retrieve(self.config["vector_store"])
             current_timestamp = int(datetime.datetime.now().timestamp())
             if current_timestamp < self.vector.expires_at:
                 self.vector = dict(self.vector)
 
-                if self.config.assistant:
-                    self.openai.beta.assistants.update(self.config.assistant,
+                if self.config["assistant"]:
+                    self.openai.beta.assistants.update(self.config["assistant"],
                                                              tool_resources={"file_search": {
                                                                  "vector_store_ids": [self.vector.id]}}
                                                              )
 
-                if self.config.thread:
+                if self.config["thread"]:
                     self.openai.beta.threads.update(
-                        self.config.thread,
+                        self.config["thread"],
                         tool_resources={"file_search": {"vector_store_ids": [self.vector.id]}},
                     )
 
                 return self.vector
 
-        self.vector = self.openai.beta.vector_stores.create(name="Bag Product Information", file_ids=[self.file.id],
+        self.vector = self.openai.beta.vector_stores.create(name=f"Vector Store {self.config['file_path']}", file_ids=[self.file.id],
                                                             expires_after={"anchor": "last_active_at", "days": 7})
         return self.vector
 
@@ -236,7 +246,7 @@ class Recommender:
     async def create_embeddings_withasst(self):
         file_streams = []
         # Embeddings.start()
-        with open(self.file_path, 'r') as file:
+        with open(self.config["file_path"], 'r') as file:
             product_json = json.load(file)
             token_keys = ["Product ID", "Handle", "Title", "Description", "Product Category", "Type", "Tags",
                           "Variant Grams", "Price USD $"]
@@ -293,7 +303,7 @@ class Recommender:
             "prompt": self.opts_thread["messages"][0]["content"],
             "survey_id": self.adler32(self.survey_str),
             "instructions": self.opts_assistant["instructions"],
-            "config": self.config._asdict(),
+            "config": self.config,
         }
 
         tests = {"file_id": self.file, "thread_id": self.thread, "assistant_id":self.assistant, "vector_store_id":  self.vector}
@@ -303,7 +313,7 @@ class Recommender:
             elif obj is not None and hasattr(obj, 'id'):
                 tracker[config_id]['config'][key] = obj.id
 
-        with open(self.file_path, 'r') as file:
+        with open(self.config["file_path"], 'r') as file:
             product_json = json.load(file)
 
         if isinstance(response_json, list):
@@ -318,7 +328,7 @@ class Recommender:
                     print('no such product id', resp)
             tracker[config_id]["results"] = response_json
         else:
-            tracker[config_id]["results"] = response_str if len(response_str) > 0 else response_json
+            tracker[config_id]["results"] = response_str if isinstance(response_str, str) and len(response_str) > 0 else response_json
 
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
@@ -343,18 +353,18 @@ class Recommender:
 
     def get_config_id(self):
         id_parts = []
-        if self.config.executable == 'Embeddings':
+        if self.config["executable"] == 'Embeddings':
             id_parts.append('embeddings')
-        elif self.config.executable == 'Thread':
+        elif self.config["executable"] == 'Thread':
             id_parts.append('thead')
-        elif self.config.executable == 'Completion':
+        elif self.config["executable"] == 'Completion':
             id_parts.append('completion')
 
-        if self.config.file_search:
+        if self.config["file_search"]:
             id_parts.append('file')
-        if self.config.assistant:
+        if self.config["assistant"]:
             id_parts.append('assistant')
-        if self.config.code_interpreter:
+        if self.config["code_interpreter"]:
             id_parts.append('code')
         return '-'.join(id_parts)
 

@@ -25,7 +25,6 @@ class Embeddings:
             self.products_df = pd.DataFrame(data)
             self._create_and_save_embeddings()
         elif self.file_path.endswith('.csv'):
-            # first restructure with better headers and less nonsense
             self.products_df = pd.read_csv(self.file_path)
             self._create_and_save_embeddings()
         elif self.file_path.endswith('.pkl'):

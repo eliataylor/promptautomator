@@ -28,7 +28,7 @@
 
 
 #### Config Rules using Embeddings
-- `python make-embeddings.py examples/music-catalogue.csv id` > will create a examples/music-catalogue.pkl (necessary for testing Embeddings)
+- `python make-embeddings.py examples/music-catalogue.csv id` > will create "examples/music-catalogue.pkl" (necessary for testing Embeddings)
 
 | Model            | Executable  | File Path    |      everything else |
 |------------------|------------|----------|----------------------|
