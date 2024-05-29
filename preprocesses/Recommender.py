@@ -1,6 +1,6 @@
 import datetime
 import hashlib
-import json, csv
+import json, csv, re
 import os
 import sys
 from preprocesses.Embeddings import Embeddings
@@ -238,7 +238,8 @@ class Recommender:
 
     def create_embeddings(self):
         self.started = datetime.datetime.now()
-        response_json = self.embeddings.find_recommendations(self.survey_str)
+        topass = self.survey_str if self.survey_str else self.prompt["prompt"]
+        response_json = self.embeddings.find_recommendations(topass)
         self.ended = datetime.datetime.now()
         print("\nFINAL JSON!! :\n", response_json)
         self.validate_response(response_json, response_json)
@@ -260,8 +261,7 @@ class Recommender:
 
         vector_store = await self.openai.beta.vector_stores.create(name="Bag Product Embeddings")
         # await FileBatch.upload_and_poll(vector_store["id"], file_streams)
-        await self.openai.beta.threads.update(self.thread.id, {
-            "tool_resources": {"file_search": {"vector_store_ids": [vector_store["id"]]}}})
+        await self.openai.beta.threads.update(self.thread.id, {"tool_resources": {"file_search": {"vector_store_ids": [vector_store["id"]]}}})
 
     async def run_thread(self):
         if self.assistant:
@@ -313,22 +313,24 @@ class Recommender:
             elif obj is not None and hasattr(obj, 'id'):
                 tracker[config_id]['config'][key] = obj.id
 
-        with open(self.config["file_path"], 'r') as file:
-            product_json = json.load(file)
+        tracker[config_id]["results"] = response_str if isinstance(response_str, str) and len(response_str) > 0 else response_json
 
-        if isinstance(response_json, list):
-            for resp in response_json:
-                key = "product_id" if "product_id" in resp else "Product ID"
-                has_id = any(p["Product ID"] == resp[key] for p in product_json)
-                if has_id:
-                    resp["exists"] = True
-                    print('exists', resp[key], resp)
-                else:
-                    resp["exists"] = False
-                    print('no such product id', resp)
-            tracker[config_id]["results"] = response_json
-        else:
-            tracker[config_id]["results"] = response_str if isinstance(response_str, str) and len(response_str) > 0 else response_json
+        if self.config["file_path"]:
+            with open(self.config["file_path"], 'r') as file:
+                product_json = json.load(file)
+
+            if isinstance(response_json, list):
+                key = self.find_id_property(response_json[0].keys())
+                if key:
+                    for resp in response_json:
+                        has_id = any(p[key] == resp[key] for p in product_json)
+                        if has_id:
+                            resp["exists"] = True
+                            print('exists', resp[key], resp)
+                        else:
+                            resp["exists"] = False
+                            print(f'no such key {key}' , resp)
+                tracker[config_id]["results"] = response_json
 
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
@@ -367,6 +369,13 @@ class Recommender:
         if self.config["code_interpreter"]:
             id_parts.append('code')
         return '-'.join(id_parts)
+
+    def find_id_property(self, d):
+        pattern = re.compile(r'^\s*_?id\s*$', re.IGNORECASE)
+        for key in d.keys():
+            if pattern.match(key):
+                return key
+        return None
 
     def get_nested(self, data, keys, default=None):
         """
