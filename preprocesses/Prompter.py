@@ -152,9 +152,9 @@ class Prompter:
 
     def get_dataset(self):
         if self.file and self.file.purpose == 'assistants': # cannot download these
-            files = find_nearby_file(self.file.filename, os.path.join(os.path.dirname(__file__), '..'))
-            if len(files) > 0:
-                with open(files[0], 'r') as file:
+            file_path = find_nearby_file(self.file.filename, os.path.join(os.path.dirname(__file__), '..'))
+            if len(file_path) > 0:
+                with open(file_path, 'r') as file:
                     return json.load(file)
         elif self.file and self.file.purpose != 'assistants': # cannot download these
             return self.openai.files.content(self.file.id)
@@ -310,7 +310,7 @@ class Prompter:
                     tracker[config_id]["results"] = response_json
 
             except Exception as e:
-                print("Could not validate from dataset", e.message)
+                print("Could not validate from dataset", e)
 
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
