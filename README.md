@@ -41,7 +41,7 @@
 
 
 ## Compile results index file for interface:
-`node results-indexer.js`
+`python preprocesses/results-indexer.py`
 
 ## Run interface to filter / sort / review results
 - npm install
@@ -55,5 +55,4 @@
 - [ ] Map lookup source_id back to survey used
 - [ ] Validate JSON response by reading requested format from instructions
 - [ ] Optimize reuse to reduce token usage
-- [ ] Merge data transformers (py and js) 
-- [ ] Pass along Fine Tuning variables like `  temperature=1, max_tokens=256, top_p=1, frequency_penalty=0, presence_penalty=0`
+- [ ] Pass along Fine-Tuning variables like `  temperature=1, max_tokens=256, top_p=1, frequency_penalty=0, presence_penalty=0`

@@ -17,7 +17,7 @@ class Embeddings:
         self.products_df = None
         self.source_key = source_key # TODO validate exists on dataset
 
-        if os.path.exists(self.file_path) is False:
+        if not os.path.exists(self.file_path):
             raise ValueError("Missing file: " + self.file_path)
         elif self.file_path.endswith('.json'):
             with open(self.file_path, 'r') as f:
@@ -53,7 +53,7 @@ class Embeddings:
         try:
             for column in self.products_df.columns:
                 if column != self.source_key:
-                    print(f"applying embed {column}")
+                    print(f"applying embedding: {column}")
                     self.products_df[column + '_embedding'] = self.products_df[column].apply(self._get_embedding)
         except Exception as e:
             print(f'Embedding column failed: {column}', e)
@@ -62,6 +62,7 @@ class Embeddings:
         embeddings_file = base + '.pkl'
         with open(embeddings_file, 'wb') as f:
             pickle.dump(self.products_df, f)
+
         print("Embeddings created and saved.")
 
     def get_header_byindex(self, index):

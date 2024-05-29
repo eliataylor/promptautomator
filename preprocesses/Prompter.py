@@ -1,15 +1,18 @@
+from dotenv import load_dotenv
+import csv
 import datetime
-import hashlib
-import json, csv, re
+import json
 import os
 import sys
-from preprocesses.Embeddings import Embeddings
 
 from openai import AssistantEventHandler
 from openai import OpenAI
 
+from preprocesses.Embeddings import Embeddings
+from preprocesses.Utils import find_id_property, find_json, adler32, stringify_survey
+load_dotenv()
 
-class Recommender:
+class Prompter:
     def __init__(self, prompt, config, survey):
         self.prompt = prompt
         self.config = config
@@ -21,29 +24,34 @@ class Recommender:
         self.vector = None
 
         if os.path.exists(self.config["file_path"]):
-            if ".csv" in self.config["file_path"]: # csv can be retrieved: https://platform.openai.com/docs/assistants/tools/file-search/supported-files
-                base, _ = os.path.splitext(self.config["file_path"])
-                self.config["file_path"] = base + '.json'
-                if os.path.exists(self.config["file_path"]) is False:
-                    json_data = json.dumps([row for row in csv.DictReader(open(self.config["file_path"]))])
-                    with open(self.config["file_path"], 'w') as json_file:
-                        json_file.write(json_data)
-
-            if self.config["executable"] == 'Embeddings':
-                base, _ = os.path.splitext(self.config["file_path"])
-                embeddings_file = base + '.pkl'
-                if os.path.exists(embeddings_file) is False:
-                    print(f"Missing PKL file. First run `python data-transformer.py products_export.json`")
-                    sys.exit(1)
-                else:
-                    self.embeddings = Embeddings(embeddings_file)
+            if ".pkl" not in self.config["file_path"] and ".json" not in self.config["file_path"]: # csv can be retrieved: https://platform.openai.com/docs/assistants/tools/file-search/supported-files
+                print(f"Check OpenAI's docs if they're supporting this filetype: https://platform.openai.com/docs/assistants/tools/file-search/supported-files. Also try running `python DatIandexer.py normalize_dataset <product_file> <source_key>`")
+                sys.exit(1)
 
         elif self.config["file_path"][0:5] != 'file-':
             print(f"Missing file data reading: {self.config['file_path']}")
             sys.exit(1)
 
         self.survey = survey
-        self.survey_str = self.stringify_survey(survey)
+        self.survey_str = stringify_survey(survey)
+
+        if "__RFORMAT__" in self.prompt["response"]:
+            self.prompt["prompt"] = self.prompt["prompt"].replace('__RFORMAT__', self.survey_str)
+            self.prompt["instruction"] = self.prompt["instruction"].replace('__RFORMAT__', self.survey_str)
+
+        if "__FILENAME__" in self.prompt["prompt"]:
+            self.prompt["prompt"] = self.prompt["prompt"].replace('__FILENAME__', self.survey_str)
+        elif "__FILENAME__" in self.prompt["instruction"]:
+            self.prompt["instruction"] = self.prompt["instruction"].replace('__FILENAME__', self.survey_str)
+
+
+        if "__USERDATA__" in self.prompt["prompt"]:
+            self.prompt["prompt"] = self.prompt["prompt"].replace('__USERDATA__', self.survey_str)
+        elif "__USERDATA__" in self.prompt["instruction"]:
+            self.prompt["instruction"] = self.prompt["instruction"].replace('__USERDATA__', self.survey_str)
+        else:
+            self.survey = False
+            self.survey_str = ""
 
         self.opts_assistant = {
             "name": f"Prompt Automator",
@@ -60,18 +68,7 @@ class Recommender:
             ]
         }
 
-        if "__USERDATA__" in self.prompt["prompt"]:
-            self.opts_thread["messages"][0]["content"] = self.prompt["prompt"].replace('__USERDATA__', self.survey_str)
-        elif "__USERDATA__" in self.prompt["instruction"]:
-            self.opts_assistant["instructions"] = self.prompt["instruction"].replace('__USERDATA__', self.survey_str)
-        else:
-            self.survey = False
-            self.survey_str = ""
-
-        if "__FILENAME__" in self.opts_assistant["instructions"]:
-            self.opts_assistant["instructions"] = self.opts_assistant["instructions"].replace('__FILENAME__', self.config["file_path"])
-
-        self.test_id = self.adler32(json.dumps(self.prompt) + json.dumps(self.config) + self.survey_str)
+        self.test_id = adler32(json.dumps(self.prompt) + json.dumps(self.config) + self.survey_str)
 
         self.opts_assistant["name"] += " - " + self.test_id
 
@@ -82,30 +79,6 @@ class Recommender:
         self.results_path = f'{results_dir}/result-{self.test_id}.json'
         self.opts_run = {}
 
-    def make_test_id(self, input_string):
-        sha256_hash = hashlib.sha256(input_string.encode())
-        checksum = sha256_hash.hexdigest()
-        return checksum
-
-    """ Calculates and return Adler32 checksum """
-    def adler32(self, data):
-        mod = 65521
-        a = 1
-        b = 0
-
-        for char in data:
-            a = (a + ord(char)) % mod
-            b = (b + a) % mod
-
-        return str((b << 16) | a)
-
-    def stringify_survey(self, survey):
-        if not survey:
-            return False
-        lines = []
-        for question, answer in survey.items():
-            lines.append(f"{question}: {answer}")
-        return "\n".join(lines)
 
     async def complete(self):
         self.started = datetime.datetime.now()
@@ -153,7 +126,7 @@ class Recommender:
             self.ended = datetime.datetime.now()
             response_str = self.get_nested(response_str, ['choices', 0, 'message', 'content'], default="Failed to access ChatCompletion correctly")
             print("\nCompletion Response:\n", response_str)
-            response_json = self.find_json(response_str)
+            response_json = find_json(response_str)
             self.validate_response(response_json, response_str)
         except Exception as e:
             self.ended = datetime.datetime.now()
@@ -238,6 +211,8 @@ class Recommender:
 
     def create_embeddings(self):
         self.started = datetime.datetime.now()
+        source_key = find_id_property(self.config['response'])
+        self.embeddings = Embeddings(self.config["file_path"])
         topass = self.survey_str if self.survey_str else self.prompt["prompt"]
         response_json = self.embeddings.find_recommendations(topass)
         self.ended = datetime.datetime.now()
@@ -282,7 +257,7 @@ class Recommender:
 
             self.ended = datetime.datetime.now()
             print("\nFINAL JSON!! :\n", response_str)
-            response_json = self.find_json(response_str)
+            response_json = find_json(response_str)
             self.validate_response(response_json, response_str)
 
     def validate_response(self, response_json, response_str=''):
@@ -301,7 +276,8 @@ class Recommender:
             "ended": self.ended.strftime('%Y-%m-%d %H:%M:%S'),
             "model": self.opts_assistant["model"],
             "prompt": self.opts_thread["messages"][0]["content"],
-            "survey_id": self.adler32(self.survey_str),
+            "survey_id": adler32(self.survey_str),
+            "response":self.prompt['response'],
             "instructions": self.opts_assistant["instructions"],
             "config": self.config,
         }
@@ -320,7 +296,7 @@ class Recommender:
                 product_json = json.load(file)
 
             if isinstance(response_json, list):
-                key = self.find_id_property(response_json[0])
+                key = find_id_property(response_json[0])
                 if key:
                     for resp in response_json:
                         has_id = any(p[key] == resp[key] for p in product_json)
@@ -335,23 +311,6 @@ class Recommender:
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
 
-    def find_json(self, string):
-        start_index = min(string.find('{'), string.find('['))
-        if start_index == -1:
-            print('No JSON object found in the string.')
-            return None
-        end_char = ']' if string[start_index] == '[' else '}'
-        end_index = string.rfind(end_char)
-        if end_index == -1:
-            print('Invalid JSON object format.')
-            return None
-        json_string = string[start_index:end_index + 1]
-        try:
-            json_object = json.loads(json_string)
-            return json_object
-        except json.JSONDecodeError as e:
-            print('Error parsing JSON:', string, e)
-            return None
 
     def get_config_id(self):
         id_parts = []
@@ -369,29 +328,6 @@ class Recommender:
         if self.config["code_interpreter"]:
             id_parts.append('code')
         return '-'.join(id_parts)
-
-    def find_id_property(self, d):
-        pattern = re.compile(r'^\s*_?id\s*$', re.IGNORECASE)
-        for key in d.keys():
-            if pattern.match(key):
-                return key
-        return None
-
-    def get_nested(self, data, keys, default=None):
-        """
-        Safely get a nested value from a dictionary.
-
-        :param data: The dictionary to search.
-        :param keys: A list of keys to navigate through the dictionary.
-        :param default: The default value to return if any key is not found.
-        :return: The value found at the nested key, or default if any key is not found.
-        """
-        for key in keys:
-            if isinstance(data, dict):
-                data = data.get(key, default)
-            else:
-                return default
-        return data
 
 
 class EventHandler(AssistantEventHandler):

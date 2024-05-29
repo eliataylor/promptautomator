@@ -1,3 +1,3 @@
-Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter
-gpt-4-turbo,Thread,examples/music-catalogue.csv,TRUE,TRUE,TRUE,FALSE
-gpt-4-turbo,Embeddings,examples/music-catalogue.csv,,,,
+Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter,Fine Tuning
+gpt-4-turbo,Thread,public/music-catalogue.json,TRUE,TRUE,TRUE,FALSE,
+gpt-4-turbo,Embeddings,public/music-catalogue.json,,,,,

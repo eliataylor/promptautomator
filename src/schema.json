@@ -9,7 +9,7 @@
   "started": {
     "field": "started",
     "headerName": "Started",
-    "type": "time",
+    "type": "string",
     "sortable": true,
     "filterable": false,
     "showing": false
@@ -17,7 +17,7 @@
   "ended": {
     "field": "ended",
     "headerName": "Ended",
-    "type": "time",
+    "type": "string",
     "sortable": true,
     "filterable": false,
     "showing": false
@@ -27,41 +27,41 @@
     "headerName": "Model",
     "type": "string",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   },
   "prompt": {
     "field": "prompt",
     "headerName": "Prompt",
     "type": "string",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   },
   "survey_id": {
     "field": "survey_id",
     "headerName": "Survey",
     "type": "string",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   },
   "instructions": {
     "field": "instructions",
     "headerName": "Instructions",
     "type": "string",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   },
   "config": {
     "field": "config",
     "headerName": "Config",
     "type": "object",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   },
   "results": {
     "field": "results",
     "headerName": "Results",
-    "type": "string",
+    "type": "object",
     "sortable": true,
-    "filterable": true
+    "filterable": false
   }
 }
