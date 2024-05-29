@@ -234,7 +234,7 @@ def parse_date(date_string):
         return None
 
 
-def find_files_up_and_down(filename, start_dir=''):
+def find_nearby_file(filename, start_dir=''):
     matches = []
 
     # Search from one directory up to the root
