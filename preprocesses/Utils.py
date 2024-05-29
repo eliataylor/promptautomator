@@ -1,10 +1,10 @@
 import csv
 import hashlib
 import json
-import os
 import re
 import sys
-
+import os
+import fnmatch
 import aiofiles
 from dateutil.parser import parse
 
@@ -232,3 +232,22 @@ def parse_date(date_string):
         return parse(date_string)
     except ValueError:
         return None
+
+
+def find_files_up_and_down(filename, start_dir=''):
+    matches = []
+
+    # Search from one directory up to the root
+    current_dir = os.path.abspath(start_dir)
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+
+    while True:
+        for root, dirnames, filenames in os.walk(current_dir):
+            for name in fnmatch.filter(filenames, filename):
+                matches.append(os.path.join(root, name))
+
+        if current_dir == parent_dir:  # If reached the root directory, stop
+            break
+        current_dir, parent_dir = parent_dir, os.path.abspath(os.path.join(parent_dir, os.pardir))
+
+    return matches

@@ -9,7 +9,7 @@ from openai import AssistantEventHandler
 from openai import OpenAI
 
 from preprocesses.Embeddings import Embeddings
-from preprocesses.Utils import find_id_property, find_json, adler32, stringify_survey
+from preprocesses.Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file
 load_dotenv()
 
 class Prompter:
@@ -151,7 +151,14 @@ class Prompter:
             self.file = self.openai.files.create(file=open(self.config["file_path"], 'rb'), purpose="assistants")
 
     def get_dataset(self):
-        if self.config["file_path"][0:5] == 'file-':
+        if self.file and self.file.purpose == 'assistants': # cannot download these
+            files = find_nearby_file(self.file.filename, '')
+            if len(files) > 0:
+                with open(files[0], 'r') as file:
+                    return json.load(file)
+        elif self.file and self.file.purpose != 'assistants': # cannot download these
+            return self.openai.files.content(self.file.id)
+        elif self.config["file_path"][0:5] == 'file-':
             return self.openai.files.content(self.config["file_path"])
         elif os.path.exists(self.config["file_path"]) is False:
             files = self.openai.files.list()
@@ -287,20 +294,23 @@ class Prompter:
         tracker[config_id]["results"] = response_str if isinstance(response_str, str) and len(response_str) > 0 else response_json
 
         if self.config["file_path"]:
-            product_json = self.get_dataset()
+            try:
+                product_json = self.get_dataset()
+                if isinstance(product_json, list) and isinstance(response_json, list):
+                    key = find_id_property(response_json[0])
+                    if key:
+                        for resp in response_json:
+                            has_id = any(p[key] == resp[key] for p in product_json)
+                            if has_id:
+                                resp["exists"] = True
+                                print('exists', resp[key], resp)
+                            else:
+                                resp["exists"] = False
+                                print(f'no such key {key}', resp)
+                    tracker[config_id]["results"] = response_json
 
-            if isinstance(response_json, list):
-                key = find_id_property(response_json[0])
-                if key:
-                    for resp in response_json:
-                        has_id = any(p[key] == resp[key] for p in product_json)
-                        if has_id:
-                            resp["exists"] = True
-                            print('exists', resp[key], resp)
-                        else:
-                            resp["exists"] = False
-                            print(f'no such key {key}' , resp)
-                tracker[config_id]["results"] = response_json
+            except Exception as e:
+                print("Could not validate from dataset", e.message)
 
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
