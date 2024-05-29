@@ -8,26 +8,31 @@ from openai import OpenAI
 from sklearn.decomposition import PCA
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
+from preprocesses.Utils import find_id_property
 
 
 class Embeddings:
-    def __init__(self, file_path, source_key='Product ID'):
+    def __init__(self, file_path):
         self.client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
         self.file_path = file_path
         self.products_df = None
-        self.source_key = source_key # TODO validate exists on dataset
+        self.all_embeddings = {}
+        self.source_key = 'source_id'
 
         if not os.path.exists(self.file_path):
             raise ValueError("Missing file: " + self.file_path)
         elif self.file_path.endswith('.json'):
             with open(self.file_path, 'r') as f:
                 data = json.load(f)
+                self.source_key = find_id_property(data[0])
             self.products_df = pd.DataFrame(data)
             self._create_and_save_embeddings()
         elif self.file_path.endswith('.csv'):
+            self.source_key = self.get_header_byindex(0)
             self.products_df = pd.read_csv(self.file_path)
             self._create_and_save_embeddings()
         elif self.file_path.endswith('.pkl'):
+            # WARN: source_id should have been forced by `DataIndexer.py`
             self._load_embeddings()
         else:
             raise ValueError("Unsupported file type. Please provide a .csv or .pkl file.")
@@ -41,8 +46,12 @@ class Embeddings:
             if type(text) is str:
                 text = text.replace("\n", " ")
             print(f'creating openai embedding for {text}')
-            response = self.client.embeddings.create(input=[text], model=model)
-            return response.data[0].embedding
+            if text not in self.all_embeddings:
+                response = self.client.embeddings.create(input=[text], model=model)
+                self.all_embeddings[text] = response.data[0].embedding
+
+            return self.all_embeddings[text]
+
         except Exception as e:
             print(f'Embedding failed: {text}', e)
             return None
@@ -91,7 +100,10 @@ class Embeddings:
         top_indices = np.argsort(similarities[0])[::-1][:top_n]
 
         recommended_products = self.products_df.iloc[top_indices]
-        return recommended_products[[self.source_key, 'product_name']]
+
+        title_key = self.get_header_byindex(1)  # Assumes 0 is id
+
+        return recommended_products[[self.source_key, title_key]]
 
     def find_recommendations(self, survey, top_n=5, model="text-embedding-3-small"):
         # Create a combined embedding for the user's survey answers

@@ -79,7 +79,7 @@ def build_survey(csv_file_path):
 
 
 def find_id_property(d):
-    pattern = re.compile(r'^\s*_?id\s*$', re.IGNORECASE)
+    pattern = re.compile(r'(?i)(^|[^a-zA-Z0-9])id($|[^a-zA-Z0-9])', re.IGNORECASE)
     for key in d.keys():
         if pattern.match(key):
             return key

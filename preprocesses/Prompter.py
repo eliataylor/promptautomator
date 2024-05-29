@@ -56,7 +56,9 @@ class Prompter:
         self.opts_assistant = {
             "name": f"Prompt Automator",
             "instructions": self.prompt["instruction"],
-            "model": self.config["model"]
+            "model": self.config["model"],
+#            'tools': [],
+#            'tool_resources': {}
         }
 
         self.opts_thread = {
@@ -70,7 +72,10 @@ class Prompter:
 
         self.test_id = adler32(json.dumps(self.prompt) + json.dumps(self.config) + self.survey_str)
 
-        self.opts_assistant["name"] += " - " + self.test_id
+        if "test_id" in self.config:
+            self.opts_assistant["name"] += " - " + self.config['test_id']
+        else:
+            self.opts_assistant["name"] += " - " + self.test_id
 
         results_dir = os.path.join(os.path.dirname(__file__), '../public/results')
         if not os.path.exists(results_dir):
@@ -145,35 +150,46 @@ class Prompter:
         else:
             self.file = self.openai.files.create(file=open(self.config["file_path"], 'rb'), purpose="assistants")
 
+    def get_dataset(self):
+        if self.config["file_path"][0:5] == 'file-':
+            return self.openai.files.content(self.config["file_path"])
+        elif os.path.exists(self.config["file_path"]) is False:
+            files = self.openai.files.list()
+            for file in files:
+                if file.filename == os.path.basename(self.config["file_path"]):
+                    return self.openai.files.content(self.file.id)
+        else:
+            with open(self.config["file_path"], 'r') as file:
+                return json.load(file)
+
 
     async def create_assistant(self):
+        self.opts_assistant['tools'] = []
+        self.opts_assistant['tool_resources'] = {}
+
+        if self.config["code_interpreter"]:
+            self.opts_assistant['tools'].append({"type": "code_interpreter"})
+            self.opts_assistant['tool_resources']['code_interpreter'] = {"file_ids": [self.file.id]}
+
+        if self.config["file_search"]:
+            self.opts_assistant['tools'].append({"type": "file_search"})
+            self.opts_assistant['tool_resources']['file_search'] = {"vector_store_ids": [self.vector.id]}
+
         if type(self.config["assistant"]) is str and self.config["assistant"][0:len("asst_")] == 'asst_':
-            self.assistant = {"id": self.config["assistant"]}
+            self.assistant = self.openai.beta.assistants.retrieve(self.config["assistant"])
         else:
-            if self.config["code_interpreter"] or self.config["file_search"]:
-                self.opts_assistant['tools'] = []
-                self.opts_assistant['tool_resources'] = {}
-
-            if self.config["code_interpreter"]:
-                self.opts_assistant['tools'].append({"type": "code_interpreter"})
-                self.opts_assistant['tool_resources']['code_interpreter'] = {"file_ids": [self.file.id]}
-
-            if self.config["file_search"]:
-                self.opts_assistant['tools'].append({"type": "file_search"})
-                self.opts_assistant['tool_resources']['file_search'] = {"vector_store_ids": [self.vector.id]}
-
             self.assistant = self.openai.beta.assistants.create(**self.opts_assistant)
 
-            if self.config["file_search"]:
-                if self.config["assistant"]:
-                    self.openai.beta.assistants.update(self.assistant.id,
-                                                             tool_resources={"file_search": {
-                                                                 "vector_store_ids": [self.vector.id]}}
-                                                             )
-                elif self.thread is not None and "id" in self.thread:
-                    self.openai.beta.threads.update(self.thread.id,
-                                                          tool_resources={
-                                                              "file_search": {"vector_store_ids": [self.vector.id]}})
+        if self.config["file_search"]:
+            self.openai.beta.assistants.update(self.assistant.id,
+                                               tool_resources={"file_search": {
+                                                   "vector_store_ids": [self.vector.id]}}
+                                               )
+            if self.thread is not None and "id" in self.thread:
+                self.openai.beta.threads.update(self.thread.id,
+                                                tool_resources={
+                                                    "file_search": {"vector_store_ids": [self.vector.id]}})
+
 
     async def create_thread(self):
 #        if self.config["thread"] is str and self.config["thread"][0:7] == 'thread_':
@@ -189,15 +205,14 @@ class Prompter:
             self.vector = self.openai.beta.vector_stores.retrieve(self.config["vector_store"])
             current_timestamp = int(datetime.datetime.now().timestamp())
             if current_timestamp < self.vector.expires_at:
-                self.vector = dict(self.vector)
 
-                if self.config["assistant"]:
+                if "assistant" in self.config and self.config["assistant"][0:5] == 'asst_':
                     self.openai.beta.assistants.update(self.config["assistant"],
                                                              tool_resources={"file_search": {
                                                                  "vector_store_ids": [self.vector.id]}}
                                                              )
 
-                if self.config["thread"]:
+                if "thread" in self.config and self.config["thread"][0:5] == 'thread_':
                     self.openai.beta.threads.update(
                         self.config["thread"],
                         tool_resources={"file_search": {"vector_store_ids": [self.vector.id]}},
@@ -211,32 +226,12 @@ class Prompter:
 
     def create_embeddings(self):
         self.started = datetime.datetime.now()
-        source_key = find_id_property(self.config['response'])
         self.embeddings = Embeddings(self.config["file_path"])
         topass = self.survey_str if self.survey_str else self.prompt["prompt"]
         response_json = self.embeddings.find_recommendations(topass)
         self.ended = datetime.datetime.now()
         print("\nFINAL JSON!! :\n", response_json)
         self.validate_response(response_json, response_json)
-
-    async def create_embeddings_withasst(self):
-        file_streams = []
-        # Embeddings.start()
-        with open(self.config["file_path"], 'r') as file:
-            product_json = json.load(file)
-            token_keys = ["Product ID", "Handle", "Title", "Description", "Product Category", "Type", "Tags",
-                          "Variant Grams", "Price USD $"]
-            for row in product_json:
-                parts = [f"{key} = {row[key]}" for key in token_keys]
-                embedding = await self.openai.embeddings.create(model="text-embedding-3-small", input=parts)
-                vector = embedding["data"]["embedding"]
-                vector_string = ','.join(map(str, vector))
-                stream = bytes(vector_string, 'utf-8')
-                file_streams.append(stream)
-
-        vector_store = await self.openai.beta.vector_stores.create(name="Bag Product Embeddings")
-        # await FileBatch.upload_and_poll(vector_store["id"], file_streams)
-        await self.openai.beta.threads.update(self.thread.id, {"tool_resources": {"file_search": {"vector_store_ids": [vector_store["id"]]}}})
 
     async def run_thread(self):
         if self.assistant:
@@ -292,8 +287,7 @@ class Prompter:
         tracker[config_id]["results"] = response_str if isinstance(response_str, str) and len(response_str) > 0 else response_json
 
         if self.config["file_path"]:
-            with open(self.config["file_path"], 'r') as file:
-                product_json = json.load(file)
+            product_json = self.get_dataset()
 
             if isinstance(response_json, list):
                 key = find_id_property(response_json[0])

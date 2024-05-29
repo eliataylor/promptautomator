@@ -78,6 +78,7 @@ if __name__ == '__main__':
         # python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json source_id
         asyncio.run(build_embeddings(sys.argv[2], sys.argv[3]))
     elif sys.argv[1] == 'index_results':
+        # python preprocesses/DataIndexer.py index_results
         asyncio.run(index_results())
 
 
