@@ -10,7 +10,7 @@ from openai import AssistantEventHandler
 from openai import OpenAI
 
 from .Embeddings import Embeddings
-from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file
+from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file, get_nested
 
 load_dotenv()
 
@@ -131,7 +131,7 @@ class Prompter:
                 messages=message
             )
             self.ended = datetime.datetime.now()
-            response_str = self.get_nested(response_str, ['choices', 0, 'message', 'content'], default="Failed to access ChatCompletion correctly")
+            response_str = get_nested(response_str, ['choices', 0, 'message', 'content'], default="Failed to access ChatCompletion correctly")
             print("\nCompletion Response:\n", response_str)
             response_json = find_json(response_str)
             self.validate_response(response_json, response_str)
