@@ -1,7 +1,7 @@
 Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter,Fine Tuning
 gpt-3.5-turbo,Completion,public/music-catalogue.json,,TRUE,FALSE,FALSE,
 gpt-3.5-turbo,Thread,public/music-catalogue.json,TRUE,TRUE,TRUE,FALSE,
-gpt-3.5-turbo,Embeddings,public/music-catalogue.json,,,,,
+gpt-3.5-turbo,Embeddings,examples/music-catalogue.pkl,,,,,
 gpt-4-turbo,Completion,public/music-catalogue.json,,TRUE,FALSE,FALSE,
 gpt-4-turbo,Thread,public/music-catalogue.json,TRUE,TRUE,TRUE,FALSE,
-gpt-4-turbo,Embeddings,public/music-catalogue.json,,,,,
+gpt-4-turbo,Embeddings,examples/music-catalogue.pkl,,,,,

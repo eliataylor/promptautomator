@@ -8,8 +8,9 @@ import sys
 from openai import AssistantEventHandler
 from openai import OpenAI
 
-from preprocesses.Embeddings import Embeddings
-from preprocesses.Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file
+from .Embeddings import Embeddings
+from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file
+
 load_dotenv()
 
 class Prompter:
@@ -77,7 +78,7 @@ class Prompter:
         else:
             self.opts_assistant["name"] += " - " + self.test_id
 
-        results_dir = os.path.join(os.path.dirname(__file__), '../public/results')
+        results_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../public/results'))
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
 
@@ -152,7 +153,7 @@ class Prompter:
 
     def get_dataset(self):
         if self.file and self.file.purpose == 'assistants': # cannot download these
-            file_path = find_nearby_file(self.file.filename, os.path.join(os.path.dirname(__file__), '..'))
+            file_path = find_nearby_file(self.file.filename, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
             if len(file_path) > 0:
                 with open(file_path, 'r') as file:
                     return json.load(file)

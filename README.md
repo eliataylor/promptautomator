@@ -48,10 +48,12 @@ The following tokens will be replaced as described:
 
 ## Normalize your dataset
 -[x] Convert your CSV to JSON and replace your internal name for ID with `source_id`: 
-`python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id`
+  - python preprocesses/DataIndexer.py normalize_dataset <path to your dataset file> <property name for your internal ID>
+- `python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id`
+
 
 -[x] If testing Embeddings, convert your JSON to a PKL:  
-`python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json source_id`
+`python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json`
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
@@ -66,4 +68,4 @@ The following tokens will be replaced as described:
 - [ ] Map lookup source_id back to survey used
 - [ ] Validate JSON response by reading requested format from instructions
 - [ ] Optimize reuse to reduce token usage
-- [ ] Pass along Fine-Tuning variables like `temperature=1, max_tokens=256, top_p=1, frequency_penalty=0, presence_penalty=0`
+- [ ] Pass along Fine-Tuning variables like `{temperature:1, max_tokens:256, top_p:1, frequency_penalty:0, presence_penalty:0}`

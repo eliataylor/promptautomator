@@ -48,7 +48,8 @@
     "headerName": "Response",
     "type": "string",
     "sortable": true,
-    "filterable": false
+    "filterable": false,
+    "showing": false
   },
   "instructions": {
     "field": "instructions",

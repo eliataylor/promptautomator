@@ -147,36 +147,6 @@ def stringify_survey(survey):
     return "\n".join(lines)
 
 
-async def get_top_level_properties(dir):
-    files = os.listdir(dir)
-    json_files = [file for file in files if file.endswith('.json')]
-
-    results = []
-    columns = {}
-
-    for filename in json_files:
-        file_path = os.path.join(dir, filename)
-        async with aiofiles.open(file_path, 'r', encoding='utf-8') as f:
-            data = await f.read()
-            json_data = json.loads(data)
-            for run in json_data:
-                top_level_properties = {'filename': filename, 'runkey': run}
-                for key, value in json_data[run].items():
-                    top_level_properties[key] = value
-                    if key not in columns:
-                        columns[key] = add_column(value, key)
-                results.append(top_level_properties)
-
-    # columns.sort(key=lambda x: x.get('started'))
-
-    field_schema = json.dumps(columns, indent=2)  # Pretty-print with 2-space indentation
-    new_path = os.path.join(os.path.dirname(__file__), '../src/schema.json')
-    async with aiofiles.open(new_path, 'w', encoding='utf-8') as f:
-        await f.write(field_schema)
-
-    return results
-
-
 def make_label(field_name):
     if field_name == 'num_response':
         return 'Responses'
@@ -205,7 +175,7 @@ def add_column(val, key):
         'sortable': True,
         'filterable': True
     }
-    if key in ['started', 'ended']:
+    if key in ['started', 'ended', 'response']:
         column['showing'] = False
 
     if column['type'] == 'str':

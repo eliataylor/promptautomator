@@ -6,22 +6,51 @@ import os, sys
 import shutil
 
 import aiofiles
-from Utils import get_top_level_properties, convert_to_number, sanitize_header, cast_to_boolean
+
 from Embeddings import Embeddings
+from Utils import add_column, convert_to_number, sanitize_header, cast_to_boolean
+
 load_dotenv()
 
-async def build_embeddings(file_path, source_key):
-    Embeddings(file_path, source_key)
+async def build_embeddings(file_path):
+    Embeddings(file_path)
 
 
 async def index_results():
-    directory_path = os.path.join(os.path.dirname(__file__), '../public/results')
-    result = await get_top_level_properties(directory_path)
-    print('Top-level properties from JSON files:', result)
-    json_string = json.dumps(result, indent=2)  # Pretty-print with 2-space indentation
-    new_path = os.path.join(os.path.dirname(__file__), '../public/results.json')
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'public/results'))
+    files = os.listdir(output_dir)
+    json_files = [file for file in files if file.endswith('.json')]
+
+    results = []
+    columns = {}
+
+    for filename in json_files:
+        file_path = os.path.join(output_dir, filename)
+        async with aiofiles.open(file_path, 'r', encoding='utf-8') as f:
+            data = await f.read()
+            json_data = json.loads(data)
+            for run in json_data:
+                top_level_properties = {'filename': filename, 'runkey': run}
+                for key, value in json_data[run].items():
+                    top_level_properties[key] = value
+                    if key not in columns:
+                        columns[key] = add_column(value, key)
+                results.append(top_level_properties)
+
+    # columns.sort(key=lambda x: x.get('started'))
+
+    field_schema = json.dumps(columns, indent=2)  # Pretty-print with 2-space indentation
+    new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src/schema.json'))
+    async with aiofiles.open(new_path, 'w', encoding='utf-8') as f:
+        await f.write(field_schema)
+
+    json_string = json.dumps(results, indent=2)  # Pretty-print with 2-space indentation
+    new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../public/results.json'))
     async with aiofiles.open(new_path, 'w', encoding='utf-8') as f:
         await f.write(json_string)
+
+    print('Results Index:', results)
+    print('New Schema:', field_schema)
 
 
 async def normalize_dataset(file_path, source_key):
@@ -55,7 +84,7 @@ async def normalize_dataset(file_path, source_key):
             sys.exit(1)
 
     if os.getenv("REACT_APP_DATASET_PATH"):
-        new_path = os.path.join(os.path.dirname(__file__), "..", os.getenv("REACT_APP_DATASET_PATH"))
+        new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", os.getenv("REACT_APP_DATASET_PATH")))
         shutil.copy(file_path, new_path)
 
 
@@ -77,8 +106,8 @@ if __name__ == '__main__':
         # python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id
         asyncio.run(normalize_dataset(sys.argv[2], sys.argv[3]))
     elif sys.argv[1] == 'build_embeddings':
-        # python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json source_id
-        asyncio.run(build_embeddings(sys.argv[2], sys.argv[3]))
+        # python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json
+        asyncio.run(build_embeddings(sys.argv[2]))
     elif sys.argv[1] == 'index_results':
         # python preprocesses/DataIndexer.py index_results
         asyncio.run(index_results())
