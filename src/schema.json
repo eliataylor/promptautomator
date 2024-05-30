@@ -75,7 +75,7 @@
   "results": {
     "field": "results",
     "headerName": "Results",
-    "type": "string",
+    "type": "object",
     "sortable": true,
     "filterable": false
   }
