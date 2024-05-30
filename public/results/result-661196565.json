@@ -1,0 +1,48 @@
+{
+  "thead-file-assistant": {
+    "ms": 8.506544,
+    "started": "2024-05-29 16:17:28",
+    "ended": "2024-05-29 16:17:36",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_t8iLREh2BZz1TuCLyqK9VR6j",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "theme": "Morning Rush",
+        "activity": "Getting ready for work"
+      },
+      {
+        "theme": "Highway Cruise",
+        "activity": "Long-distance driving"
+      },
+      {
+        "theme": "Study Session",
+        "activity": "Studying or reading"
+      },
+      {
+        "theme": "Workout Beats",
+        "activity": "Exercising at the gym"
+      },
+      {
+        "theme": "Weekend Chill",
+        "activity": "Relaxing at home"
+      }
+    ]
+  }
+}

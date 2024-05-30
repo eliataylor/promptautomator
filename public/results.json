@@ -1,0 +1,797 @@
+[
+  {
+    "filename": "result-1178599746.json",
+    "runkey": "thead-file-assistant",
+    "ms": 15.537939,
+    "started": "2024-05-29 15:38:03",
+    "ended": "2024-05-29 15:38:19",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-wYqfsUa2Ms0ZObxCbjBW4Yp5",
+      "thread_id": "thread_iNm484hMt7UMO3YzlLDeniEr",
+      "assistant_id": "asst_YwMFRpidAoVqbzTzBXNVnenC",
+      "vector_store_id": "vs_ruYEz5xVGJiiEt67OSb2iiFB"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Vibes\",\n        \"description\": \"Curated tracks ideal for long drives across the city or countryside, featuring up-tempo rock and indie anthems mixed with feel-good pop songs.\"\n    },\n    {\n********************mingsArmyRocks**\nA bunch of people\n    ]\n    {\n        \"theme\": \"Gym Pump-Up\",\n        \"description\": \"High-energy tracks from hip-hop, electronic dance music (EDM), and hard rock to boost morale and energy during workouts.\"\n    },\n    {\n        \"theme\": \"Study and Focus\",\n        \"description\": \"A mix of instrumental music, including classical compositions and lo-fi hip-hop, designed to improve concentration and help with studying or working.\"\n    },\n    {\n        \"theme\": \"Sunday Morning Chill\",\n        \"description\": \"Laid-back acoustic tunes, soothing soul, and mellow jazz tracks perfect for a relaxed Sunday morning or any day when unwinding is the goal.\"\n    },\n    {\n.ResumeLayout.json7[string is a pointer \nA bunch of peopleathering\",\n        \"description\": \"A collection of upbeat, catchy songs across genres like pop, indie, and world music that set the mood for social gatherings, dinner parties, and fun events with friends.\"\n    }\n]"
+  },
+  {
+    "filename": "result-1187254114.json",
+    "runkey": "thead-file-assistant",
+    "ms": 7.811895,
+    "started": "2024-05-29 16:54:48",
+    "ended": "2024-05-29 16:54:56",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_17rYUEsH8KhwOBRCzNoFI1co",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Vibes\",\n        \"activity\": \"Driving through scenic routes or long journeys.\"\n    },\n    {\n        \"theme\": \"Workout Energy Boost\",\n        \"activity\": \"Gym sessions, running, or any physical workout.\"\n    },\n    {\n        \"theme\": \"Study Focus\",\n        \"activity\": \"Studying or working on tasks requiring concentration.\"\n    },\n    {\n        \"theme\": \"Chill Evenings\",\n        \"activity\": \"Relaxing at home after a long day or during casual gatherings.\"\n    },\n    {\nafter  {\n        \"theme\": \"Party Starters\",\n        \"activity\": \"Hosting parties, celebrations, or social gatherings.\"\n    }\n]"
+  },
+  {
+    "filename": "result-763760430.json",
+    "runkey": "thead-file-assistant",
+    "ms": 6.674354,
+    "started": "2024-05-29 16:57:51",
+    "ended": "2024-05-29 16:57:58",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_wJxlsSrdxrE4rTTaPAf95S1h",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "theme": "Road Trip Vibes",
+        "activity": "Driving on a long road trip"
+      },
+      {
+        "theme": "Gym Pump",
+        "activity": "Working out at the gym"
+      },
+      {
+        "theme": "Study Focus",
+        "activity": "Studying or reading"
+      },
+      {
+        "theme": "Beach Day",
+        "activity": "Relaxing or partying at the beach"
+      },
+      {
+        "theme": "Cooking Beats",
+        "activity": "Cooking or hosting a dinner party"
+      }
+    ]
+  },
+  {
+    "filename": "result-3178681204.json",
+    "runkey": "thead-file-assistant",
+    "ms": 20.74821,
+    "started": "2024-05-29 16:58:28",
+    "ended": "2024-05-29 16:58:49",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "2887728958",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_NuSbugOJv9dDrADABoFZwu0M",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "title": "Lose Yourself",
+        "artist": "Eminem",
+        "genre": "Hip-Hop",
+        "year": 2002
+      },
+      {
+        "title": "Back in Black",
+        "artist": "AC/DC",
+        "genre": "Rock",
+        "year": 1980
+      },
+      {
+        "title": "Can't Tell Me Nothing",
+        "artist": "Kanye West",
+        "genre": "Hip-Hop",
+        "year": 2007
+      },
+      {
+        "title": "Bohemian Rhapsody",
+        "artist": "Queen",
+        "genre": "Rock",
+        "year": 1975
+      },
+      {
+        "title": "All The Stars",
+        "artist": "Kendrick Lamar, SZA",
+        "genre": "Hip-Hop",
+        "year": 2018
+      },
+      {
+        "title": "Sweet Child O' Mine",
+        "artist": "Guns N' Roses",
+        "genre": "Rock",
+        "year": 1987
+      },
+      {
+        "title": "HUMBLE.",
+        "artist": "Kendrick Lamar",
+        "genre": "Hip-Hop",
+        "year": 2017
+      },
+      {
+        "title": "Under the Bridge",
+        "artist": "Red Hot Chili Peppers",
+        "genre": "Rock",
+        "year": 1991
+      },
+      {
+        "title": "99 Problems",
+        "artist": "Jay-Z",
+        "genre": "Hip-Hop",
+        "year": 2004
+      },
+      {
+        "title": "Enter Sandman",
+        "artist": "Metallica",
+        "genre": "Rock",
+        "year": 1991
+      }
+    ]
+  },
+  {
+    "filename": "result-661196565.json",
+    "runkey": "thead-file-assistant",
+    "ms": 8.506544,
+    "started": "2024-05-29 16:17:28",
+    "ended": "2024-05-29 16:17:36",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_t8iLREh2BZz1TuCLyqK9VR6j",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "theme": "Morning Rush",
+        "activity": "Getting ready for work"
+      },
+      {
+        "theme": "Highway Cruise",
+        "activity": "Long-distance driving"
+      },
+      {
+        "theme": "Study Session",
+        "activity": "Studying or reading"
+      },
+      {
+        "theme": "Workout Beats",
+        "activity": "Exercising at the gym"
+      },
+      {
+        "theme": "Weekend Chill",
+        "activity": "Relaxing at home"
+      }
+    ]
+  },
+  {
+    "filename": "result-687669712.json",
+    "runkey": "thead-file-assistant",
+    "ms": 18.322873,
+    "started": "2024-05-29 15:40:24",
+    "ended": "2024-05-29 15:40:42",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-HUwCYFC3Qdopm3TTkdS1fSUg",
+      "thread_id": "thread_FYPiDBeMUi7skxbDoSBFJqBk",
+      "assistant_id": "asst_1MthQWULHmiS0YS8WDMjPx3I",
+      "vector_store_id": "vs_bdx5DKn50aE5T7wSH1kM8Fyo"
+    },
+    "results": [
+      {
+        "theme": "Morning Boost",
+        "activity": "Morning workout",
+        "description": "Energetic tracks to kick start the day and pump up the energy for a morning exercise routine."
+      },
+      {
+        "theme": "Study Sessions",
+        "activity": "Studying or reading",
+        "description": "A mix of calming and instrumental music to enhance concentration and minimize distractions."
+      },
+      {
+        "theme": "Road Trip Hits",
+        "activity": "Driving",
+        "description": "An upbeat and diverse playlist to keep the mood lively and enjoyable on long drives."
+      },
+      {
+        "theme": "Cooking Grooves",
+        "activity": "Cooking",
+        "description": "Fun and spirited songs that add a bit of rhythm and joy to the cooking process."
+      },
+      {
+        "theme": "Evening Chill",
+        "activity": "Relaxing at home",
+        "description": "Soft and soothing music perfect for unwinding and relaxing at home in the evening."
+      }
+    ]
+  },
+  {
+    "filename": "result-2973039206.json",
+    "runkey": "thead-file-assistant",
+    "ms": 10.875532,
+    "started": "2024-05-29 16:58:04",
+    "ended": "2024-05-29 16:58:15",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_fSMRGVDi38cPfdQbe0xS7mIu",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "question": "Which of the following genres do you frequently listen to? (Select all that apply)",
+        "options": [
+          "Rock",
+          "Hip-Hop",
+          "Pop",
+          "Electronic",
+          "Jazz",
+          "Classical",
+          "Country",
+          "Other"
+        ]
+      },
+      {
+        "question": "How do you prefer to listen to music? (Select one)",
+        "options": [
+          "Actively \u2013 focusing on the music, maybe with headphones",
+          "Passively \u2013 as background while doing other activities",
+          "Both depending on the situation"
+        ]
+      },
+      {
+        "question": "In which of the following settings do you most often listen to music? (Select all that apply)",
+        "options": [
+          "At home",
+          "In the car",
+          "While working or studying",
+          "During exercise or outdoor activities",
+          "At social gatherings",
+          "Other"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "result-754045211.json",
+    "runkey": "thead-file-assistant",
+    "ms": 7.337669,
+    "started": "2024-05-29 16:57:43",
+    "ended": "2024-05-29 16:57:50",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_70S6wmXWwwdkFEseKWvdMXmA",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "theme": "Road-Trip Classics",
+        "activity": "Driving long distances"
+      },
+      {
+        "theme": "Workout Beats",
+        "activity": "Exercising at the gym or outdoors"
+      },
+      {
+        "theme": "Study Sessions",
+        "activity": "Studying or working on assignments"
+      },
+      {
+        "theme": "Beach Vibes",
+        "activity": "Relaxing or partying at the beach"
+      },
+      {
+        "theme": "Cooking Grooves",
+        "activity": "Cooking meals at home"
+      }
+    ]
+  },
+  {
+    "filename": "result-2339017668.json",
+    "runkey": "thead-file-assistant",
+    "ms": 10.686999,
+    "started": "2024-05-29 16:58:52",
+    "ended": "2024-05-29 16:59:02",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "1",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_aLGrlv7C2qEY8JuZdFrNayWp",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"title\": \"Lose Yourself\",\n        \"artist\": \"Eminem\"\n    },\n    {\n        \"title\": \"All Along the Watchtower\",\n        \"artist\": \"Jimi Hendrix\"\n    },\n    {\n        \"title\": \"Sabotage\",\n        \"artist\": \"Beastie Boys\"\n    },\n    {\n        \"title\": \"Back in Black\",\n        \"pluginKey\": \"AC/DC\"\n    },\n    {\n        \"title\": \"N.Y. State of Mind\",\n        \"artist\": \"Nas\"\n    },\n    {\n        \"title\": \"Welcome to the Jungle\",\n        \"artist\": \"Guns N' Roses\"\n    },\n    {\n;\n        \"subtitle\": \"Sweet Child O' Mine\",\n        \"Artist\": \"Guns N' Roses\"\n    },\n    {\n        \"title\": \"Runnin' with the Devil\",\n        \"link\": \"Van Halen\"\n    },\n    {\n        \"title\": \"California Love\",\n        \"artist\": \"2Pac featuring Dr. Dre\"\n    },\n    {\n        \"title\": \"(Can't You) Trip Like I Do\",\n        \"artist\": \"Filter & The Crystal Method\"\n    }\n]"
+  },
+  {
+    "filename": "result-2749858138.json",
+    "runkey": "thead-file-assistant",
+    "ms": 18.850542,
+    "started": "2024-05-29 13:48:58",
+    "ended": "2024-05-29 13:49:17",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "2887728958",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_CrDM5sBq6zmDjXmqeYlVn2WJ",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"genre\": \"Hip-Hop\",\n        \"title\": \"All of the Lights\",\n        \"artist\": \"Kanye West\"\n    },\n    {\n        \"genre\": \"Hip-Hop\",\n        \"title\": \"Lose Yourself\",\n        \"artist\": \"Eminem\"\n    },\n    {\n{\n        \"genre\": \"Hip-Hop\",\n        \"title\": \"Sicko Mode\",\n        \"artist\": \"Travis Scott\"\n    },\n    {\n        \"genre\": \"Hip-Hop\",\n        \"title\": \"HUMBLE.\",\n        \"artist\": \"Kendrick Lamar\"\n    },\n    {\n        \"genre\": \"Rock\",\n        \"title\": \"Bohemian Rhapsody\",\n        \"artist\": \"Queen\"\n    },\n    {\n        \"genre\": \"Rock\",\n        \"title\": \"Enter Sandman\",\n        \"artist\": \"Metallica\"\n    },\n    {\n        \"genre\": \"Rock\",\n        \"title\": \"Smells Like Teen Spirit\",\n        \"artist\": \"Nirvana\"\n    },\n    {\n        \"genre\": \"Rock\",\n        \"title\": \"Hotel California\",\n        \"artist\": \"Eagles\"\n    },\n    {\n        \"genre\": \"Hip-Hop\",\n        \"title\": \"God's Plan\",\n        \"artist\": \"Drake\"\n    },\n    {\n        \"genre\": \"Rock\",\n        \"title\": \"Sweet Child o' Mine\",\n        \"artist\": \"Guns N' Roses\"\n    }\n]"
+  },
+  {
+    "filename": "result-495370858.json",
+    "runkey": "thead-file-assistant",
+    "ms": 17.143817,
+    "started": "2024-05-29 15:40:05",
+    "ended": "2024-05-29 15:40:22",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-qqwFpodyyVYrUu6xfsAbWkwr",
+      "thread_id": "thread_V5cHYCAbNznqDcpmOylxD77S",
+      "assistant_id": "asst_2a6y5AuIP97M3OcPkql44s4G",
+      "vector_store_id": "vs_bSK3BYPeEI3Zno3ZYM0TTFdm"
+    },
+    "results": "```json\n[\n    {\n        \"theme\": \"Morning Coffee\",\n        \"description\": \"A soothing playlist filled with acoustic and soft indie tracks to accompany your morning coffee routine.\",\n        \"activities\": [\"drinking coffee\", \"reading the newspaper\", \"starting the day\"]\n    },\n    {\n        \"theme\": \"Workout Pump\",\n        \"description\": \"Energetic and motivating hits from hip-hop, rock, and electronic dance music to boost your energy during workout sessions.\",\n        \"activities\": [\"gym workouts\", \"running\", \"cycling\"]\n    },\n    {\n        \"theme\": \"Study Focus\",\n        \"description\": \"Instrumental and ambient music to enhance concentration and focus while studying or working on demanding tasks.\",\n        \"activities\": [\"studying\", \"working\", \"reading\"]\n    },\n    {\n        \"theme\": \"Beach Day\",\n        \"description\": \"A mix of reggae, pop, and sunny hits perfect for a relaxing day at the beach or a pool party.\",\n        \"activities\": [\"beach outings\", \"sunbathing\", \"barbecuing\"]\n    },\n    {\na \"theme\": \"Romantic Dinner\",\n\"description \": \"A collection of soft rock, classical, and jazz tracks that set the mood for a romantic dinner or a cozy evening.\",\n\"activities\": [\"dining\", \"date night\", \"relaxing\"]\n}\n]\n```"
+  },
+  {
+    "filename": "result-1528041363.json",
+    "runkey": "thead-file-assistant",
+    "ms": 13.786055,
+    "started": "2024-05-29 16:23:06",
+    "ended": "2024-05-29 16:23:20",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_iBpC71WTCzf1xFsVqxZbtziW",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Rock\",\n        \"activity\": \"Driving long distances\"\n    },\n    {\n        \"theme\": \"Hip-Hop Pump-Up\",\n        \"activity\": \"Working out at the gym\"\n    },\n    {\n        \"theme\": \"Rock Anthems for Cooking\",\n        \"activity\": \"Cooking a meal\"\n    },\n    {\niframe \u043b\u0438\u0431\u043enbsp;--\"theme\": \"Rap Vibes for Gaming\",\n        \"activity\": \"Playing video games\"\n    },\n    {\n_simulationLa\u017eytuve----------------------braking---brake-------------\n36965oblitera3al______296698396593;c-----    \"th lens\": \"Chillout Hip-Hop\",\n   \n        \"actikerity\": \"Studying or working\"\n    }\n]"
+  },
+  {
+    "filename": "result-161447954.json",
+    "runkey": "thead-file-assistant",
+    "ms": 20.129605,
+    "started": "2024-05-29 13:49:18",
+    "ended": "2024-05-29 13:49:39",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "1",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-HYypTGawVm6Co3BPn7bqCDPy",
+      "thread_id": "thread_cDzvikkoyrJp5tG49xfep4Bs",
+      "assistant_id": "asst_4L81ss0PI2RhGwSirosGRMj3",
+      "vector_store_id": "vs_AhQlQY3jpcdAak3lbhIRNVV4"
+    },
+    "results": [
+      {
+        "title": "All The Small Things",
+        "artist": "Blink-182",
+        "genre": "Rock"
+      },
+      {
+        "title": "In Da Club",
+        "artist": "50 Cent",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Welcome to the Jungle",
+        "artist": "Guns N' Roses",
+        "genre": "Rock"
+      },
+      {
+        "title": "Juicy",
+        "artist": "The Notorious B.I.G.",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Seven Nation Army",
+        "artist": "The White Stripes",
+        "genre": "Rock"
+      },
+      {
+        "title": "HUMBLE.",
+        "artist": "Kendrick Lamar",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Sweet Child o' Mine",
+        "artist": "Guns N' Roses",
+        "genre": "Rock"
+      },
+      {
+        "title": "Alright",
+        "artist": "Kendrick Lamar",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Smells Like Teen Spirit",
+        "artist": "Nirvana",
+        "genre": "Rock"
+      },
+      {
+        "title": "Empire State of Mind",
+        "artist": "Jay-Z feat. Alicia Keys",
+        "genre": "Hip-Hop"
+      }
+    ]
+  },
+  {
+    "filename": "result-1609761105.json",
+    "runkey": "thead-file-assistant",
+    "ms": 22.70563,
+    "started": "2024-05-29 15:20:33",
+    "ended": "2024-05-29 15:20:56",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-QlmuqfWPvJXJU5VnT1Y20RK0",
+      "thread_id": "thread_XZbYd4KCed2bgtKJqHNTvtA3",
+      "assistant_id": "asst_cKtOy0RF05t2LGZ0cL20KvPy",
+      "vector_store_id": "vs_zSB7RsHwWBE9qmxvOVWAzYou"
+    },
+    "results": "[\n    {\n        \"theme\": \"Morning Boost\",\n        \"activity\": \"Starting the day or morning workout\",\n        \"description\": \"Energetic tracks with upbeat rhythms that help wake you up and get you moving.\"\n    },\n    {\n        \"theme\": \"Zen Focus\",\n        \"activity\": \"Studying or working\",\n        \"description\": \"Instrumental and ambient music crafted to enhance concentration without being distracting.\"\n    },\n    {\n        \"theme\": \"Road Trip Rocks\",\n        \"activity\": \"Long drives\",\n        \"description\": \"A mix of classic rock, pop hits, and sing-along songs that make the miles fly by.\"\n    },\n    {\n        \"theme\": \"Weekend Chill\",\n        \"activity\": \"Relaxing on the weekend\",\n        \"description\": \"A blend of soul, jazz, and easy listening tracks perfect for unwinding.\"\n    },\n    {\narticle-referenceCarpenter & JudgeousPhotographyNone: {\n        \"theme\": \"Dinner Party Jazz\",\n        \"activity\": \"Hosting a dinner party\",\n        \"description\": \"Smooth jazz tracks that create a sophisticated and inviting atmosphere for guests.\"\n    }\n]"
+  },
+  {
+    "filename": "result-769475127.json",
+    "runkey": "embeddings",
+    "ms": 1.900493,
+    "started": "2024-05-29 16:59:04",
+    "ended": "2024-05-29 16:59:06",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "1",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "public/music-catalogue.pkl",
+      "assistant": "",
+      "file_search": "",
+      "vector_store": "",
+      "code_interpreter": "",
+      "fine_tuning": ""
+    },
+    "results": null
+  },
+  {
+    "filename": "result-3870822021.json",
+    "runkey": "thead-file-assistant",
+    "ms": 15.008735,
+    "started": "2024-05-29 16:51:03",
+    "ended": "2024-05-29 16:51:18",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_gjatXNutoPabjDyvfFyRU44Q",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Essentials\",\n        \"description\": \"A handpicked collection of upbeat rock and hip-hop tracks to energize any road trip, perfect for long drives and scenic routes.\"\n    },\n    {\n        \"theme\": \"Gym Pump-Up\",\n        \"description\": \"High-energy rock and hip-hop anthems to boost motivation and adrenaline for an intense workout session.\"\n    },\n    {\n        \"theme\": \"Study Focus\",\n        \"description\": \"A mix of smooth and mellow rock songs combined with lyric-less hip-hop beats designed to heighten concentration and focus while studying.\"\n    },\n    {\nac_logostration\": {\n        \"theme\": \"Beach Day Vibes\",\n        \"description\": \"A summer-inspired playlist with laid-back hip-hop and rock tracks that complement the sound of waves and the feeling of sand between your toes.\"\n    },\n    {\n        \"theme\": \"Party Starter\",\n        \"description\": \"The ultimate party playlist featuring classic rock hits and energetic hip-hop tracks to get everyone dancing and keep the party alive.\"\n    }\n]"
+  },
+  {
+    "filename": "result-4233936214.json",
+    "runkey": "embeddings",
+    "ms": 2.272791,
+    "started": "2024-05-29 16:58:01",
+    "ended": "2024-05-29 16:58:03",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "public/music-catalogue.pkl",
+      "assistant": "",
+      "file_search": "",
+      "vector_store": "",
+      "code_interpreter": "",
+      "fine_tuning": ""
+    },
+    "results": null
+  },
+  {
+    "filename": "result-2066776464.json",
+    "runkey": "thead-file-assistant",
+    "ms": 25.046593,
+    "started": "2024-05-29 14:02:55",
+    "ended": "2024-05-29 14:03:20",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "1",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-qCRNAddd33QRJ3eEfe8IpNKd",
+      "thread_id": "thread_M5NFg5EOSW3FGpAQAmStQGg4",
+      "assistant_id": "asst_WKSGIFOVsrxBOFG8Yw9GN9IU",
+      "vector_store_id": "vs_42D1hFQtBOTNijR3cbz4CvMl"
+    },
+    "results": "[\n    {\n        \"title\": \"Lose Yourself\",\n        \"artist\": \"Eminem\",\n        \"genre\": \"Hip-Hop\"\n    },\n    {\n        \"title\": \"Welcome to the Jungle\",\n        \"artist\": \"Guns N' Roses\",\n        \"genre\": \"Rock\"\n    },\n    {\n        \"title\": \"Juicy\",\n        \"artist\": \"The Notorious B.I.G.\",\n        \"genre\": \"Hip-Hop\"\n    },\n    {\n        \"title\": \"Back In Black\",\n        \"artist\": \"AC/DC\",\n        \"genre\": \"Rock\"\n    },\n    {\n        \"title\": \"Alright\",\n        \"artist\": \"Kendrick Lamar\",\n        \"genre\": \"Hip-Hop\"\n    },\n    {\n{\n        \"title\": \"Bohemian Rhapsody\",\n        \"artist\": \"Queen\",\n        \"genre\": \"Rock\"\n    },\n    {\n        \"title\": \"HUMBLE.\",\n        \"artist\": \"Kendrick Lamar\",\n        \"genre\": \"Hip-Hop\"\n    },\n    {\n        \"title\": \"Paint It Black\",\n        \"artist\": \"The Rolling Stones\",\n        \"genre\": \"Rock\"\n    },\n    {\n        \"title\": \"California Love\",\n        \"artist\": \"2Pac\",\n        \"genre\": \"Hip-Hop\"\n    },\n    {\n        \"title\": \"Sweet Child O' Mine\",\n        \"artist\": \"Guns N' Roses\",\n        \"ouRock\"\n    }\n]"
+  },
+  {
+    "filename": "result-3336415391.json",
+    "runkey": "embeddings",
+    "ms": 1.635442,
+    "started": "2024-05-29 16:58:26",
+    "ended": "2024-05-29 16:58:27",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "public/music-catalogue.pkl",
+      "assistant": "",
+      "file_search": "",
+      "vector_store": "",
+      "code_interpreter": "",
+      "fine_tuning": ""
+    },
+    "results": null
+  },
+  {
+    "filename": "result-1962670581.json",
+    "runkey": "thead-file-assistant",
+    "ms": 6.180362,
+    "started": "2024-05-29 16:58:18",
+    "ended": "2024-05-29 16:58:24",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_HVzN5rcHd8ituniE5zzkYgPC",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "question": "Which of the following music genres do you most frequently listen to?",
+        "options": [
+          "Rock",
+          "Pop",
+          "Hip-Hop",
+          "Jazz",
+          "Classical",
+          "Electronic",
+          "Country"
+        ]
+      },
+      {
+        "question": "How do you typically listen to music?",
+        "options": [
+          "Through headphones",
+          "In a car",
+          "On home speakers",
+          "At live events",
+          "Via streaming services"
+        ]
+      },
+      {
+        "question": "What is the primary factor that influences your choice of music?",
+        "options": [
+          "Mood",
+          "Activity",
+          "Time of day",
+          "Company (who you are with)",
+          "Specific artist or album"
+        ]
+      }
+    ]
+  }
+]

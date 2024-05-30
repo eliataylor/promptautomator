@@ -1,0 +1,27 @@
+{
+  "thead-file-assistant": {
+    "ms": 22.70563,
+    "started": "2024-05-29 15:20:33",
+    "ended": "2024-05-29 15:20:56",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-QlmuqfWPvJXJU5VnT1Y20RK0",
+      "thread_id": "thread_XZbYd4KCed2bgtKJqHNTvtA3",
+      "assistant_id": "asst_cKtOy0RF05t2LGZ0cL20KvPy",
+      "vector_store_id": "vs_zSB7RsHwWBE9qmxvOVWAzYou"
+    },
+    "results": "[\n    {\n        \"theme\": \"Morning Boost\",\n        \"activity\": \"Starting the day or morning workout\",\n        \"description\": \"Energetic tracks with upbeat rhythms that help wake you up and get you moving.\"\n    },\n    {\n        \"theme\": \"Zen Focus\",\n        \"activity\": \"Studying or working\",\n        \"description\": \"Instrumental and ambient music crafted to enhance concentration without being distracting.\"\n    },\n    {\n        \"theme\": \"Road Trip Rocks\",\n        \"activity\": \"Long drives\",\n        \"description\": \"A mix of classic rock, pop hits, and sing-along songs that make the miles fly by.\"\n    },\n    {\n        \"theme\": \"Weekend Chill\",\n        \"activity\": \"Relaxing on the weekend\",\n        \"description\": \"A blend of soul, jazz, and easy listening tracks perfect for unwinding.\"\n    },\n    {\narticle-referenceCarpenter & JudgeousPhotographyNone: {\n        \"theme\": \"Dinner Party Jazz\",\n        \"activity\": \"Hosting a dinner party\",\n        \"description\": \"Smooth jazz tracks that create a sophisticated and inviting atmosphere for guests.\"\n    }\n]"
+  }
+}

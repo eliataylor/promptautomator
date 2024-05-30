@@ -1,0 +1,27 @@
+{
+  "thead-file-assistant": {
+    "ms": 17.143817,
+    "started": "2024-05-29 15:40:05",
+    "ended": "2024-05-29 15:40:22",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-qqwFpodyyVYrUu6xfsAbWkwr",
+      "thread_id": "thread_V5cHYCAbNznqDcpmOylxD77S",
+      "assistant_id": "asst_2a6y5AuIP97M3OcPkql44s4G",
+      "vector_store_id": "vs_bSK3BYPeEI3Zno3ZYM0TTFdm"
+    },
+    "results": "```json\n[\n    {\n        \"theme\": \"Morning Coffee\",\n        \"description\": \"A soothing playlist filled with acoustic and soft indie tracks to accompany your morning coffee routine.\",\n        \"activities\": [\"drinking coffee\", \"reading the newspaper\", \"starting the day\"]\n    },\n    {\n        \"theme\": \"Workout Pump\",\n        \"description\": \"Energetic and motivating hits from hip-hop, rock, and electronic dance music to boost your energy during workout sessions.\",\n        \"activities\": [\"gym workouts\", \"running\", \"cycling\"]\n    },\n    {\n        \"theme\": \"Study Focus\",\n        \"description\": \"Instrumental and ambient music to enhance concentration and focus while studying or working on demanding tasks.\",\n        \"activities\": [\"studying\", \"working\", \"reading\"]\n    },\n    {\n        \"theme\": \"Beach Day\",\n        \"description\": \"A mix of reggae, pop, and sunny hits perfect for a relaxing day at the beach or a pool party.\",\n        \"activities\": [\"beach outings\", \"sunbathing\", \"barbecuing\"]\n    },\n    {\na \"theme\": \"Romantic Dinner\",\n\"description \": \"A collection of soft rock, classical, and jazz tracks that set the mood for a romantic dinner or a cozy evening.\",\n\"activities\": [\"dining\", \"date night\", \"relaxing\"]\n}\n]\n```"
+  }
+}

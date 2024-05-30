@@ -1,0 +1,27 @@
+{
+  "thead-file-assistant": {
+    "ms": 13.786055,
+    "started": "2024-05-29 16:23:06",
+    "ended": "2024-05-29 16:23:20",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_iBpC71WTCzf1xFsVqxZbtziW",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Rock\",\n        \"activity\": \"Driving long distances\"\n    },\n    {\n        \"theme\": \"Hip-Hop Pump-Up\",\n        \"activity\": \"Working out at the gym\"\n    },\n    {\n        \"theme\": \"Rock Anthems for Cooking\",\n        \"activity\": \"Cooking a meal\"\n    },\n    {\niframe \u043b\u0438\u0431\u043enbsp;--\"theme\": \"Rap Vibes for Gaming\",\n        \"activity\": \"Playing video games\"\n    },\n    {\n_simulationLa\u017eytuve----------------------braking---brake-------------\n36965oblitera3al______296698396593;c-----    \"th lens\": \"Chillout Hip-Hop\",\n   \n        \"actikerity\": \"Studying or working\"\n    }\n]"
+  }
+}

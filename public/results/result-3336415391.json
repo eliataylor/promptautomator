@@ -1,0 +1,23 @@
+{
+  "embeddings": {
+    "ms": 1.635442,
+    "started": "2024-05-29 16:58:26",
+    "ended": "2024-05-29 16:58:27",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "public/music-catalogue.pkl",
+      "assistant": "",
+      "file_search": "",
+      "vector_store": "",
+      "code_interpreter": "",
+      "fine_tuning": ""
+    },
+    "results": null
+  }
+}

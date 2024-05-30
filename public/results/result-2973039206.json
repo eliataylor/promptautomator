@@ -1,0 +1,60 @@
+{
+  "thead-file-assistant": {
+    "ms": 10.875532,
+    "started": "2024-05-29 16:58:04",
+    "ended": "2024-05-29 16:58:15",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "assistant": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "file_search": true,
+      "vector_store": "vs_g665OLM8y9kv05OlpIguLUDq",
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-UnhPnJ0TvJmtPB1FFW0BwAx1",
+      "thread_id": "thread_fSMRGVDi38cPfdQbe0xS7mIu",
+      "assistant_id": "asst_KnV4rKMQ5iR2Sdl8p5W90S8q",
+      "vector_store_id": "vs_g665OLM8y9kv05OlpIguLUDq"
+    },
+    "results": [
+      {
+        "question": "Which of the following genres do you frequently listen to? (Select all that apply)",
+        "options": [
+          "Rock",
+          "Hip-Hop",
+          "Pop",
+          "Electronic",
+          "Jazz",
+          "Classical",
+          "Country",
+          "Other"
+        ]
+      },
+      {
+        "question": "How do you prefer to listen to music? (Select one)",
+        "options": [
+          "Actively \u2013 focusing on the music, maybe with headphones",
+          "Passively \u2013 as background while doing other activities",
+          "Both depending on the situation"
+        ]
+      },
+      {
+        "question": "In which of the following settings do you most often listen to music? (Select all that apply)",
+        "options": [
+          "At home",
+          "In the car",
+          "While working or studying",
+          "During exercise or outdoor activities",
+          "At social gatherings",
+          "Other"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "thead-file-assistant": {
+    "ms": 15.537939,
+    "started": "2024-05-29 15:38:03",
+    "ended": "2024-05-29 15:38:19",
+    "model": "gpt-4-turbo",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format __RFORMAT__",
+    "survey_id": "1",
+    "response": "[{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-wYqfsUa2Ms0ZObxCbjBW4Yp5",
+      "thread_id": "thread_iNm484hMt7UMO3YzlLDeniEr",
+      "assistant_id": "asst_YwMFRpidAoVqbzTzBXNVnenC",
+      "vector_store_id": "vs_ruYEz5xVGJiiEt67OSb2iiFB"
+    },
+    "results": "[\n    {\n        \"theme\": \"Road Trip Vibes\",\n        \"description\": \"Curated tracks ideal for long drives across the city or countryside, featuring up-tempo rock and indie anthems mixed with feel-good pop songs.\"\n    },\n    {\n********************mingsArmyRocks**\nA bunch of people\n    ]\n    {\n        \"theme\": \"Gym Pump-Up\",\n        \"description\": \"High-energy tracks from hip-hop, electronic dance music (EDM), and hard rock to boost morale and energy during workouts.\"\n    },\n    {\n        \"theme\": \"Study and Focus\",\n        \"description\": \"A mix of instrumental music, including classical compositions and lo-fi hip-hop, designed to improve concentration and help with studying or working.\"\n    },\n    {\n        \"theme\": \"Sunday Morning Chill\",\n        \"description\": \"Laid-back acoustic tunes, soothing soul, and mellow jazz tracks perfect for a relaxed Sunday morning or any day when unwinding is the goal.\"\n    },\n    {\n.ResumeLayout.json7[string is a pointer \nA bunch of peopleathering\",\n        \"description\": \"A collection of upbeat, catchy songs across genres like pop, indie, and world music that set the mood for social gatherings, dinner parties, and fun events with friends.\"\n    }\n]"
+  }
+}

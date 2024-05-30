@@ -1,0 +1,78 @@
+{
+  "thead-file-assistant": {
+    "ms": 20.129605,
+    "started": "2024-05-29 13:49:18",
+    "ended": "2024-05-29 13:49:39",
+    "model": "gpt-4-turbo",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "survey_id": "1",
+    "response": "[{source_id, reason, score}]",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format __RFORMAT__",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "public/music-catalogue.json",
+      "assistant": true,
+      "file_search": true,
+      "vector_store": true,
+      "code_interpreter": false,
+      "fine_tuning": "",
+      "file_id": "file-HYypTGawVm6Co3BPn7bqCDPy",
+      "thread_id": "thread_cDzvikkoyrJp5tG49xfep4Bs",
+      "assistant_id": "asst_4L81ss0PI2RhGwSirosGRMj3",
+      "vector_store_id": "vs_AhQlQY3jpcdAak3lbhIRNVV4"
+    },
+    "results": [
+      {
+        "title": "All The Small Things",
+        "artist": "Blink-182",
+        "genre": "Rock"
+      },
+      {
+        "title": "In Da Club",
+        "artist": "50 Cent",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Welcome to the Jungle",
+        "artist": "Guns N' Roses",
+        "genre": "Rock"
+      },
+      {
+        "title": "Juicy",
+        "artist": "The Notorious B.I.G.",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Seven Nation Army",
+        "artist": "The White Stripes",
+        "genre": "Rock"
+      },
+      {
+        "title": "HUMBLE.",
+        "artist": "Kendrick Lamar",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Sweet Child o' Mine",
+        "artist": "Guns N' Roses",
+        "genre": "Rock"
+      },
+      {
+        "title": "Alright",
+        "artist": "Kendrick Lamar",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Smells Like Teen Spirit",
+        "artist": "Nirvana",
+        "genre": "Rock"
+      },
+      {
+        "title": "Empire State of Mind",
+        "artist": "Jay-Z feat. Alicia Keys",
+        "genre": "Hip-Hop"
+      }
+    ]
+  }
+}
