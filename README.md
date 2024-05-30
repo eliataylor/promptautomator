@@ -64,9 +64,11 @@ The following tokens will be replaced as described:
 
 --------
 
-## DEV ROADMAP
+## DEV ISSUES / ROADMAP
 - [ ] Parse and display survey better
 - [ ] Map lookup source_id back to survey used
 - [ ] Validate JSON response by reading requested format from instructions
+- [ ] Don't create embeddings on numeric only values or add currency symbol
 - [ ] Optimize reuse to reduce token usage
 - [ ] Pass along Fine-Tuning variables like `{temperature:1, max_tokens:256, top_p:1, frequency_penalty:0, presence_penalty:0}`
+- [ ] Fix "Could not validate from dataset 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte"

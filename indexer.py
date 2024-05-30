@@ -16,7 +16,7 @@ if __name__ == '__main__':
             print("No such file: " + sys.argv[2])
             sys.exit(1)
 
-        if not sys.argv[3]:
+        if sys.argv[1] == 'normalize_dataset' and not sys.argv[3]:
             print("missing source id key name (id, product_id, ...?)")
             sys.exit(1)
 

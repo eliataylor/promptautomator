@@ -85,4 +85,9 @@ async def normalize_dataset(file_path, source_key):
     if os.getenv("REACT_APP_DATASET_PATH"):
         new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", os.getenv("REACT_APP_DATASET_PATH")))
         shutil.copy(file_path, new_path)
+    else:
+        basename = os.path.basename(file_path)
+        new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../public", basename))
+        shutil.copy(file_path, new_path)
+        print(f"now add `REACT_APP_DATASET_PATH=public/{basename}` to your .env")
 
