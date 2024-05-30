@@ -4,20 +4,25 @@ import os, sys
 from preprocesses.DataIndexer import normalize_dataset, build_embeddings, index_results
 
 load_dotenv()
+from loguru import logger
+
+logger.add("runnerlogs.log", level="DEBUG")
+logger.add(sys.stdout, level="INFO")
+load_dotenv()
 
 
 if __name__ == '__main__':
     if sys.argv[1] != 'normalize_dataset' and sys.argv[1] != 'build_embeddings' and sys.argv[1] != 'index_results':
-        print(f"Invalid command {sys.argv[1]}: Try `python preprocesses/DataIndexer.py normalize_dataset <product_file> <source_key>`")
+        logger.info(f"Invalid command {sys.argv[1]}: Try `python indexer.py normalize_dataset <product_file> <source_key>`")
         sys.exit(1)
 
     if sys.argv[1] != 'index_results':
         if not os.path.exists(sys.argv[2]):
-            print("No such file: " + sys.argv[2])
+            logger.info("No such file: " + sys.argv[2])
             sys.exit(1)
 
         if sys.argv[1] == 'normalize_dataset' and not sys.argv[3]:
-            print("missing source id key name (id, product_id, ...?)")
+            logger.info("missing source id key name (id, product_id, ...?)")
             sys.exit(1)
 
     if sys.argv[1] == 'normalize_dataset':

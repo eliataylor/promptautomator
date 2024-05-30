@@ -5,11 +5,15 @@ from itertools import product
 from preprocesses.Prompter import Prompter
 from preprocesses.Utils import read_csv, build_survey
 
+from loguru import logger
+logger.add("runnerlogs.log", level="DEBUG")
+logger.add(sys.stdout, level="INFO")
+
 async def main():
 
 
     if len(sys.argv) < 3:
-        print("Usage: python main.py <prompt_csv> <config_csv> <survey_csv>")
+        logger.info("Usage: python main.py <prompt_csv> <config_csv> <survey_csv>")
         sys.exit(1)
 
     prompt_csv = read_csv(sys.argv[1])
