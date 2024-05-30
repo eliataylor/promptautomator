@@ -9,6 +9,7 @@ httpcore==1.0.5
 httpx==0.27.0
 idna==3.7
 joblib==1.4.2
+loguru==0.7.2
 numpy==1.26.4
 openai==1.25.1
 pandas==2.2.2
