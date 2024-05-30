@@ -6,7 +6,7 @@ import os, sys
 import shutil
 
 import aiofiles
-from Utils import get_top_level_properties, convert_to_number, find_id_property, sanitize_header, cast_to_boolean
+from Utils import get_top_level_properties, convert_to_number, sanitize_header, cast_to_boolean
 from Embeddings import Embeddings
 load_dotenv()
 
@@ -63,13 +63,15 @@ if __name__ == '__main__':
     if sys.argv[1] != 'normalize_dataset' and sys.argv[1] != 'build_embeddings' and sys.argv[1] != 'index_results':
         print(f"Invalid command {sys.argv[1]}: Try `python preprocesses/DataIndexer.py normalize_dataset <product_file> <source_key>`")
         sys.exit(1)
-    if os.path.exists(sys.argv[2]) is False:
-        print("No such file")
-        sys.exit(1)
 
-    if not sys.argv[3]:
-        print("missing source id key name (id, product_id, ...?)")
-        sys.exit(1)
+    if sys.argv[1] != 'index_results':
+        if not os.path.exists(sys.argv[2]):
+            print("No such file: " + sys.argv[2])
+            sys.exit(1)
+
+        if not sys.argv[3]:
+            print("missing source id key name (id, product_id, ...?)")
+            sys.exit(1)
 
     if sys.argv[1] == 'normalize_dataset':
         # python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id

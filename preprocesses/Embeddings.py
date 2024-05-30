@@ -8,7 +8,7 @@ from openai import OpenAI
 from sklearn.decomposition import PCA
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
-from preprocesses.Utils import find_id_property
+from Utils import find_id_property
 
 
 class Embeddings:

@@ -233,8 +233,11 @@ class Prompter:
 
     def create_embeddings(self):
         self.started = datetime.datetime.now()
+        if ".pkl" not in self.config["file_path"]:
+            return print("\nFirst create your PKL file! :\n")
         self.embeddings = Embeddings(self.config["file_path"])
         topass = self.survey_str if self.survey_str else self.prompt["prompt"]
+        # TODO: maybe pass survey and create individual embeddings for each question:answer
         response_json = self.embeddings.find_recommendations(topass)
         self.ended = datetime.datetime.now()
         print("\nFINAL JSON!! :\n", response_json)

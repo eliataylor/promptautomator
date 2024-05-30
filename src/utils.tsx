@@ -56,6 +56,7 @@ export function findNumericalIds(input: string): number[] {
 }
 
 export function renderArray(obj: []) {
+    if (!obj) return null;
     return obj.map((value, i) => {
         return <React.Fragment>
             {renderObject(value)}

@@ -43,6 +43,13 @@
     "sortable": true,
     "filterable": false
   },
+  "response": {
+    "field": "response",
+    "headerName": "Response",
+    "type": "string",
+    "sortable": true,
+    "filterable": false
+  },
   "instructions": {
     "field": "instructions",
     "headerName": "Instructions",
@@ -60,7 +67,7 @@
   "results": {
     "field": "results",
     "headerName": "Results",
-    "type": "object",
+    "type": "string",
     "sortable": true,
     "filterable": false
   }
