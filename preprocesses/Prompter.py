@@ -361,21 +361,21 @@ class EventHandler(AssistantEventHandler):
         return self._response
 
     def on_text_created(self, text) -> None:
-        logger.debug(f"\nassistant > ", end="", flush=True)
+        logger.opt(raw=True).debug(f"\nassistant > ")
 
     def on_text_delta(self, delta, snapshot):
-        logger.debug(delta.value, end='')
+        logger.opt(raw=True).debug(delta.value)
         self._response += delta.value
 
     def on_tool_call_created(self, tool_call):
-        logger.debug(f"\nassistant > {tool_call.type}\n", flush=True)
+        logger.opt(raw=True).debug(f"\nassistant > {tool_call.type}\n")
 
     def on_tool_call_delta(self, delta, snapshot):
         if delta.type == 'code_interpreter':
             if delta.code_interpreter.input:
-                logger.debug(delta.code_interpreter.input, end="", flush=True)
+                logger.opt(raw=True).debug(delta.code_interpreter.input)
             if delta.code_interpreter.outputs:
-                logger.debug(f"\n\noutput >", flush=True)
+                logger.opt(raw=True).debug(f"\n\noutput >")
                 for output in delta.code_interpreter.outputs:
                     if output.type == "logs":
-                        logger.debug(f"\n{output.logs}", flush=True)
+                        logger.opt(raw=True).debug(f"\n{output.logs}")
