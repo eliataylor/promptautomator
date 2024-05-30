@@ -16,6 +16,7 @@ function csvToJsonObject(filePath, keysToPreserve) {
                 for(let key in keysToPreserve) {
                     if (data.hasOwnProperty(key) && data[key] !== '') {
                         let newKey = key;
+                        if (newKey === "Product ID") newKey = 'source_id';
                         if (newKey === "Body (HTML)") newKey = 'Description';
                         if (newKey === "Variant Price") newKey = 'Price USD $';
 
