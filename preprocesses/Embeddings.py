@@ -43,12 +43,16 @@ class Embeddings:
                 return None
             elif not text or pd.isna(text):
                 return None
-            if type(text) is str:
+            if isinstance(text, str):
                 text = text.replace("\n", " ")
             print(f'creating openai embedding for {text}')
             if text not in self.all_embeddings:
-                response = self.client.embeddings.create(input=[text], model=model)
-                self.all_embeddings[text] = response.data[0].embedding
+                try:
+                    response = self.client.embeddings.create(input=text, model=model)
+                    self.all_embeddings[text] = response.data[0].embedding
+                except Exception as e:
+                    print(f'Embedding failed on : {text}', e)
+                    return 0
 
             return self.all_embeddings[text]
 
@@ -75,11 +79,15 @@ class Embeddings:
         print("Embeddings created and saved.")
 
     def get_header_byindex(self, index):
-        df = pd.read_csv(self.file_path, nrows=0)  # Read only the header row
-        headers = df.columns.tolist()
-        if index < 0 or index >= len(headers):
-            raise IndexError("Index out of range")
-        return headers[index]
+        if ".csv" in self.file_path:
+            df = pd.read_csv(self.file_path, nrows=0)  # Read only the header row
+            headers = df.columns.tolist()
+            if index < 0 or index >= len(headers):
+                raise IndexError("Index out of range")
+            return headers[index]
+        else:
+            df = pd.read_pickle(self.file_path)
+            return df.columns[index]
 
     def _load_embeddings(self):
         print("Loading embeddings from file...")
@@ -110,7 +118,7 @@ class Embeddings:
         user_embedding_parts = []
         for column in self.products_df.columns:
             if column != self.source_key and not column.endswith('_embedding'):
-                user_embedding_parts.append(self._get_embedding(survey, model))
+                user_embedding_parts.append(self._get_embedding(survey.strip(), model))
 
         user_embedding = np.hstack(user_embedding_parts)
 
