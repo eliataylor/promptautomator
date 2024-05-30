@@ -1,25 +1,26 @@
-### To speed along development or any Issues, consider [sponsoring](https://github.com/sponsors/eliataylor)
-
------
-
 ## Environment Setup 
-- `git clone git@github.com:eliataylor/promptautomator.git`
+- `git clone git@github.com:eliataylor/presideo-prompter.git`
 - create `.env` file with `OPENAI_KEY=you-api-key`
 - `python3.9 -m venv .venv`
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
 
+## Pull latest opensource from Prompt Automater
+- `git remote add upstream git@github.com:eliataylor/promptautomator.git`
+- `git fetch upstream`
+- `git merge upstream/master`
+- `git push origin master`
 
 ## Run Demo:
 To navigate the interface and review results from testing this example dataset for writing playlists and playlists themes:
-- `npm install`
+- `npm install --force`
 - `npm start`
 - `open http://localhost:3000/`
 
 ---
 ## To index and test your own data:
 
-> #### Copy this [Google Sheet](https://docs.google.com/spreadsheets/d/1NZ9vNCUsZmTvA6byWalU6CAJfF8NIi5e4e9Z6tlw1mI/edit?usp=sharing) to your own account
+> #### Use this [Google Sheet](https://docs.google.com/spreadsheets/d/1xK9i_Qh_J1kbAMlPSlXf7nrT1HRV3RXzcq_0dmqPgNI/edit?usp=sharing) 
 
 1. Reuse the "Prompts" sheet:
 - Give your AI a persona in the Instructions column, 
@@ -49,15 +50,15 @@ The following tokens will be replaced as described:
 ## Normalize your dataset
 -[x] Convert your CSV to JSON and replace your internal name for ID with `source_id`: 
   - python indexer.py normalize_dataset <path to your dataset file> <property name for your internal ID>
-- `python indexer.py normalize_dataset examples/music-catalogue.csv id`
+- `python indexer.py normalize_dataset dataset/bags.json source_id`
 
 
 -[x] If testing Embeddings, convert your JSON to a PKL:  
-`python indexer.py build_embeddings public/music-catalogue.json`
+`python indexer.py build_embeddings public/bags.json`
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
-- `python main.py examples/music-catalogue-prompts.csv examples/music-catalogue-configs.csv examples/music-catalogue-userdata.csv`
+- `python main.py dataset/bags-prompts.csv dataset/bags-configs.csv dataset/bags-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
 - `python indexer.py index_results`
 

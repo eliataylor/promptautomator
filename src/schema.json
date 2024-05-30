@@ -29,6 +29,13 @@
     "sortable": true,
     "filterable": false
   },
+  "prompt_id": {
+    "field": "prompt_id",
+    "headerName": "Prompt ID",
+    "type": "string",
+    "sortable": true,
+    "filterable": false
+  },
   "prompt": {
     "field": "prompt",
     "headerName": "Prompt",
@@ -36,9 +43,9 @@
     "sortable": true,
     "filterable": false
   },
-  "survey_id": {
-    "field": "survey_id",
-    "headerName": "Survey",
+  "instructions": {
+    "field": "instructions",
+    "headerName": "Instructions",
     "type": "string",
     "sortable": true,
     "filterable": false
@@ -51,9 +58,9 @@
     "filterable": false,
     "showing": false
   },
-  "instructions": {
-    "field": "instructions",
-    "headerName": "Instructions",
+  "survey_id": {
+    "field": "survey_id",
+    "headerName": "Survey",
     "type": "string",
     "sortable": true,
     "filterable": false
@@ -68,14 +75,7 @@
   "results": {
     "field": "results",
     "headerName": "Results",
-    "type": "string",
-    "sortable": true,
-    "filterable": false
-  },
-  "prompt_id": {
-    "field": "prompt_id",
-    "headerName": "Prompt ID",
-    "type": "string",
+    "type": "object",
     "sortable": true,
     "filterable": false
   }
