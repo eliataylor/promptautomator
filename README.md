@@ -67,6 +67,8 @@ The following tokens will be replaced as described:
 ## DEV ISSUES / ROADMAP
 - [ ] Parse and display survey better
 - [ ] Map lookup source_id back to survey used
+- [ ] Implement Code Interpreter
+- [ ] Implement loguru 
 - [ ] Validate JSON response by reading requested format from instructions
 - [ ] Don't create embeddings on numeric only values or add currency symbol
 - [ ] Optimize reuse to reduce token usage
