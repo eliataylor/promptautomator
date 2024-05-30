@@ -48,18 +48,18 @@ The following tokens will be replaced as described:
 
 ## Normalize your dataset
 -[x] Convert your CSV to JSON and replace your internal name for ID with `source_id`: 
-  - python preprocesses/DataIndexer.py normalize_dataset <path to your dataset file> <property name for your internal ID>
-- `python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id`
+  - python indexer.py normalize_dataset <path to your dataset file> <property name for your internal ID>
+- `python indexer.py normalize_dataset examples/music-catalogue.csv id`
 
 
 -[x] If testing Embeddings, convert your JSON to a PKL:  
-`python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json`
+`python indexer.py build_embeddings public/music-catalogue.json`
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
 - `python main.py examples/music-catalogue-prompts.csv examples/music-catalogue-configs.csv examples/music-catalogue-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
-- `python preprocesses/DataIndexer.py index_results`
+- `python indexer.py index_results`
 
 --------
 

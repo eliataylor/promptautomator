@@ -1,6 +1,5 @@
-import React from 'react';
-import {useLocation} from 'react-router-dom';
-import {AppBar, Box, Grid} from "@mui/material";
+import React, {useEffect} from 'react';
+import {AppBar, Box, Grid, MenuItem, TextField} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -22,10 +21,38 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({children}) => {
-    const location = useLocation();
-
-    const {selectedSourceId} = useSourceData();
+    const {selectedSourceId, setResults, promptId, setPromptId} = useSourceData();
     const [open, setOpen] = React.useState(false);
+    const [allPromptIds, setAllPromptIds] = React.useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/results.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch menu data');
+                }
+                const data = await response.json();
+
+                let ids = {};
+                data.forEach((r: any) => {
+                    if (typeof r.prompt_id !== 'undefined') {
+                        // @ts-ignore
+                        ids[r.prompt_id] = true
+                    }
+                })
+                setResults(data)
+                // @ts-ignore
+                setAllPromptIds(Object.keys(ids))
+
+            } catch (error) {
+                console.error('Error fetching menu data:', error);
+                window.alert('Error loading Menu')
+            }
+        }
+        fetchData();
+    }, []);
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -33,6 +60,10 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+
+    const handleIdChange = (id: any) => {
+        setPromptId(id);
     };
 
     return (
@@ -46,11 +77,20 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                       style={{width: selectedSourceId && window.innerWidth > 600 ? window.innerWidth - 300 : '100%'}}>
                     <AppBar position="sticky" color={'transparent'}>
                         <Grid container justifyContent={'space-between'} alignItems={'center'} padding={1} spacing={2}>
-                            <Grid item>
-                                OpenAI API Test Results
+                            <Grid item style={{flexGrow: 1}}>
+                                <TextField
+                                    select
+                                    size={'small'}
+                                    variant={'filled'}
+                                    value={promptId}
+                                    label={'Select Prompt ID'}
+                                    onChange={(e) => handleIdChange(e.target.value)}
+                                >
+                                    <MenuItem value='all'>All Prompt IDs</MenuItem>
+                                    <MenuItem value={'0'}>Missing Prompt IDs</MenuItem>
+                                    {allPromptIds.map((id: any) => <MenuItem value={id}>{id}</MenuItem>)}
+                                </TextField>
                             </Grid>
-
-                            <Grid item style={{flexGrow: 1}}></Grid>
 
                             <Grid item>
                                 <IconButton

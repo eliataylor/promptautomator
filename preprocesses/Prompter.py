@@ -281,10 +281,11 @@ class Prompter:
             "started": self.started.strftime('%Y-%m-%d %H:%M:%S'),
             "ended": self.ended.strftime('%Y-%m-%d %H:%M:%S'),
             "model": self.opts_assistant["model"],
+            "prompt_id": self.prompt['prompt_id'],
             "prompt": self.opts_thread["messages"][0]["content"],
-            "survey_id": adler32(self.survey_str),
-            "response":self.prompt['response'],
             "instructions": self.opts_assistant["instructions"],
+            "response":self.prompt['response'],
+            "survey_id": adler32(self.survey_str),
             "config": self.config,
         }
 

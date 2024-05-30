@@ -71,5 +71,12 @@
     "type": "string",
     "sortable": true,
     "filterable": false
+  },
+  "prompt_id": {
+    "field": "prompt_id",
+    "headerName": "Prompt ID",
+    "type": "string",
+    "sortable": true,
+    "filterable": false
   }
 }

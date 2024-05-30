@@ -148,8 +148,8 @@ def stringify_survey(survey):
 
 
 def make_label(field_name):
-    if field_name == 'num_response':
-        return 'Responses'
+    if field_name == 'prompt_id':
+        return 'Prompt ID'
 
     str_ = field_name.replace('num_', '').replace('_id', '').replace('_time', '')
     words = re.split(r'(?=[A-Z])|_', str_)

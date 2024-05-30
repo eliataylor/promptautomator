@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-import asyncio
 import csv
 import json
 import os, sys
@@ -7,8 +6,8 @@ import shutil
 
 import aiofiles
 
-from Embeddings import Embeddings
-from Utils import add_column, convert_to_number, sanitize_header, cast_to_boolean
+from preprocesses.Embeddings import Embeddings
+from preprocesses.Utils import add_column, convert_to_number, sanitize_header, cast_to_boolean
 
 load_dotenv()
 
@@ -86,31 +85,4 @@ async def normalize_dataset(file_path, source_key):
     if os.getenv("REACT_APP_DATASET_PATH"):
         new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", os.getenv("REACT_APP_DATASET_PATH")))
         shutil.copy(file_path, new_path)
-
-
-if __name__ == '__main__':
-    if sys.argv[1] != 'normalize_dataset' and sys.argv[1] != 'build_embeddings' and sys.argv[1] != 'index_results':
-        print(f"Invalid command {sys.argv[1]}: Try `python preprocesses/DataIndexer.py normalize_dataset <product_file> <source_key>`")
-        sys.exit(1)
-
-    if sys.argv[1] != 'index_results':
-        if not os.path.exists(sys.argv[2]):
-            print("No such file: " + sys.argv[2])
-            sys.exit(1)
-
-        if not sys.argv[3]:
-            print("missing source id key name (id, product_id, ...?)")
-            sys.exit(1)
-
-    if sys.argv[1] == 'normalize_dataset':
-        # python preprocesses/DataIndexer.py normalize_dataset examples/music-catalogue.csv id
-        asyncio.run(normalize_dataset(sys.argv[2], sys.argv[3]))
-    elif sys.argv[1] == 'build_embeddings':
-        # python preprocesses/DataIndexer.py build_embeddings public/music-catalogue.json
-        asyncio.run(build_embeddings(sys.argv[2]))
-    elif sys.argv[1] == 'index_results':
-        # python preprocesses/DataIndexer.py index_results
-        asyncio.run(index_results())
-
-
 

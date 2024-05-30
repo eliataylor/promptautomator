@@ -86,7 +86,7 @@ const DataTable = (props) => {
 
     useEffect(() => {
         searchData()
-    }, [state.searchText, state.searchFields, state.searchCondition]);
+    }, [state.searchText, props.prompt_id, state.searchFields, state.searchCondition]);
 
 
     const compareStr = (a) => {
@@ -104,7 +104,7 @@ const DataTable = (props) => {
 
     const searchData = (init) => {
         let filtered = props.rows;
-        if (state.searchText.length > 0) {
+        if (state.searchText.length > 0 || props.prompt_id !== 'all') {
             let valueGetters = {};
             props.columns.forEach(col => {
                 if (typeof state.searchFields[col.field] !== 'undefined' && state.searchFields[col.field] === true) {
@@ -113,10 +113,26 @@ const DataTable = (props) => {
             });
 
             filtered = props.rows.filter((row) => {
-                return Object.keys(valueGetters).some(filter => {
-                    let val = valueGetters[filter]({value: row[filter], row: row});
-                    return compareStr(val);
-                });
+                
+                if (props.prompt_id === '0') {
+                    if (typeof row.prompt_id !== 'undefined') return false;
+                } else if (props.prompt_id !== 'all') {
+                    if (row.prompt_id !== props.prompt_id) {
+                        return false;
+                    } else {
+                        console.log('is match', row.prompt_id)
+                    }
+                }
+
+                if (state.searchText.length > 0) {
+                    return Object.keys(valueGetters).some(fieldname => {
+                        let val = valueGetters[fieldname]({value: row[fieldname], row: row});
+                        return compareStr(val);
+                    });
+                } else {
+                    return true
+                }
+
             });
         }
         console.log(state.searchText, filtered)
