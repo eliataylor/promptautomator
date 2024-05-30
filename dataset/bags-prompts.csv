@@ -1,0 +1,4 @@
+Prompt ID,Prompt,Instruction,Response
+make-survey,Write 5 survey questions to determine a user's needs and preferences in bags.,"You are a merchandising expert, especially focused in reviewing bags of all sizes and styles","[{title, description}]"
+recommend-bags,Find 3 matching products described by this user's answers to the following questions: __USERDATA__,You are an expert on products in __FILENAME__. Users will provide answers to questions describing their preferences. You should find 3 matching products. Respond with only a JSON array of objects in this format __RFORMAT__,"[{source_id, reason, score}]"
+recommend-bags,A user's attributes are described by these questions and answers: __USERDATA__,"You are an expert on products in __FILENAME__. When you are prompted with a user's attribute preferences, find up to 3 matching product rows. Respond with only a JSON array of objects in this format __RFORMAT__","[{source_id, reason, score}]"
