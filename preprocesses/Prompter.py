@@ -4,6 +4,7 @@ import datetime
 import json
 import os
 import sys
+import pandas
 
 from openai import AssistantEventHandler
 from openai import OpenAI
@@ -166,9 +167,16 @@ class Prompter:
             for file in files:
                 if file.filename == os.path.basename(self.config["file_path"]):
                     return self.openai.files.content(self.file.id)
-        else:
+        elif ".json" in self.config["file_path"]:
+            with open(self.config["file_path"], 'r') as file:
+                df = pandas.read_csv(self.config["file_path"])  # Read only the header row
+                return df.columns.tolist()
+        elif ".csv" in self.config["file_path"]:
             with open(self.config["file_path"], 'r') as file:
                 return json.load(file)
+        elif ".pkl" in self.config["file_path"]:
+            df = pandas.read_pickle(self.config["file_path"])
+            return df.to_dict(orient='records')
 
 
     async def create_assistant(self):
