@@ -1,8 +1,10 @@
 /****
  Removes irrelevant meta data from Shopify product exports
 ****/
+require('dotenv').config();
 
 const fs = require('fs');
+const path = require('path');
 const csv = require('csv-parser');
 
 function csvToJsonObject(filePath, keysToPreserve) {
@@ -43,6 +45,12 @@ async function transformCsvToJson(csvFilePath, keysToPreserve) {
         const jsonFilePath = csvFilePath.replace('.csv', '.json');
         fs.writeFileSync(jsonFilePath, JSON.stringify(jsonObject, null, 2));
         console.log(`JSON file saved: ${jsonFilePath}`);
+
+        const dataset_path = process.env.REACT_APP_DATASET_PATH;
+        const new_path = path.resolve(__dirname, '../public', dataset_path);
+        fs.copyFileSync(jsonFilePath, new_path);
+        console.log(`created ${dataset_path}. You may change the path in your .env file to anywhere in your public folder`);
+
     } catch (error) {
         console.error('Error:', error);
     }
