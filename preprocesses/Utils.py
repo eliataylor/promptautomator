@@ -1,11 +1,11 @@
 import csv
+import fnmatch
 import hashlib
 import json
+import os
 import re
 import sys
-import os
-import fnmatch
-import aiofiles
+
 from dateutil.parser import parse
 
 
@@ -116,7 +116,7 @@ def find_json( string):
         json_object = json.loads(json_string)
         return json_object
     except json.JSONDecodeError as e:
-        print('Error parsing JSON:', string, e)
+        print('Error parsing JSON:', json_string, e)
         return None
 
 
@@ -137,6 +137,17 @@ def adler32(data):
         b = (b + a) % mod
 
     return str((b << 16) | a)
+
+def reconstruct_object(flat_object, order):
+    reconstructed_object = {}
+    for key in order:
+        if key in flat_object:
+            reconstructed_object[key] = flat_object[key]
+    for key, value in flat_object.items():
+        if key not in reconstructed_object:
+            reconstructed_object[key] = value
+    return reconstructed_object
+
 
 def stringify_survey(survey):
     if not survey:
@@ -167,32 +178,6 @@ def check_type(variable):
     else:
         return "object"
 
-def add_column(val, key):
-    column = {
-        'field': key,
-        'headerName': make_label(key),
-        'type': check_type(val),
-        'sortable': True,
-        'filterable': True
-    }
-    if key in ['started', 'ended', 'response']:
-        column['showing'] = False
-
-    if column['type'] == 'str':
-        if '_ids' in key:
-            column['type'] = 'array'
-            column['filterable'] = False
-        elif parse_date(val) is not None:
-            column['type'] = 'time'
-            column['filterable'] = False
-    else:
-        if column['type'] != 'dict':
-            column['filterable'] = False
-
-        # if column['type'] == 'dict':
-        #     column['style'] = {'flexGrow': 1, 'wordBreak': 'break-word'}
-
-    return column
 
 
 def parse_date(date_string):

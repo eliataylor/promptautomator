@@ -1,0 +1,242 @@
+[
+  {
+    "filename": "result-3702960396.json",
+    "runkey": "embeddings",
+    "ms": 4.554226,
+    "started": "2024-05-31 14:48:25",
+    "ended": "2024-05-31 14:48:30",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-theme",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format [{title, description}]",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "examples/music-catalogue.pkl",
+      "fine_tuning": ""
+    },
+    "results": [
+      {
+        "source_id": 100877,
+        "title": "Warm Sound",
+        "exists": true
+      },
+      {
+        "source_id": 35423,
+        "title": "Paranoid Android",
+        "exists": true
+      },
+      {
+        "source_id": 35168,
+        "title": "Music",
+        "exists": true
+      },
+      {
+        "source_id": 32829,
+        "title": "Rise And Praise",
+        "exists": true
+      },
+      {
+        "source_id": 35526,
+        "title": "Street Spirit 'Fade Out'",
+        "exists": true
+      }
+    ]
+  },
+  {
+    "filename": "result-2594818798.json",
+    "runkey": "embeddings",
+    "ms": 6.084602,
+    "started": "2024-05-31 14:47:30",
+    "ended": "2024-05-31 14:47:36",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-theme",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format [{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format [{title, description}]",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "examples/music-catalogue.pkl",
+      "fine_tuning": ""
+    },
+    "results": [
+      {
+        "source_id": 34269,
+        "title": "Something Just Like This",
+        "exists": true
+      },
+      {
+        "source_id": 32917,
+        "title": "Take Five",
+        "exists": true
+      },
+      {
+        "source_id": 32230,
+        "title": "Blueprint 2",
+        "exists": true
+      },
+      {
+        "source_id": 34620,
+        "title": "Work Song",
+        "exists": true
+      },
+      {
+        "source_id": 35013,
+        "title": "In My Place",
+        "exists": true
+      }
+    ]
+  },
+  {
+    "filename": "result-225925811.json",
+    "runkey": "thead-file-assistant",
+    "ms": 32.586215,
+    "started": "2024-05-31 14:48:33",
+    "ended": "2024-05-31 14:49:06",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-playlist",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in music-catalogue.json. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format [{source_id, reason, score}]",
+    "response": "[{source_id, reason, score}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "examples/music-catalogue.json",
+      "fine_tuning": "",
+      "file_id": "file-CLFnuQ0hYAmAupmzThHGNIxj",
+      "thread_id": "thread_XOvCzdUrJqk7PvRkD9kypY1v",
+      "assistant_id": "asst_ih86ohHQEMAYAo8MQjpCZ7Ag",
+      "vector_store_id": "vs_i04XW6FwLZBTCnoiHT7Y9Cqe"
+    },
+    "survey_id": "2887728958",
+    "results": "Here are 10 songs that match the theme of \"Hip-Hop, Rock\" in active listening settings, particularly suitable for listening in the car:\n\n1. **Song**: \"I'm Beamin\"\n   - **Artist**: Lupe Fiasco\n   - **Source ID**: 32247\n   - **Reason**: A thoughtful and bright hip-hop track with reflective lyrics, perfect for engaging with while driving.\n   - **Score**: 85\n\n2. **Song**: \"Kick, Push\"\n   - **Artist**: Lupe Fiasco\n   - **Source ID**: 35645\n   - **Reason**: A relaxed yet spirited hip-hop song that celebrates individuality, ideal for enjoyable car rides.\n   - **Score**: 85\n\n3. **Song**: \"Daydreamin'\"\n   - **Artist**: Lupe Fiasco\n   - **Source ID**: 35231\n   - **Reason**: Features a melodic, dream-like atmosphere, great for active listening during a drive.\n   - **Score**: 80\n\n4. **Song**: \"Stakes is High\"\n   - **Artist**: De La Soul\n   - **Source ID**: 101159\n   - **Reason**: A classic hip-hop track with deep lyrics and a catchy beat, perfect for thoughtful listening.\n   - **Score**: 90\n\n5. **Song**: \"The Cool\"\n   - **Artist**: Lupe Fiasco\n   - **Source ID**: 32248\n   - **Reason**: Engaging storytelling and solid beats make this a good pick for active listeners in a car.\n   - **Score**: 85\n\n6. **Song**: \"Words I Never Said\"\n   - **Artist**: Lupe Fiasco\n   - **Source ID**: 32255\n   - **Reason**: Provocative lyrics that encourage reflection, suited for passengers focused on the contents.\n   - **Score**: 87\n\n7. **Song**: \"Smells Like Teen Spirit\"\n   - **Artist**: Nirvana\n   - **Source ID**: 32050\n   - **Reason**: Iconic rock anthem known for its energetic vibe, making it a great choice for an active listening experience while driving.\n   - **Score**: 95\n\n8. **Song**: \"Come As You Are\"\n   - **Artist**: Nirvana\n   - **Source ID**: 35454\n   - **Reason**: A classic rock track that blends well with a driving playlist, encouraging an introspective mood.\n   - **Score**: 90\n\n9. **Song**: \"Heart-Shaped Box\"\n   - **Artist**: Nirvana\n   - **Source ID**: 32232\n   - **Reason**: Powerful and deep, suitable for those who enjoy diving into the lyrics while driving.\n   - **Score**: 88\n\n10. **Song**: \"Lithium\"\n    - **Artist**: Nirvana\n    - **Source ID**: 32988\n    - **Reason**: Engages the listener with dynamic shifts in mood and intensity, fitting for an immersive driving playlist.\n    - **Score**: 86\n\nThese tracks are selected based on their lyrical quality and the engaging nature of their music, which suits active listening in a car environment in the genres of Hip-Hop and Rock."
+  },
+  {
+    "filename": "result-1673401954.json",
+    "runkey": "embeddings",
+    "ms": 10.757641,
+    "started": "2024-05-31 14:50:03",
+    "ended": "2024-05-31 14:50:14",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-playlist",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in music-catalogue.json. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format [{source_id, reason, score}]",
+    "response": "[{source_id, reason, score}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "examples/music-catalogue.pkl",
+      "fine_tuning": ""
+    },
+    "results": [
+      {
+        "source_id": 35684,
+        "title": "Loft Music (Explicit)",
+        "exists": true
+      },
+      {
+        "source_id": 101243,
+        "title": "Beats For The Listeners",
+        "exists": true
+      },
+      {
+        "source_id": 35633,
+        "title": "Nobody's Listening",
+        "exists": true
+      },
+      {
+        "source_id": 32794,
+        "title": "Hip Hop",
+        "exists": true
+      },
+      {
+        "source_id": 35168,
+        "title": "Music",
+        "exists": true
+      }
+    ]
+  },
+  {
+    "filename": "result-3026302496.json",
+    "runkey": "thead-file-assistant",
+    "ms": 17.848339,
+    "started": "2024-05-31 14:48:00",
+    "ended": "2024-05-31 14:48:18",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-theme",
+    "prompt": "Write 3 survey questions to determine a user's music tastes and their setting.",
+    "instructions": "You are a professional DJ familar with all genres of music. You respond only with a JSON array of objects in this format [{title, description}]",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "examples/music-catalogue.json",
+      "fine_tuning": "",
+      "file_id": "file-hNFdxn9waLuvU0OZYbDOxcxz",
+      "thread_id": "thread_crIXl7oaKpZSdtS1Oz4pirqd",
+      "assistant_id": "asst_xkQH3W1I9daWNoyW9gjwnfAz",
+      "vector_store_id": "vs_TlhIjGopawwseJQAqpnQN9OF"
+    },
+    "results": [
+      {
+        "title": "Preferred Music Genres",
+        "description": "Which of the following music genres do you prefer the most? Please select all that apply: Pop, Rock, Jazz, Hip-Hop, Classical, Electronic, Country, Reggae."
+      },
+      {
+        "title": "Favorite Music Listening Environments",
+        "description": "In which of these settings do you most often enjoy listening to music? Options include: At home, in the car, at work, during exercise, at parties, while studying, or live concerts."
+      },
+      {
+        "description": "How does listening to music affect your mood? Please choose the statement that best describes your experience: It uplifts me, It calms me down, It energizes me, It doesn't affect my mood, It depends on the type of music."
+      }
+    ]
+  },
+  {
+    "filename": "result-2603686774.json",
+    "runkey": "thead-file-assistant",
+    "ms": 41.108464,
+    "started": "2024-05-31 14:49:08",
+    "ended": "2024-05-31 14:49:49",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-playlist",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in music-catalogue.json. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format [{source_id, reason, score}]",
+    "response": "[{source_id, reason, score}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "examples/music-catalogue.json",
+      "fine_tuning": "",
+      "file_id": "file-qroICkBrkpPWLupUWdSHsqoU",
+      "thread_id": "thread_wcdQi7vu8rSe9fdhwJn9zI1W",
+      "assistant_id": "asst_tqmHbKRgkBoXlVbf7KebIvYT",
+      "vector_store_id": "vs_M5BjffFEGiGbSIbm9qUTYKq5"
+    },
+    "results": "Here are 10 songs from the catalog that match your theme of active listening to Hip-Hop and Rock genres while being in the car:\n\n1. **Jay-Z - \"99 Problems\"**\n   - **Reason**: A high-energy Hip-Hop track perfect for active listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:5\u2020source\u3011\n\n2. **Eminem - \"Lose Yourself\"**\n   - **Reason**: Iconic active listening track with intense beats suitable for a car setting.\n   - **Score**: 8.7\n   - **Source**:  \n\n3. **The Black Keys - \"Tighten Up\"**\n   - **Reason**: A Rock song with a gripping rhythm, ideal for car listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:3\u2020source\u3011\n\n4. **Linkin Park - \"Points Of Authority / 99 Problems / One Step Closer\"**\n   - **Reason**: Blending Rock and Hip-Hop, perfect for enhanced car music experience.\n   - **Score**: 8.8\n   - **Source**: \u30104:6\u2020source\u3011\n\n5. **Kid Cudi - \"Pursuit Of Happiness (Steve Aoki Dance Remix)\"**\n   - **Reason**: Energetic Hip-Hop with a drive-friendly beat.\n   - **Score**: 8.4\n   - **Source**:  \n\n6. **Jay-Z - \"Empire State Of Mind\"**\n   - **Reason**: High-energy track that's great for singing along in the car.\n   - **Score**: 8.6\n   - **Source**: \u30104:5\u2020source\u3011\n\n7. **The Allman Brothers Band - \"Whipping Post (Live 1971)\"**\n   - **Reason**: Classic Rock with a powerful output, suitable for active listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:3\u2020source\u3011\n\n8. **Dead Prez - \"Hip Hop\"**\n   - **Reason**: Hard-hitting lyrics with a beat that complements the driving rhythm.\n   - **Score**: 8.4\n   - **Source**: \u30104:0\u2020source\u3011\n\n9. **Hollywood Undead - \"Undead\"**\n   - **Reason**: A rock/rap hybrid that's dynamic and full of energy for driving.\n   - **Score**: 8.3\n   - **Source**: \u30104:7\u2020source\u3011\n\n10. **Beastie Boys - \"Sabotage\"**\n    - **Reason**: A lively and rowdy Rock/Hip-Hop track ideal for an active car ride.\n    - **Score**: 8.6\n    - **Source**: \u30104:3\u2020source\u3011"
+  },
+  {
+    "filename": "result-229625858.json",
+    "runkey": "thead-file-assistant",
+    "ms": 12.596532,
+    "started": "2024-05-31 14:47:09",
+    "ended": "2024-05-31 14:47:22",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-theme",
+    "prompt": "Write 5 playlist themes that play well along some activity. Write your list as a valid JSON array of objects in this format [{title, description}]",
+    "instructions": "You are a professional DJ API familiar with all genres of music. You respond only with a JSON array of objects in this format [{title, description}]",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "examples/music-catalogue.json",
+      "fine_tuning": "",
+      "file_id": "file-uWa9Uv30P6dWUpHCoCj157sV",
+      "thread_id": "thread_ZvcF2gajNBTwDFnMChXPZ7BS",
+      "assistant_id": "asst_Zzj3y1fYKtIx0ftLfCVDT73t",
+      "vector_store_id": "vs_glCEtrWpExXeE6K82qUuEsBe"
+    },
+    "results": "[\n    {\n        \"title\": \"Morning Wake-Up Mix\",\n        \"description\": \"A lively playlist featuring upbeat pop, energetic rock, and motivational tunes to kickstart your day and get you moving in the morning.\"\n    },\n    {\n        \"title\": \"Study Session Focus\",\n        \"description\": \"A collection of ambient, instrumental, and soothing classical music designed to help maintain concentration and enhance focus while studying or working.\"\n    },\n    {\n{\n        \"title\": \"Workout Warriors\",\n        \"description\": \"Up-tempo beats and inspiring tracks from genres like EDM, hip-hop, and pop to keep your energy high and boost your performance during workouts.\"\n    },\n    {\n        \"title\": \"Road Trip Vibes\",\n        \"description\": \"Feel-good classics, sing-along hits, and new discoveries that create the perfect backdrop for a road trip adventure.\"\n    },\n    {\n        \"tibe\": \"Chill Evenings\",\n        \"description\": \"A blend of soft rock, sultry jazz, and mellow R&B that sets the ideal mood for winding down in the evening.\n    }\n]"
+  }
+]

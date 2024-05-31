@@ -1,0 +1,23 @@
+{
+  "thead-file-assistant": {
+    "ms": 41.108464,
+    "started": "2024-05-31 14:49:08",
+    "ended": "2024-05-31 14:49:49",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-playlist",
+    "prompt": "Find 10 matching songs that match this theme: What genres do you mostly want to listen to now?: Hip-Hop, Rock\nWill you be listening actively or passively?: Actively\nIn which settings do you typically listen to music?: Car",
+    "instructions": "You are a professional DJ focused on the music catalogue listed in music-catalogue.json. Users will provide a theme for their playlist. You should list 10 songs that match theri theme. Respond with only a JSON array of objects in this format [{source_id, reason, score}]",
+    "response": "[{source_id, reason, score}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Thread",
+      "file_path": "examples/music-catalogue.json",
+      "fine_tuning": "",
+      "file_id": "file-qroICkBrkpPWLupUWdSHsqoU",
+      "thread_id": "thread_wcdQi7vu8rSe9fdhwJn9zI1W",
+      "assistant_id": "asst_tqmHbKRgkBoXlVbf7KebIvYT",
+      "vector_store_id": "vs_M5BjffFEGiGbSIbm9qUTYKq5"
+    },
+    "results": "Here are 10 songs from the catalog that match your theme of active listening to Hip-Hop and Rock genres while being in the car:\n\n1. **Jay-Z - \"99 Problems\"**\n   - **Reason**: A high-energy Hip-Hop track perfect for active listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:5\u2020source\u3011\n\n2. **Eminem - \"Lose Yourself\"**\n   - **Reason**: Iconic active listening track with intense beats suitable for a car setting.\n   - **Score**: 8.7\n   - **Source**:  \n\n3. **The Black Keys - \"Tighten Up\"**\n   - **Reason**: A Rock song with a gripping rhythm, ideal for car listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:3\u2020source\u3011\n\n4. **Linkin Park - \"Points Of Authority / 99 Problems / One Step Closer\"**\n   - **Reason**: Blending Rock and Hip-Hop, perfect for enhanced car music experience.\n   - **Score**: 8.8\n   - **Source**: \u30104:6\u2020source\u3011\n\n5. **Kid Cudi - \"Pursuit Of Happiness (Steve Aoki Dance Remix)\"**\n   - **Reason**: Energetic Hip-Hop with a drive-friendly beat.\n   - **Score**: 8.4\n   - **Source**:  \n\n6. **Jay-Z - \"Empire State Of Mind\"**\n   - **Reason**: High-energy track that's great for singing along in the car.\n   - **Score**: 8.6\n   - **Source**: \u30104:5\u2020source\u3011\n\n7. **The Allman Brothers Band - \"Whipping Post (Live 1971)\"**\n   - **Reason**: Classic Rock with a powerful output, suitable for active listening.\n   - **Score**: 8.5\n   - **Source**: \u30104:3\u2020source\u3011\n\n8. **Dead Prez - \"Hip Hop\"**\n   - **Reason**: Hard-hitting lyrics with a beat that complements the driving rhythm.\n   - **Score**: 8.4\n   - **Source**: \u30104:0\u2020source\u3011\n\n9. **Hollywood Undead - \"Undead\"**\n   - **Reason**: A rock/rap hybrid that's dynamic and full of energy for driving.\n   - **Score**: 8.3\n   - **Source**: \u30104:7\u2020source\u3011\n\n10. **Beastie Boys - \"Sabotage\"**\n    - **Reason**: A lively and rowdy Rock/Hip-Hop track ideal for an active car ride.\n    - **Score**: 8.6\n    - **Source**: \u30104:3\u2020source\u3011"
+  }
+}

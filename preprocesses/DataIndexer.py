@@ -1,13 +1,13 @@
-from dotenv import load_dotenv
 import csv
 import json
-import os, sys
+import os
 import shutil
+import sys
 
 import aiofiles
-
+from dotenv import load_dotenv
 from preprocesses.Embeddings import Embeddings
-from preprocesses.Utils import add_column, convert_to_number, sanitize_header, cast_to_boolean
+from preprocesses.Utils import convert_to_number, sanitize_header, cast_to_boolean, make_label, check_type, parse_date, reconstruct_object, build_survey, stringify_survey, adler32
 
 load_dotenv()
 
@@ -15,8 +15,36 @@ async def build_embeddings(file_path):
     Embeddings(file_path)
 
 
+
+def add_column(val, key):
+    column = {
+        'field': key,
+        'headerName': make_label(key),
+        'type': check_type(val),
+        'sortable': True,
+        'filterable': True
+    }
+    if key in ['started', 'ended', 'response', 'model', 'prompt_id']:
+        column['showing'] = False
+
+    if column['type'] == 'str':
+        if '_ids' in key:
+            column['type'] = 'array'
+            column['filterable'] = False
+        elif parse_date(val) is not None:
+            column['type'] = 'time'
+            column['filterable'] = False
+    else:
+        if column['type'] != 'dict':
+            column['filterable'] = False
+
+        # if column['type'] == 'dict':
+        #     column['style'] = {'flexGrow': 1, 'wordBreak': 'break-word'}
+
+    return column
+
 async def index_results():
-    output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'public/results'))
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', os.getenv("RESULTS_DIR")))
     files = os.listdir(output_dir)
     json_files = [file for file in files if file.endswith('.json')]
 
@@ -34,9 +62,19 @@ async def index_results():
                     top_level_properties[key] = value
                     if key not in columns:
                         columns[key] = add_column(value, key)
+
+                unsets = ['assistant', 'file_search', 'vector_store', 'code_interpreter']
+                for u in unsets:
+                    if u in top_level_properties['config']:
+                        del top_level_properties['config'][u]
+
+                if 'file_id' in top_level_properties['config'] and top_level_properties['config']['file_id'] == top_level_properties['config']['file_path']:
+                    del top_level_properties['config']['file_path']
+
                 results.append(top_level_properties)
 
     # columns.sort(key=lambda x: x.get('started'))
+    columns = reconstruct_object(columns, ['ms', 'started', 'ended', 'prompt', 'instructions', 'survey_id', 'response', 'config', 'results'])
 
     field_schema = json.dumps(columns, indent=2)  # Pretty-print with 2-space indentation
     new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src/schema.json'))
@@ -44,12 +82,42 @@ async def index_results():
         await f.write(field_schema)
 
     json_string = json.dumps(results, indent=2)  # Pretty-print with 2-space indentation
-    new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../public/results.json'))
+    new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../public', os.getenv("REACT_APP_RESULTS_INDEX")))
     async with aiofiles.open(new_path, 'w', encoding='utf-8') as f:
         await f.write(json_string)
 
+
     print('Results Index:', results)
     print('New Schema:', field_schema)
+
+async def index_surveys(survey_file):
+    output_file = os.getenv("SURVEYS_INDEX")
+    if os.path.exists(output_file):
+        # Read and parse the existing JSON file
+        with open(output_file, 'r') as file:
+            data = json.load(file)
+    else:
+        data = {}
+
+    survey_list = build_survey(survey_file)
+    for survey in survey_list:
+        id = adler32(stringify_survey(survey))
+        data[id] = survey
+
+        """
+        aslist = []
+        for question, answer in survey.items():
+            aslist.append({"question":question, "answer": answer})
+
+        data[id] = aslist
+        """
+
+    # Save the updated data back to the file
+    with open(output_file, 'w') as file:
+        json.dump(data, file, indent=4)
+
+    print(data)
+
 
 
 async def normalize_dataset(file_path, source_key):
@@ -82,12 +150,7 @@ async def normalize_dataset(file_path, source_key):
             print(f"Error reading {file_path}: {e}")
             sys.exit(1)
 
-    if os.getenv("REACT_APP_DATASET_PATH"):
-        new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", os.getenv("REACT_APP_DATASET_PATH")))
-        shutil.copy(file_path, new_path)
-    else:
-        basename = os.path.basename(file_path)
-        new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../public", basename))
-        shutil.copy(file_path, new_path)
-        print(f"now add `REACT_APP_DATASET_PATH=public/{basename}` to your .env")
+    new_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../public", os.getenv("REACT_APP_DATASET_PATH")))
+    shutil.copy(file_path, new_path)
+    print(f'created {os.getenv("REACT_APP_DATASET_PATH")}. You may change the path in your .env file to anywhere in your public folder')
 

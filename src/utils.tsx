@@ -2,6 +2,7 @@ import {Divider, Typography} from "@mui/material";
 import {CheckCircleOutlined, Close} from "@mui/icons-material";
 import React from "react";
 import SourceLookup from "./components/SourceLookup";
+import {Link} from "react-router-dom";
 
 export const SOURCE_KEYS = ['product_id', 'Product ID', 'source_id', 'Source ID', 'Product ID\\*\\*\\:'];
 
@@ -67,6 +68,13 @@ export function renderArray(obj: []) {
 
 export function renderObject(obj: object) {
     let id = findSourceId(obj)
+    const linkKeys = {
+        'vector_store_id': 'https://platform.openai.com/storage/vector_stores/__ID__',
+        'assistant_id': 'https://platform.openai.com/assistants/__ID__',
+        'thread_id': 'https://platform.openai.com/threads/__ID__',
+        'file_id': 'https://platform.openai.com/storage/files/__ID__',
+        'file_path': 'https://platform.openai.com/storage/files/__ID__'
+    }
     return <ul style={{margin: 0, padding: 0, listStyle: 'none', verticalAlign: 'middle'}}>
         {Object.entries(obj).map(([key, value]) => {
 
@@ -81,6 +89,14 @@ export function renderObject(obj: object) {
                     {value === true ? <CheckCircleOutlined fontSize={'small'}/> : <Close fontSize={'small'}/>}
                     </span>
                 </Typography>
+            }
+
+            // @ts-ignore
+            if (typeof linkKeys[key] === 'string') {
+                // @ts-ignore
+                value = <Link target={'_blank'} to={linkKeys[key].replace("__ID__", value)}>{value}</Link>
+            } else {
+                value = value.toString()
             }
 
             return <div key={key}>
@@ -98,7 +114,7 @@ export function renderObject(obj: object) {
                         </Typography> :
                         <div>
                             <Typography variant={'caption'}>{key}: </Typography>
-                            <Typography variant={'body2'} sx={{display: 'inline'}}>{value.toString()}</Typography>
+                            <Typography variant={'body2'} sx={{display: 'inline'}}>{value}</Typography>
                         </div>
                 }
             </div>
