@@ -9,7 +9,8 @@ view demo: https://promptautomator.taylormadetraffic.com
 
 ## Environment Setup 
 - `git clone git@github.com:eliataylor/promptautomator.git`
-- create `.env` file with `OPENAI_KEY=you-api-key`
+- `cp .env.public .env`
+- update your `.env` file your OpenAI key
 - `python3.9 -m venv .venv`
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
@@ -47,8 +48,9 @@ The following tokens will be replaced as described:
 - Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
 - Set your Fine-Tuning configs to be passed directly into the prompt
 
+4. Export each CSV sheet to `yourfolder/[sheetname].csv` 
 
-**4. Export each CSV sheet to `yourfolder/[sheetname].csv`** 
+5. Index your surveys for the React app to display: `python indexer.py index_survey dataset/bags-userdata.csv `
 
 
 ## Normalize your dataset
@@ -65,17 +67,13 @@ The following tokens will be replaced as described:
 - `python main.py examples/music-catalogue-prompts.csv examples/music-catalogue-configs.csv examples/music-catalogue-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
 - `python indexer.py index_results`
-- [x] To index your surveys for the React app to display: 
-- `python indexer.py index_survey examples/music-catalogue-userdata.csv `
 
 --------
 
 ## DEV ISSUES / ROADMAP
-- [ ] Parse and display survey better
-- [ ] Map lookup source_id back to survey used
 - [ ] Implement Code Interpreter
-- [ ] Validate JSON response by reading requested format from instructions
 - [ ] Don't create embeddings on numeric only values or add currency symbol
+- [ ] Validate JSON response by reading requested format from instructions
 - [ ] Optimize reuse to reduce token usage
 - [ ] Pass along Fine-Tuning variables like `{temperature:1, max_tokens:256, top_p:1, frequency_penalty:0, presence_penalty:0}`
 - [ ] Fix "Could not validate from dataset 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte"
