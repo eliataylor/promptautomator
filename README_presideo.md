@@ -5,26 +5,30 @@
 ![interface.png](public%2Finterface.png)
 view demo: https://promptautomator.taylormadetraffic.com
 
------
-
 ## Environment Setup 
-- `git clone git@github.com:eliataylor/promptautomator.git`
-- create `.env` file with `OPENAI_KEY=you-api-key`
+- `git clone git@github.com:eliataylor/presideo-prompter.git`
+- `cp .env.public .env`
+- update your `.env` file your OpenAI key
 - `python3.9 -m venv .venv`
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
 
+## Pull latest opensource from Prompt Automater
+- `git remote add upstream git@github.com:eliataylor/promptautomator.git`
+- `git fetch upstream`
+- `git merge upstream/master`
+- `git push origin master`
 
 ## Run [Demo](https://promptautomator.taylormadetraffic.com):
 To navigate the interface and review results from testing this example dataset for writing playlists and playlists themes:
-- `npm install`
+- `npm install --force`
 - `npm start`
 - `open http://localhost:3000/`
 
 ---
 ## To index and test your own data:
 
-> #### Copy this [Google Sheet](https://docs.google.com/spreadsheets/d/1NZ9vNCUsZmTvA6byWalU6CAJfF8NIi5e4e9Z6tlw1mI/edit?usp=sharing) to your own account
+> #### Use this [Google Sheet](https://docs.google.com/spreadsheets/d/1xK9i_Qh_J1kbAMlPSlXf7nrT1HRV3RXzcq_0dmqPgNI/edit#gid=1914178484) 
 
 1. Reuse the "Prompts" sheet:
 - Give your AI a persona in the Instructions column, 
@@ -47,10 +51,10 @@ The following tokens will be replaced as described:
 - Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
 - Set your Fine-Tuning configs to be passed directly into the prompt
 
+
 4. Export each CSV sheet to `bags/[sheetname].csv` 
 
 5. Index your surveys for the React app to display: `python indexer.py index_surveys dataset/bags-userdata.csv `
-
 
 ## Normalize your dataset
 -[x] Clean up the Shopify data (this replaces `normalize_dataset` from the public repo)
@@ -64,15 +68,3 @@ The following tokens will be replaced as described:
 - `python main.py dataset/bags-prompts.csv dataset/bags-configs.csv dataset/bags-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
 - `python indexer.py index_results`
-
---------
-
-## DEV ISSUES / ROADMAP
-- [ ] Parse and display survey better
-- [ ] Map lookup source_id back to survey used
-- [ ] Implement Code Interpreter
-- [ ] Validate JSON response by reading requested format from instructions
-- [ ] Don't create embeddings on numeric only values or add currency symbol
-- [ ] Optimize reuse to reduce token usage
-- [ ] Pass along Fine-Tuning variables like `{temperature:1, max_tokens:256, top_p:1, frequency_penalty:0, presence_penalty:0}`
-- [ ] Fix "Could not validate from dataset 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte"

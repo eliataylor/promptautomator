@@ -1,2 +1,4 @@
 Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter,Fine Tuning
+gpt-4-turbo,Completion,dataset/bags.json,,TRUE,FALSE,FALSE,
+gpt-4-turbo,Thread,dataset/bags.json,TRUE,TRUE,TRUE,FALSE,
 gpt-4-turbo,Embeddings,dataset/bags.pkl,,,,,
