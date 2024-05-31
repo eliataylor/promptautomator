@@ -380,7 +380,7 @@ const DataTable = (props) => {
                                         }
                                         attrs.sx.alignContent = 'flex-start'
 
-                                        if (o.renderCell) cell = o.renderCell({value: cell, row: row});
+                                        if (o.renderCell) cell = o.renderCell({value: cell, row: row, showing:state.showingFields});
                                         else if (o.valueGetter) cell = o.valueGetter({value: cell, row: row});
                                         else if (typeof cell === 'object') cell = JSON.stringify(cell, ' ', 2)
                                         return <TableCell {...attrs}>{cell}</TableCell>;

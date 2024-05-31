@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/results.json');
+                const response = await fetch(`/${process.env.REACT_APP_RESULTS_INDEX}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch menu data');
                 }
@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                       style={{width: selectedSourceId && window.innerWidth > 600 ? window.innerWidth - 300 : '100%'}}>
                     <AppBar position="sticky" color={'transparent'}>
                         <Grid container justifyContent={'space-between'} alignItems={'center'} padding={1} spacing={2}>
-                            <Grid item style={{flexGrow: 1}}>
+                            <Grid item>
                                 <TextField
                                     select
                                     size={'small'}

@@ -35,9 +35,18 @@ export interface SourceData {
     source_id: number;
 }
 
+
+interface SurveyList {
+    [surveyId: string]: SurveyItem;
+}
+
+interface SurveyItem {
+    [question: string]: string;
+}
+
+
 interface SourceDataContextType {
     sourceData: SourceData[];
-    setSourceData: React.Dispatch<React.SetStateAction<SourceData[]>>;
 
     selectedSourceId: number | null;
     setSelectedSourceId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -54,6 +63,7 @@ interface SourceDataContextType {
     promptId: string;
     setPromptId: React.Dispatch<React.SetStateAction<string>>;
 
+    surveys: SurveyList;
 
 }
 
@@ -78,29 +88,36 @@ export const SourceDataProvider: React.FC<SourceDataProviderProps> = ({children}
     const [maxStrLength, setMaxLength] = useState<number>(100);
     const [results, setResults] = useState<ResultData[] | null>(null);
     const [promptId, setPromptId] = React.useState('all');
+    const [surveys, setSurveys] = React.useState<SurveyList>({});
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('/' + process.env.REACT_APP_DATASET_PATH?.replace("public/", ""));
+        const fetchDataSet = async () => {
+            const response = await fetch('/' + process.env.REACT_APP_DATASET_PATH);
             const jsonData = await response.json();
             setSourceData(jsonData);
         };
-        fetchData();
+        fetchDataSet();
+
+        const fetchSurveys = async () => {
+            const response = await fetch('/' + process.env.REACT_APP_SURVEYS_INDEX);
+            const jsonData = await response.json();
+            setSurveys(jsonData);
+        };
+        fetchSurveys();
     }, []);
 
 
     return (
         <SourceDataContext.Provider value={{
             sourceData,
-            setSourceData,
             selectedSourceId,
             setSelectedSourceId,
             allMatches,
             setMatches,
             maxStrLength,
             setMaxLength,
-            results, setResults, setPromptId, promptId
+            results, setResults, setPromptId, promptId, surveys
         }}>
             {children}
         </SourceDataContext.Provider>

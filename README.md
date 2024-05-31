@@ -38,7 +38,7 @@ The following tokens will be replaced as described:
 3. Reuse the "Configs" sheet:
 - Selected any text based Model from OpenAI's list
 - Select which Executable. See below 
-- Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file. You can use `DataIndexer.py`  to convert them from CSVs
+- Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file. You can use `indexer.py`  to convert them from CSVs
 - Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
 - Set your Fine-Tuning configs to be passed directly into the prompt
 
@@ -60,6 +60,8 @@ The following tokens will be replaced as described:
 - `python main.py examples/music-catalogue-prompts.csv examples/music-catalogue-configs.csv examples/music-catalogue-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
 - `python indexer.py index_results`
+- [x] To index your surveys for the React app to display: 
+- `python indexer.py index_survey examples/music-catalogue-userdata.csv `
 
 --------
 
@@ -67,7 +69,6 @@ The following tokens will be replaced as described:
 - [ ] Parse and display survey better
 - [ ] Map lookup source_id back to survey used
 - [ ] Implement Code Interpreter
-- [ ] Implement loguru 
 - [ ] Validate JSON response by reading requested format from instructions
 - [ ] Don't create embeddings on numeric only values or add currency symbol
 - [ ] Optimize reuse to reduce token usage

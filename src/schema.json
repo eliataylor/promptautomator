@@ -22,20 +22,6 @@
     "filterable": false,
     "showing": false
   },
-  "model": {
-    "field": "model",
-    "headerName": "Model",
-    "type": "string",
-    "sortable": true,
-    "filterable": false
-  },
-  "prompt_id": {
-    "field": "prompt_id",
-    "headerName": "Prompt ID",
-    "type": "string",
-    "sortable": true,
-    "filterable": false
-  },
   "prompt": {
     "field": "prompt",
     "headerName": "Prompt",
@@ -50,6 +36,13 @@
     "sortable": true,
     "filterable": false
   },
+  "survey_id": {
+    "field": "survey_id",
+    "headerName": "Survey",
+    "type": "string",
+    "sortable": true,
+    "filterable": false
+  },
   "response": {
     "field": "response",
     "headerName": "Response",
@@ -57,13 +50,6 @@
     "sortable": true,
     "filterable": false,
     "showing": false
-  },
-  "survey_id": {
-    "field": "survey_id",
-    "headerName": "Survey",
-    "type": "string",
-    "sortable": true,
-    "filterable": false
   },
   "config": {
     "field": "config",
@@ -78,5 +64,21 @@
     "type": "object",
     "sortable": true,
     "filterable": false
+  },
+  "model": {
+    "field": "model",
+    "headerName": "Model",
+    "type": "string",
+    "sortable": true,
+    "filterable": false,
+    "showing": false
+  },
+  "prompt_id": {
+    "field": "prompt_id",
+    "headerName": "Prompt ID",
+    "type": "string",
+    "sortable": true,
+    "filterable": false,
+    "showing": false
   }
 }
