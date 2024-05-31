@@ -1,4 +1,4 @@
-## A tool to automate testing and comparison OpenAI prompts, configurations, and responses  
+## A tool to automate testing and comparison ChatGPT prompts, configurations, and responses  
 
 > ### To speed up development consider [sponsoring this project](https://github.com/sponsors/eliataylor)
 
@@ -17,7 +17,7 @@ view demo: https://promptautomator.taylormadetraffic.com
 
 
 ## Run [Demo](https://promptautomator.taylormadetraffic.com):
-To navigate the interface and review results from testing this example dataset for writing playlists and playlists themes:
+Review and compare results (preloaded with example dataset for writing playlists and playlists themes)
 - `npm install`
 - `npm start`
 - `open http://localhost:3000/`
@@ -42,7 +42,7 @@ The following tokens will be replaced as described:
 - Write the Questions down the Rows and add responses to questions along Columns. Question-Answers will be grouped into a paragraph during testing. 
 
 3. Reuse the "Configs" sheet:
-- Selected any text based Model from OpenAI's list
+- Selected any text based Model from [OpenAI's list](https://platform.openai.com/docs/models)
 - Select which Executable. See below 
 - Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file. You can use `indexer.py`  to convert them from CSVs
 - Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
@@ -50,7 +50,7 @@ The following tokens will be replaced as described:
 
 4. Export each CSV sheet to `yourfolder/[sheetname].csv` 
 
-5. Index your surveys for the React app to display: `python indexer.py index_survey dataset/bags-userdata.csv `
+5. Index your surveys for the React app to display: `python indexer.py index_survey dataset/bags-userdata.csv`
 
 
 ## Normalize your dataset
@@ -60,7 +60,7 @@ The following tokens will be replaced as described:
 
 
 -[x] If testing Embeddings, convert your JSON to a PKL:  
-`python indexer.py build_embeddings public/music-catalogue.json`
+- `python indexer.py build_embeddings public/music-catalogue.json`
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
