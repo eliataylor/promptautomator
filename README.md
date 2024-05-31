@@ -1,4 +1,9 @@
-### To speed along development or any Issues, consider [sponsoring](https://github.com/sponsors/eliataylor)
+## A tool to automate testing and comparison OpenAI prompts, configurations, and responses  
+
+> ### To speed up development consider [sponsoring this project](https://github.com/sponsors/eliataylor)
+
+![interface.png](public%2Finterface.png)
+view demo: https://promptautomator.taylormadetraffic.com
 
 -----
 
@@ -10,7 +15,7 @@
 - `pip install -r requirements.txt`
 
 
-## Run Demo:
+## Run [Demo](https://promptautomator.taylormadetraffic.com):
 To navigate the interface and review results from testing this example dataset for writing playlists and playlists themes:
 - `npm install`
 - `npm start`
