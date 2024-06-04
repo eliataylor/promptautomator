@@ -51,7 +51,7 @@ The following tokens will be replaced as described:
 
 4. Export each CSV sheet to `yourfolder/[sheetname].csv` 
 
-5. Index your surveys for the React app to display: `python indexer.py index_survey dataset/bags-userdata.csv`
+5. Index your surveys for the React app to display: `python indexer.py index_surveys dataset/bags-userdata.csv`
 
 
 ## Normalize your dataset
