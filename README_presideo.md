@@ -54,17 +54,17 @@ The following tokens will be replaced as described:
 
 4. Export each CSV sheet to `bags/[sheetname].csv` 
 
-5. Index your surveys for the React app to display: `python indexer.py index_surveys dataset/bags-userdata.csv `
+5. Index your surveys for the React app to display: `.venv/bin/python indexer.py index_surveys dataset/bags-userdata.csv `
 
 ## Normalize your dataset
 -[x] Clean up the Shopify data (this replaces `normalize_dataset` from the public repo)
 - `node preprocesses/shopify-cleaner.js dataset/bags.csv`
 
 -[x] If testing Embeddings, convert your JSON to a PKL:  
-`python indexer.py build_embeddings public/bags.json`
+`.venv/bin/python indexer.py build_embeddings public/bags.json`
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
-- `python main.py dataset/bags-prompts.csv dataset/bags-configs.csv dataset/bags-userdata.csv`
+- `.venv/bin/python main.py dataset/bags-prompts.csv dataset/bags-configs.csv dataset/bags-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
-- `python indexer.py index_results`
+- `.venv/bin/python indexer.py index_results`
