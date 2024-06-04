@@ -27,26 +27,27 @@ Review and compare results (preloaded with example dataset for writing playlists
 
 > #### Copy this [Google Sheet](https://docs.google.com/spreadsheets/d/1NZ9vNCUsZmTvA6byWalU6CAJfF8NIi5e4e9Z6tlw1mI/edit?usp=sharing) to your own account
 
-1. Reuse the "Prompts" sheet:
-- Give your AI a persona in the Instructions column, 
-- Write your prompt in the Prompt column. 
-- Describe the expected response structure in the Response colum.
-- Group your Prompt tests by setting any value in Prompt ID column.
+1. Reuse the "Prompts" to list your prompts. The columns are: 
+- _Instructions_: Give your AI a persona. 
+- _Prompt_: Write your prompt. 
+- _Response_: Your expected response structure
+- _Prompt ID_: Any id to group prompts 
 
 The following tokens will be replaced as described:
-> - `__FILENAME__` gets replaced with the Survey Data Answers
-> - `__USERDATA__` gets replaced with the Survey Data Answers
-> - `__RFORMAT__` gets replaced with your desired response structure 
+> - `__RFORMAT__` gets replaced with your desired response structure from your prompts sheet above
+> - `__FILENAME__` gets replaced with your File Path below  
+> - `__USERDATA__` gets replaced with each set of Survey Answers below 
 
 2. Reuse the "Survey Answers" sheet:
 - Write the Questions down the Rows and add responses to questions along Columns. Question-Answers will be grouped into a paragraph during testing. 
 
-3. Reuse the "Configs" sheet:
-- Selected any text based Model from [OpenAI's list](https://platform.openai.com/docs/models)
-- Select which Executable. See below 
-- Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file. You can use `indexer.py`  to convert them from CSVs
-- Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
-- Set your Fine-Tuning configs to be passed directly into the prompt
+3. Reuse the "Configs" sheets. The columns are:
+- _Model_: Selected any text based [OpenAIs Model](https://platform.openai.com/docs/models)
+- _File Path_: Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file OR a valid OpenAI file ID. You can use `indexer.py`  to convert them from CSVs
+- _Fine Tuning_: Set your Fine-Tuning configs to be passed directly into the prompt
+- _Executable_: Select which Executable. (Threads / Completion / Embeddings)
+- _File Search_ / _Code Interpret_: True or False, only used in Threads
+- _Assistant_ / _Vector Store_: True, False, or a valid OpenAI id to reuse. Setting an ID will speed up further tests and reduce API usage. 
 
 4. Export each CSV sheet to `yourfolder/[sheetname].csv` 
 
@@ -54,12 +55,12 @@ The following tokens will be replaced as described:
 
 
 ## Normalize your dataset
--[x] Convert your CSV to JSON and replace your internal name for ID with `source_id`: 
+- [x] Convert your CSV to JSON and replace your internal name for ID with `source_id`: 
   - python indexer.py normalize_dataset <path to your dataset file> <property name for your internal ID>
 - `python indexer.py normalize_dataset examples/music-catalogue.csv id`
 
 
--[x] If testing Embeddings, convert your JSON to a PKL:  
+- [x] If testing Embeddings, convert your JSON to a PKL:  
 - `python indexer.py build_embeddings public/music-catalogue.json`
 
 ## Run Prompt Tests 
