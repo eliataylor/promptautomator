@@ -27,7 +27,9 @@ class Prompter:
         self.assistant = None
         self.vector = None
 
-        if os.path.exists(self.config["file_path"]):
+        if self.config["file_path"] is None or self.config["file_path"] == '':
+            logger.warning(f"Missing file data: {self.config['file_path']}")
+        elif os.path.exists(self.config["file_path"]):
             if ".pkl" not in self.config["file_path"] and ".json" not in self.config["file_path"]:  # csv can be retrieved: https://platform.openai.com/docs/assistants/tools/file-search/supported-files
                 logger.critical(f"Check OpenAI's docs if they're supporting this filetype: https://platform.openai.com/docs/assistants/tools/file-search/supported-files. Also try running `python DatIandexer.py normalize_dataset <product_file> <source_key>`")
                 sys.exit(1)
@@ -143,7 +145,9 @@ class Prompter:
             self.validate_response(None, str(e))
 
     async def create_file(self):
-        if self.config["file_path"][0:5] == 'file-':
+        if self.config["file_path"] == "":
+            return None
+        elif self.config["file_path"][0:5] == 'file-':
             self.file = self.openai.files.retrieve(self.config["file_path"])
         elif os.path.exists(self.config["file_path"]) is False:
             files = self.openai.files.list()
@@ -218,6 +222,8 @@ class Prompter:
             self.thread = self.openai.beta.threads.create(**self.opts_thread)
 
     async def create_vector_store(self):
+        if self.file is None:
+            return None
         if "vector_store" in self.config and isinstance(self.config["vector_store"], str) and self.config["vector_store"][0:3] == 'vs_':
             self.vector = self.openai.beta.vector_stores.retrieve(self.config["vector_store"])
             current_timestamp = int(datetime.datetime.now().timestamp())
