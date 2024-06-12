@@ -1,8 +1,8 @@
 {
   "embeddings": {
-    "ms": 0.742574,
-    "started": "2024-06-12 11:02:03",
-    "ended": "2024-06-12 11:02:04",
+    "ms": 0.628715,
+    "started": "2024-06-12 12:00:57",
+    "ended": "2024-06-12 12:00:58",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",

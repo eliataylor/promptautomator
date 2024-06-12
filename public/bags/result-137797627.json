@@ -1,1 +1,19 @@
-{"completion-file": {"ms": 10.751043, "started": "2024-06-12 11:49:14", "ended": "2024-06-12 11:49:25", "model": "gpt-4-turbo", "prompt_id": "make-survey", "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.", "instructions": "You are a merchandising expert, especially focused in reviewing bags of all sizes and styles", "response": "[{title, description}]", "config": {"model": "gpt-4-turbo", "executable": "Completion", "file_path": "dataset/bags.json", "fine_tuning": ""}, "results": "Failed to access ChatCompletion correctly"}}
+{
+  "completion-file": {
+    "ms": 6.833245,
+    "started": "2024-06-12 11:55:58",
+    "ended": "2024-06-12 11:56:05",
+    "model": "gpt-4-turbo",
+    "prompt_id": "make-survey",
+    "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
+    "instructions": "You are a merchandising expert, especially focused in reviewing bags of all sizes and styles",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Completion",
+      "file_path": "dataset/bags.json",
+      "fine_tuning": ""
+    },
+    "results": "Failed to access ChatCompletion correctly"
+  }
+}

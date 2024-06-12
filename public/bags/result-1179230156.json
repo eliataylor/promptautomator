@@ -1,1 +1,23 @@
-{"thead-file-assistant": {"ms": 6.507425, "started": "2024-06-12 11:55:37", "ended": "2024-06-12 11:55:44", "model": "gpt-3.5-turbo", "prompt_id": "make-survey", "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.", "instructions": "You are a merchandising expert, especially focused in reviewing bags of all sizes and styles", "response": "[{title, description}]", "config": {"model": "gpt-3.5-turbo", "executable": "Thread", "file_path": "dataset/bags.json", "fine_tuning": "", "file_id": "file-5JBCfufK8vxf5qtLKXfeHBF2", "thread_id": "thread_DFnrS9gSjT2jTZYx9RJwr4mi", "assistant_id": "asst_U1yvuUQW926Q4e0NmO1DWeHE", "vector_store_id": "vs_PyY5jDbgSe9vHCSA1HnwvBZC"}, "results": "Here are 5 survey questions to determine a user's needs and preferences in bags:\n\n1. How do you primarily intend to use the bag (e.g., work, travel, everyday carry, photography)?\n2. What size of a bag do you typically prefer (e.g., small, medium, large)?\n3. Do you have any specific organizational needs or features you look for in a bag (e.g., laptop compartment, water bottle pocket, internal dividers)?\n4. What material do you prefer your bag to be made of (e.g., leather, nylon, canvas)?\n5. Are there any specific colors or styles you prefer for your bags?\n\nThese questions can provide valuable insights into the user's preferences when selecting a bag.\u30104:0\u2020source\u3011."}}
+{
+  "thead-file-assistant": {
+    "ms": 6.507425,
+    "started": "2024-06-12 11:55:37",
+    "ended": "2024-06-12 11:55:44",
+    "model": "gpt-3.5-turbo",
+    "prompt_id": "make-survey",
+    "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
+    "instructions": "You are a merchandising expert, especially focused in reviewing bags of all sizes and styles",
+    "response": "[{title, description}]",
+    "config": {
+      "model": "gpt-3.5-turbo",
+      "executable": "Thread",
+      "file_path": "dataset/bags.json",
+      "fine_tuning": "",
+      "file_id": "file-5JBCfufK8vxf5qtLKXfeHBF2",
+      "thread_id": "thread_DFnrS9gSjT2jTZYx9RJwr4mi",
+      "assistant_id": "asst_U1yvuUQW926Q4e0NmO1DWeHE",
+      "vector_store_id": "vs_PyY5jDbgSe9vHCSA1HnwvBZC"
+    },
+    "results": "Here are 5 survey questions to determine a user's needs and preferences in bags:\n\n1. How do you primarily intend to use the bag (e.g., work, travel, everyday carry, photography)?\n2. What size of a bag do you typically prefer (e.g., small, medium, large)?\n3. Do you have any specific organizational needs or features you look for in a bag (e.g., laptop compartment, water bottle pocket, internal dividers)?\n4. What material do you prefer your bag to be made of (e.g., leather, nylon, canvas)?\n5. Are there any specific colors or styles you prefer for your bags?\n\nThese questions can provide valuable insights into the user's preferences when selecting a bag.\u30104:0\u2020source\u3011."
+  }
+}

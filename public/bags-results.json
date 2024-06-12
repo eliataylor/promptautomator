@@ -2,9 +2,9 @@
   {
     "filename": "result-520245410.json",
     "runkey": "completion-file",
-    "ms": 0.476113,
-    "started": "2024-06-12 10:58:24",
-    "ended": "2024-06-12 10:58:24",
+    "ms": 0.654937,
+    "started": "2024-06-12 11:56:57",
+    "ended": "2024-06-12 11:56:58",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -41,9 +41,9 @@
   {
     "filename": "result-3941046870.json",
     "runkey": "embeddings",
-    "ms": 0.632218,
-    "started": "2024-06-12 10:58:22",
-    "ended": "2024-06-12 10:58:23",
+    "ms": 0.50427,
+    "started": "2024-06-12 11:56:56",
+    "ended": "2024-06-12 11:56:56",
     "model": "gpt-4-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -86,9 +86,9 @@
   {
     "filename": "result-1953316365.json",
     "runkey": "embeddings",
-    "ms": 0.384702,
-    "started": "2024-06-12 11:00:45",
-    "ended": "2024-06-12 11:00:45",
+    "ms": 0.469757,
+    "started": "2024-06-12 11:59:42",
+    "ended": "2024-06-12 11:59:43",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -131,9 +131,9 @@
   {
     "filename": "result-2578268961.json",
     "runkey": "thead-file-assistant",
-    "ms": 14.794441,
-    "started": "2024-06-12 11:00:30",
-    "ended": "2024-06-12 11:00:44",
+    "ms": 17.284371,
+    "started": "2024-06-12 11:59:24",
+    "ended": "2024-06-12 11:59:41",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -144,19 +144,19 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-K5gl8NpLM9iX9bDmfONziaqP",
-      "thread_id": "thread_qTB9w1hs74DerBxQgWJziePa",
-      "assistant_id": "asst_HKaWGl7BBwmrndRl3DJoFDLu",
-      "vector_store_id": "vs_yat7jl6S0YYOFBOzQgK4pChn"
+      "file_id": "file-eAYJP1Lw3hgxcfqIZPvIZFxD",
+      "thread_id": "thread_s3M0RmIZg6hHHKlOoiv7qPoE",
+      "assistant_id": "asst_VQMwVInVVcz4SngxiwdgCwlJ",
+      "vector_store_id": "vs_60kTQ1aWrfjS6D1K33pyVPKh"
     },
-    "results": "Based on the user's preferences for a backpack for work and commuting, priced at $300, with a need for a large size and many compartments, suitable for trips and in black or grey color, the following products match the criteria:\n\n1. [{\"source_id\": 103, \"reason\": \"Everyday Messenger - Suitable for work and commuting, multiple compartments, spacious, black or grey color option, within $300 budget\", \"score\": 5}]\n2. [{\"source_id\": 106, \"reason\": \"Everyday Totepack - Offers the convenience of a backpack with the look of a tote, suitable for work and commuting, large size, multiple compartments, black or grey color, within $300 budget\", \"score\": 4}]\n3. [{\"source_id\": 256, \"reason\": \"Everyday Sling 5L - Ideal for organization and quick access, suitable for work and commuting, compact design with customizable organization, black or grey color option, within $300 budget\", \"score\": 3}]"
+    "results": "Based on the user's preferences for a backpack for work and commuting with a budget of $300, needing a large space and many compartments, suitable for airports and trips, and preferring black or grey color, here are some matching products from the uploaded file \"bags.json\":\n\n1. [{\"source_id\": 106, \"reason\": \"Backpack style with ample storage space and multiple compartments, suitable for trips and travel\", \"score\": 10}]\n2. [{\"source_id\": 4, \"reason\": \"Travel backpack that meets international carry-on size requirements, expandable for extra space, with various compartments and weatherproof features\", \"score\": 9}]\n\nThese options seem to align well with the user's requirements for a backpack for work and commuting within the specified budget and preferences ."
   },
   {
     "filename": "result-1637042843.json",
     "runkey": "embeddings",
-    "ms": 0.464782,
-    "started": "2024-06-12 11:00:12",
-    "ended": "2024-06-12 11:00:12",
+    "ms": 0.400696,
+    "started": "2024-06-12 11:58:59",
+    "ended": "2024-06-12 11:59:00",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -199,9 +199,9 @@
   {
     "filename": "result-1391412146.json",
     "runkey": "completion-file",
-    "ms": 0.729785,
-    "started": "2024-06-12 11:00:13",
-    "ended": "2024-06-12 11:00:14",
+    "ms": 0.611902,
+    "started": "2024-06-12 11:59:01",
+    "ended": "2024-06-12 11:59:01",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -218,9 +218,9 @@
   {
     "filename": "result-4107967160.json",
     "runkey": "embeddings",
-    "ms": 0.355507,
-    "started": "2024-06-12 10:56:59",
-    "ended": "2024-06-12 10:57:00",
+    "ms": 0.549435,
+    "started": "2024-06-12 11:55:44",
+    "ended": "2024-06-12 11:55:45",
     "model": "gpt-3.5-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -263,9 +263,9 @@
   {
     "filename": "result-4264542542.json",
     "runkey": "completion-file",
-    "ms": 0.829558,
-    "started": "2024-06-12 10:58:23",
-    "ended": "2024-06-12 10:58:24",
+    "ms": 0.795297,
+    "started": "2024-06-12 11:56:56",
+    "ended": "2024-06-12 11:56:57",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -283,9 +283,9 @@
   {
     "filename": "result-2970832960.json",
     "runkey": "completion-file",
-    "ms": 10.319511,
-    "started": "2024-06-12 10:58:59",
-    "ended": "2024-06-12 10:59:10",
+    "ms": 8.57307,
+    "started": "2024-06-12 11:57:48",
+    "ended": "2024-06-12 11:57:56",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -302,9 +302,9 @@
   {
     "filename": "result-3422636797.json",
     "runkey": "embeddings",
-    "ms": 0.434466,
-    "started": "2024-06-12 10:58:46",
-    "ended": "2024-06-12 10:58:46",
+    "ms": 0.696883,
+    "started": "2024-06-12 11:57:34",
+    "ended": "2024-06-12 11:57:35",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -347,9 +347,9 @@
   {
     "filename": "result-973774698.json",
     "runkey": "thead-file-assistant",
-    "ms": 34.799059,
-    "started": "2024-06-12 10:57:47",
-    "ended": "2024-06-12 10:58:22",
+    "ms": 20.541978,
+    "started": "2024-06-12 11:56:35",
+    "ended": "2024-06-12 11:56:55",
     "model": "gpt-4-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -360,19 +360,19 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-hL0iKsiZunLc63QO6slGA9C8",
-      "thread_id": "thread_a2r1Jm2D2odHnQ5iGAEvylJS",
-      "assistant_id": "asst_fQh0esvY3bdhBIeUSwesBHP9",
-      "vector_store_id": "vs_l4ugkgRyBGi15uq9AY49l4XJ"
+      "file_id": "file-DNBHaWIzdAmgxDRPwJuR3yCs",
+      "thread_id": "thread_IGycn9szvBl93z2oojtQYcMY",
+      "assistant_id": "asst_fywCrOjd14Jqb6nCil48DALT",
+      "vector_store_id": "vs_r2sHwYyEtRZpcXi4wnhnlYVH"
     },
-    "results": "To effectively gauge a user's needs and preferences for bags, a well-crafted survey can be instrumental. Here are five survey questions designed to gather comprehensive and actionable insights:\n\n1. **What types of bags are you primarily interested in?**\n   - Backpacks\n   - Tote bags\n   - Messenger bags\n   - Handbags\n   - Travel bags\n   - Other (Please specify)\n\n2. **What is your main purpose for using a bag?**\n   - Daily commuting\n   - Business or professional use\n   - Travel\n   - School\n   - Shopping\n   - Sporting/Outdoor activities\n   - Other (Please specify)\n\n3. **Which features are most important to you in choosing a bag? (Please select up to three)**\n   - Durability\n   - Style/design\n   - Price\n   - Brand\n   - Material\n   - Size/capacity\n   - Eco-friendliness\n   - Security features (e.g., lockable zippers, anti-theft design)\n   - Waterproof or water-resistance\n   - Color options\n   - Ease of cleaning\n\n4. **How often do you purchase a new bag?**\n   - Every 3 months or less\n   - Every 6 months\n   - Once a year\n   - Every few years\n   - Rarely/I only replace it when needed\n   \n5. **What is your typical budget for purchasing a new bag?**\n   - Under $50\n   - $50 to $100\n   - $100 to $200\n   - $200 to $300\n   - Over $300\n\nThese questions cover different aspects including type, purpose, features, purchase frequency, and budget, allowing you to obtain a well-rounded understanding of user preferences and requirements regarding bags."
+    "results": "Creating survey questions tailored to determine user preferences and needs for bags involves focusing on usage habits, style preferences, quality expectations, and the importance of certain features. Here are five example survey questions that could effectively gather this information:\n\n1. **What is the primary purpose of your bag?**\n   - [ ] Daily commutation\n   - [ ] Travel\n   - [ ] Professional work\n   [ ] School\n   - [ ] Fashion/Style\n   - [ ] Other: _________________\n\n2. **Which size of bag do you usually prefer for your daily needs?**\n   - [ ] Small (e.g., purses, clutch bags)\n   - [ ] Medium (e.g., backpacks, handbags)\n   - [ ] Large (e.g., travel bags, duffel bags)\n   \n3. **How important are the following features in a bag to you? Rate them from 1 (Not Important) to 5 (Very Important).**\n   - Durability __\n   - Style __\n   - Comfort __\n   - Price __\n   - Brand __\n   - Eco-friendliness __\n   - Multifunctionality __\n\n4. **Which materials do you prefer for bags you purchase? Select all that apply.**\n   - [ ] Leather \n   - [ ] Canvas\n   - [ ] Synthetic\n   - [ ] Nylon\n   - [ ] Cotton\n   - [ ] Recycled materials\n\n5. **How often do you purchase a new bag?**\n   - [ ] Every few months\n   - [ ] Once a year\n   - [ ] Every couple of years\n   - [ ] Only when the current one wears out\n\nThese questions cover different aspects of bag usage, preferences in material and size, and purchasing habits, providing a comprehensive understanding of consumer needs."
   },
   {
     "filename": "result-601832875.json",
     "runkey": "embeddings",
-    "ms": 0.742574,
-    "started": "2024-06-12 11:02:03",
-    "ended": "2024-06-12 11:02:04",
+    "ms": 0.628715,
+    "started": "2024-06-12 12:00:57",
+    "ended": "2024-06-12 12:00:58",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -415,9 +415,9 @@
   {
     "filename": "result-1188250303.json",
     "runkey": "thead-file-assistant",
-    "ms": 26.537987,
-    "started": "2024-06-12 11:01:36",
-    "ended": "2024-06-12 11:02:03",
+    "ms": 25.95732,
+    "started": "2024-06-12 12:00:30",
+    "ended": "2024-06-12 12:00:56",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -428,19 +428,19 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-2EUfb6b0sV5kiKeHx94F8Ny3",
-      "thread_id": "thread_SvMw3zr2gAbrCCd72x0i5QD7",
-      "assistant_id": "asst_y87kyBcMwQIHWHN1qEdfyihy",
-      "vector_store_id": "vs_eNxc0ZT8N51FSHeUbt6lIrhZ"
+      "file_id": "file-Gndn1eEwPOadIV0zxO5MadT6",
+      "thread_id": "thread_1flfBrDvKtXtqFJBh0plHpYV",
+      "assistant_id": "asst_GqCOXjTZxg2Wyed5Nsv1eJ5s",
+      "vector_store_id": "vs_HgBBVTowdLwm6KySKdPpiINv"
     },
-    "results": "Here are the most suitable product recommendations based on the user's preferences described:\n\n1. **Everyday Totepack**:\n   - **Source ID**: 106\n   - **Reason**: It combines the practicality of a tote with the comfort of a backpack, is ideal for commuter needs, has multiple compartments for organizing items, includes a laptop sleeve, and is travel-friendly with luggage carry and stowable straps. The color options and price align well with the specifications.\n   - **Score**: 95\n\n2. **Travel Backpack 45L**:\n   - **Source ID**: 64\n   - **Reason**: This backpack meets carry-on requirements but expands up to 45L for substantial carrying capacity, facilitating one-bag travel. It offers quick access pockets, expandable side pockets for items like water bottles or tripods, and a protected space for laptops and tablets. The price slightly exceeds the budget but may be justified by the extensive features.\n   - **Score**: 90\n\n3. **Everyday Messenger V1**:\n   - **Source ID**: 256  \n   - **Reason**: This bag is designed for multifunctional use, ideal for work and commuting with spaces for tech gadgets and personal items, lightweight, and has fast access features. It provides options for different carrying styles and weatherproof protection.\n   - **Score**: 85\n\nThese products were selected as they match closely with the user's requirements of a bag suitable for work, commuting, with ample space and organizational features, and preferred color options of black or grey ."
+    "results": "Here are three bags from the bags.json file that could match the specified user preferences:\n\n1. Travel Backpack 45L\n   - **Source ID:** 63\n   - **Reason:** This backpack expands up to 45L, offers several pockets, and a weatherproof shell, making it ideal for work, commuting, airport travel, and it ensures extensive space and organization.\n   - **Score:** High compatibility with the user's need for space, organization, and travel readiness.\n   - **Citation:**  \n\n2. Everyday Messenger\n   - **Source ID:** 103\n   - **Reason:** Offers compartments and modern design suited for work equipment, durable material, and weatherproofing suitable for daily commuting and occasional trips, fits in the user's price range.\n   - **Score:** High functionality for work and commuting with an adequate number of compartments and a professional design.\n   - **Citation:**  \n\n3. Everyday Backpack V2 30L\n   - **Source ID:** 64\n   - **Reason:** Comes with several access points, substantial capacity, laptop pocket, and it's designed for frequent travel, aligns well with the user's budget and preference for a backpack.\n   - **Remember:** A variant of this bag is also available in a different size.\n   - **Score:** High adaptability for both daily use and travel with considerable space and ease of handling.\n   - **Citation:**  "
   },
   {
     "filename": "result-3525791663.json",
     "runkey": "thead-file-assistant",
-    "ms": 29.008631,
-    "started": "2024-06-12 10:59:42",
-    "ended": "2024-06-12 11:00:11",
+    "ms": 27.588163,
+    "started": "2024-06-12 11:58:31",
+    "ended": "2024-06-12 11:58:59",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -451,19 +451,19 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-BdBAdJxQDhec0FggLzLt1hHe",
-      "thread_id": "thread_TeY0hFJ3eQfWFk6r3kClgF2C",
-      "assistant_id": "asst_xV95xNyOT89PHCOB0mjV4mj4",
-      "vector_store_id": "vs_fCnHXOTFgz8GMqrxhIo4Sfv3"
+      "file_id": "file-SJwwXpsJUAFTWv9OkTFfalbr",
+      "thread_id": "thread_KlFSWoxyxnbvtuL6jQHWBnNA",
+      "assistant_id": "asst_pyohIXH0XhZ24VcWUwdqI4Sy",
+      "vector_store_id": "vs_Tj9RuPk43NLg68S9Rm0tbFdb"
     },
-    "results": "Here are three matching products from the file that meet the user's given preferences:\n\n1. **Travel Backpack 45L**\n   - **Source ID**: 63\n   - **Reason**: This backpack is perfect for both work and commuting, as well as trips through airports. It expands up to 45L for maximum space and has multiple compartments and access points. Designed to meet international carry-on requirements and constructed from weatherproof materials, it offers a robust pick for the traveler who needs a multi-functional and large capacity backpack. It's available in black, aligning well with the color preference.\n   - **Score**: 95\n\n2. **Travel Backpack 30L**\n   - **Source ID**: 184\n   - **Reason**: Suitable for day-to-day work and short trips, this bag is ideal for commuters who occasionally travel. It expands from 27L to 33L when needed and fits the price point closely at $249. This backpack also features a weatherproof shell and has strategic compartments for organization, including a laptop sleeve, which enhances its utility for work-related purposes.\n   - **Score**: 90\n\n3. **Everyday Backpack 20L**\n   - **Source ID**: 105\n   - **Reason**: This backpack is perfect for everyday use with multiple compartments for organization, a 20L capacity which can expand a bit more, and a design that supports commuting and travel with an integrated luggage pass-through. Priced at $259, it fits the budget and meets the user's preference for color and functionality.\n   - **Score**: 85\n\nThese selections are based on functionality, capacity, the ability to carry through airports, and pricing, aligning with the user's preferences."
+    "results": "Here are three matching products based on the detailed preferences provided:\n\n1. **Travel Backpack 45L**\n   - **source_id**: 63\n   - **reason**: This backpack is expandable and collapsible, ideal for different types of trips with a rugged design suitable for commuting and airport travels. It is available in black color, fits international carry-on size requirements, and has many compartments which include padded sleeves for a laptop and tablet .\n   \n2. **Travel Backpack 30L**\n   - **source_id**: 184\n   - **reason**: This slightly smaller backpack provides a good balance of size and portability, expandable from 27L to 30L. It also matches the color preference of black, contains numerous compartments for organization, and complies with carry-on size regulations for most airlines .\n   \n3. **Everyday Sling 10L V1**\n   - **source_id**: 144\n   - **reason**: Designed for quick access and organization, this sling bag can accommodate a range of everyday carry and travel essentials, particularly appealing for lighter gear setups. Its weatherproof 400D nylon canvas and discreet black color make it suitable for both work commuting and quick trips .\n\nThese selections consider important factors like size, portability, functionality for work and travel, pricing around the $300 range, and the color preference for black or grey."
   },
   {
     "filename": "result-2862396510.json",
     "runkey": "completion-file",
-    "ms": 0.652138,
-    "started": "2024-06-12 11:00:12",
-    "ended": "2024-06-12 11:00:13",
+    "ms": 0.902017,
+    "started": "2024-06-12 11:59:00",
+    "ended": "2024-06-12 11:59:01",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -481,9 +481,9 @@
   {
     "filename": "result-1179230156.json",
     "runkey": "thead-file-assistant",
-    "ms": 11.067739,
-    "started": "2024-06-12 10:56:47",
-    "ended": "2024-06-12 10:56:59",
+    "ms": 6.507425,
+    "started": "2024-06-12 11:55:37",
+    "ended": "2024-06-12 11:55:44",
     "model": "gpt-3.5-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -494,19 +494,19 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-7wHzO5ZbThuSvkHrAwU4Hhnu",
-      "thread_id": "thread_IE3I8xRa3Se5vyGjVTl3LeJd",
-      "assistant_id": "asst_rT9puLsNILoFsPeRtivcLAbC",
-      "vector_store_id": "vs_UMvrarY242e7csalLER0pYbg"
+      "file_id": "file-5JBCfufK8vxf5qtLKXfeHBF2",
+      "thread_id": "thread_DFnrS9gSjT2jTZYx9RJwr4mi",
+      "assistant_id": "asst_U1yvuUQW926Q4e0NmO1DWeHE",
+      "vector_store_id": "vs_PyY5jDbgSe9vHCSA1HnwvBZC"
     },
-    "results": "Here are 5 survey questions to determine a user's needs and preferences in bags:\n\n1. What size of bag do you typically prefer for your daily use?\n2. Do you prioritize functionality or aesthetics when choosing a bag?\n3. Are special features like weatherproofing or extra storage compartments important to you in a bag?\n4. How do you usually carry your bag - by hand, over the shoulder, or as a backpack?\n5. What is the primary use of the bag you are looking for - work, travel, casual outings, or specific activities?\n\nThese questions can help understand the user's preferences and guide them towards the most suitable bag for their needs. ."
+    "results": "Here are 5 survey questions to determine a user's needs and preferences in bags:\n\n1. How do you primarily intend to use the bag (e.g., work, travel, everyday carry, photography)?\n2. What size of a bag do you typically prefer (e.g., small, medium, large)?\n3. Do you have any specific organizational needs or features you look for in a bag (e.g., laptop compartment, water bottle pocket, internal dividers)?\n4. What material do you prefer your bag to be made of (e.g., leather, nylon, canvas)?\n5. Are there any specific colors or styles you prefer for your bags?\n\nThese questions can provide valuable insights into the user's preferences when selecting a bag.\u30104:0\u2020source\u3011."
   },
   {
     "filename": "result-4276110160.json",
     "runkey": "completion-file",
-    "ms": 8.680803,
-    "started": "2024-06-12 11:00:55",
-    "ended": "2024-06-12 11:01:04",
+    "ms": 9.298413,
+    "started": "2024-06-12 11:59:55",
+    "ended": "2024-06-12 12:00:05",
     "model": "gpt-4-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "A user's attributes are described by these questions and answers: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -523,9 +523,9 @@
   {
     "filename": "result-137797627.json",
     "runkey": "completion-file",
-    "ms": 8.169299,
-    "started": "2024-06-12 10:57:11",
-    "ended": "2024-06-12 10:57:19",
+    "ms": 6.833245,
+    "started": "2024-06-12 11:55:58",
+    "ended": "2024-06-12 11:56:05",
     "model": "gpt-4-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -542,9 +542,9 @@
   {
     "filename": "result-362520669.json",
     "runkey": "completion-file",
-    "ms": 0.806359,
-    "started": "2024-06-12 10:56:36",
-    "ended": "2024-06-12 10:56:37",
+    "ms": 0.60965,
+    "started": "2024-06-12 11:55:26",
+    "ended": "2024-06-12 11:55:27",
     "model": "gpt-3.5-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",
@@ -581,9 +581,9 @@
   {
     "filename": "result-1055936529.json",
     "runkey": "thead-file-assistant",
-    "ms": 11.25173,
-    "started": "2024-06-12 10:58:34",
-    "ended": "2024-06-12 10:58:45",
+    "ms": 15.103162,
+    "started": "2024-06-12 11:57:18",
+    "ended": "2024-06-12 11:57:34",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -594,30 +594,11 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-wg33uhfDQGNOVKJUOZpmo5Kn",
-      "thread_id": "thread_mldj67wVtDs1X6bZ3Ocs8GNB",
-      "assistant_id": "asst_FMDhgRqsi9WpZ1JfWjQ1s9Fp",
-      "vector_store_id": "vs_JZUYMUmPIovIO9qovxJafKVG"
+      "file_id": "file-CRwnkgq5KP8S3Ag0KXP7Imaa",
+      "thread_id": "thread_SXV7FjtHX3PcajooAZBCD5u5",
+      "assistant_id": "asst_ccwK6ogC5EFRB07boUPolL4F",
+      "vector_store_id": "vs_1XUBIl7PrnpuYa0ddfZj7xTy"
     },
-    "results": [
-      {
-        "source_id": 0,
-        "reason": "Travel Backpack 45L provides ample space and has multiple compartments for organization",
-        "score": 4,
-        "exists": false
-      },
-      {
-        "source_id": 4,
-        "reason": "30L Travel Backpack is suitable for trips and offers good organization features",
-        "score": 3,
-        "exists": true
-      },
-      {
-        "source_id": 65,
-        "reason": "Camera Cube V1 offers additional organization within the bag for work and commuting items",
-        "score": 3,
-        "exists": true
-      }
-    ]
+    "results": "[4:0\u2020Travel Backpack 45L]  \n[4:4\u202030L Travel Backpack]  \n[4:64\u2020Camera Cube V1]"
   }
 ]

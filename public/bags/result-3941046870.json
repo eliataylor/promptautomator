@@ -1,8 +1,8 @@
 {
   "embeddings": {
-    "ms": 0.632218,
-    "started": "2024-06-12 10:58:22",
-    "ended": "2024-06-12 10:58:23",
+    "ms": 0.50427,
+    "started": "2024-06-12 11:56:56",
+    "ended": "2024-06-12 11:56:56",
     "model": "gpt-4-turbo",
     "prompt_id": "make-survey",
     "prompt": "Write 5 survey questions to determine a user's needs and preferences in bags.",

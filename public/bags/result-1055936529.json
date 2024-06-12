@@ -1,8 +1,8 @@
 {
   "thead-file-assistant": {
-    "ms": 11.25173,
-    "started": "2024-06-12 10:58:34",
-    "ended": "2024-06-12 10:58:45",
+    "ms": 15.103162,
+    "started": "2024-06-12 11:57:18",
+    "ended": "2024-06-12 11:57:34",
     "model": "gpt-3.5-turbo",
     "prompt_id": "recommend-bags",
     "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
@@ -13,30 +13,11 @@
       "executable": "Thread",
       "file_path": "dataset/bags.json",
       "fine_tuning": "",
-      "file_id": "file-wg33uhfDQGNOVKJUOZpmo5Kn",
-      "thread_id": "thread_mldj67wVtDs1X6bZ3Ocs8GNB",
-      "assistant_id": "asst_FMDhgRqsi9WpZ1JfWjQ1s9Fp",
-      "vector_store_id": "vs_JZUYMUmPIovIO9qovxJafKVG"
+      "file_id": "file-CRwnkgq5KP8S3Ag0KXP7Imaa",
+      "thread_id": "thread_SXV7FjtHX3PcajooAZBCD5u5",
+      "assistant_id": "asst_ccwK6ogC5EFRB07boUPolL4F",
+      "vector_store_id": "vs_1XUBIl7PrnpuYa0ddfZj7xTy"
     },
-    "results": [
-      {
-        "source_id": 0,
-        "reason": "Travel Backpack 45L provides ample space and has multiple compartments for organization",
-        "score": 4,
-        "exists": false
-      },
-      {
-        "source_id": 4,
-        "reason": "30L Travel Backpack is suitable for trips and offers good organization features",
-        "score": 3,
-        "exists": true
-      },
-      {
-        "source_id": 65,
-        "reason": "Camera Cube V1 offers additional organization within the bag for work and commuting items",
-        "score": 3,
-        "exists": true
-      }
-    ]
+    "results": "[4:0\u2020Travel Backpack 45L]  \n[4:4\u202030L Travel Backpack]  \n[4:64\u2020Camera Cube V1]"
   }
 }
