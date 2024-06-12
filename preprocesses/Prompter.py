@@ -170,11 +170,11 @@ class Prompter:
             for file in files:
                 if file.filename == os.path.basename(self.config["file_path"]):
                     return self.openai.files.content(self.file.id)
-        elif ".json" in self.config["file_path"]:
+        elif ".csv" in self.config["file_path"]:
             with open(self.config["file_path"], 'r') as file:
                 df = pandas.read_csv(self.config["file_path"])  # Read only the header row
                 return df.columns.tolist()
-        elif ".csv" in self.config["file_path"]:
+        elif ".json" in self.config["file_path"]:
             with open(self.config["file_path"], 'r') as file:
                 return json.load(file)
         elif ".pkl" in self.config["file_path"]:
