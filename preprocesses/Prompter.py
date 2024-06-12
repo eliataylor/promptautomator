@@ -28,7 +28,7 @@ class Prompter:
         self.vector = None
 
         if self.config["file_path"] is None or self.config["file_path"] == '':
-            logger.warning(f"Missing file data: {self.config['file_path']}")
+            logger.info(f"no file or dataset being referenced")
         elif os.path.exists(self.config["file_path"]):
             if ".pkl" not in self.config["file_path"] and ".json" not in self.config["file_path"]:  # csv can be retrieved: https://platform.openai.com/docs/assistants/tools/file-search/supported-files
                 logger.critical(f"Check OpenAI's docs if they're supporting this filetype: https://platform.openai.com/docs/assistants/tools/file-search/supported-files. Also try running `python DatIandexer.py normalize_dataset <product_file> <source_key>`")
@@ -96,14 +96,11 @@ class Prompter:
 
         if self.config["executable"] == 'Thread':
             await self.create_file()
-            if self.file is None:
-                logger.warning(f"Failed to get file: {self.config['file_path']}")
-            else:
-                await self.create_vector_store()
-                await self.create_assistant()
-                self.started = datetime.datetime.now()
-                await self.create_thread()
-                await self.run_thread()
+            await self.create_vector_store()
+            await self.create_assistant()
+            self.started = datetime.datetime.now()
+            await self.create_thread()
+            await self.run_thread()
         elif self.config["executable"] == 'Embeddings':
             self.create_embeddings()
         else:
@@ -158,6 +155,10 @@ class Prompter:
         else:
             self.file = self.openai.files.create(file=open(self.config["file_path"], 'rb'), purpose="assistants")
 
+        if self.file is None:
+            logger.warning(f"Failed to get file: {self.config['file_path']}")
+
+
     def get_dataset(self):
         if self.file and self.file.purpose == 'assistants':  # cannot download these
             file_path = find_nearby_file(self.file.filename,
@@ -189,11 +190,11 @@ class Prompter:
         self.opts_assistant['tools'] = []
         self.opts_assistant['tool_resources'] = {}
 
-        if self.config["code_interpreter"]:
+        if self.config["code_interpreter"] and self.file is not None:
             self.opts_assistant['tools'].append({"type": "code_interpreter"})
             self.opts_assistant['tool_resources']['code_interpreter'] = {"file_ids": [self.file.id]}
 
-        if self.config["file_search"]:
+        if self.config["file_search"] and self.vector is not None:
             self.opts_assistant['tools'].append({"type": "file_search"})
             self.opts_assistant['tool_resources']['file_search'] = {"vector_store_ids": [self.vector.id]}
 
@@ -222,7 +223,7 @@ class Prompter:
             self.thread = self.openai.beta.threads.create(**self.opts_thread)
 
     async def create_vector_store(self):
-        if self.file is None:
+        if self.file is None or "id" not in self.file:
             return None
         if "vector_store" in self.config and isinstance(self.config["vector_store"], str) and self.config["vector_store"][0:3] == 'vs_':
             self.vector = self.openai.beta.vector_stores.retrieve(self.config["vector_store"])
