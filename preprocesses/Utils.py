@@ -101,7 +101,7 @@ def get_nested(data, keys, default=None):
             return default
     return data
 
-def find_json( string):
+def find_json(string):
     start_index = min(string.find('{'), string.find('['))
     if start_index == -1:
         print('No JSON object found in the string.')

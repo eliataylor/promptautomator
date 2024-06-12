@@ -87,7 +87,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                                     onChange={(e) => handleIdChange(e.target.value)}
                                 >
                                     <MenuItem value='all'>All Prompt IDs</MenuItem>
-                                    <MenuItem value={'0'}>Missing Prompt IDs</MenuItem>
+                                    {/* <MenuItem value={'0'}>Missing Prompt IDs</MenuItem> */}
                                     {allPromptIds.map((id: any) => <MenuItem value={id}>{id}</MenuItem>)}
                                 </TextField>
                             </Grid>

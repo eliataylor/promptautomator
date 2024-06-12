@@ -134,7 +134,7 @@ class Prompter:
             self.ended = datetime.datetime.now()
             response_str = get_nested(response_str, ['choices', 0, 'message', 'content'],
                                       default="Failed to access ChatCompletion correctly")
-            logger.debug("\nCOMPLETION RESULTS:\n", response_str)
+            logger.debug(f"\nCOMPLETION RESULTS:\n {response_str}")
             response_json = find_json(response_str)
             self.validate_response(response_json, response_str)
         except Exception as e:
@@ -251,7 +251,7 @@ class Prompter:
         # TODO: maybe pass survey and create individual embeddings for each question:answer
         response_json = self.embeddings.find_recommendations(topass)
         self.ended = datetime.datetime.now()
-        logger.debug("\n\nEMBEDDING RESULT: \n", response_json)
+        logger.debug("\n\nEMBEDDING RESULT: {}\n", json.dumps(response_json))
         self.validate_response(response_json, response_json)
 
     async def run_thread(self):
@@ -272,7 +272,7 @@ class Prompter:
             response_str = event_handler.response()
 
             self.ended = datetime.datetime.now()
-            logger.debug("\n\nTHREAD RESULTS!! :\n", response_str)
+            logger.debug("THREAD RESULTS!!: {}", response_str)
             response_json = find_json(response_str)
             self.validate_response(response_json, response_str)
 
@@ -326,14 +326,14 @@ class Prompter:
                             has_id = any(p[key] == resp[key] for p in product_json)
                             if has_id:
                                 resp["exists"] = True
-                                logger.debug('exists', resp[key], resp)
+                                logger.debug('exists {}', json.dumps(resp))
                             else:
                                 resp["exists"] = False
-                                logger.warning(f'no such key {key}', resp)
+                                logger.warning(f'no such key {key} in {json.dumps(resp)}')
                     tracker[config_id]["results"] = response_json
 
             except Exception as e:
-                logger.error("Could not validate from dataset", e)
+                logger.error("Could not validate from dataset: {}", str(e))
 
         with open(self.results_path, 'w') as file:
             json.dump(tracker, file)
