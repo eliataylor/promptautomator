@@ -1,1 +1,45 @@
-{"embeddings": {"ms": 0.370268, "started": "2024-05-31 16:20:16", "ended": "2024-05-31 16:20:16", "model": "gpt-4-turbo", "prompt_id": "recommend-bags", "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.", "instructions": "You are an expert on products in bags.json. Users will provide answers to questions describing their preferences. You should find 3 matching products. Respond with only a JSON array of objects in this format [{source_id, reason, score}]", "response": "[{source_id, reason, score}]", "config": {"model": "gpt-4-turbo", "executable": "Embeddings", "file_path": "dataset/bags.pkl", "fine_tuning": ""}, "results": [{"source_id": 184, "Handle": "travel-backpack-30l", "exists": true}, {"source_id": 63, "Handle": "travel-backpack", "exists": true}, {"source_id": 104, "Handle": "everyday-tote", "exists": true}, {"source_id": 254, "Handle": "everyday-tote-v1", "exists": true}, {"source_id": 97, "Handle": "travel-duffelpack", "exists": true}]}}
+{
+  "embeddings": {
+    "ms": 0.464782,
+    "started": "2024-06-12 11:00:12",
+    "ended": "2024-06-12 11:00:12",
+    "model": "gpt-4-turbo",
+    "prompt_id": "recommend-bags",
+    "prompt": "Find 3 matching products described by this user's answers to the following questions: What type of bag do you need?: Backpacks.\nWhat do you use your bag for?: Work and Commuting.\nWhat's your price point?: $300.\nHow much space do you want in your bag?: As big as possible.\nHow many compartments do you need?: Many.\nDo you take your bags through airports or on trips?: Yes.\nWhat color do you prefer?: Black or Grey.",
+    "instructions": "You are an expert on products in bags.json. Users will provide answers to questions describing their preferences. You should find 3 matching products. Respond with only a JSON array of objects in this format [{source_id, reason, score}]",
+    "response": "[{source_id, reason, score}]",
+    "config": {
+      "model": "gpt-4-turbo",
+      "executable": "Embeddings",
+      "file_path": "dataset/bags.pkl",
+      "fine_tuning": ""
+    },
+    "results": [
+      {
+        "source_id": 184,
+        "Handle": "travel-backpack-30l",
+        "exists": true
+      },
+      {
+        "source_id": 63,
+        "Handle": "travel-backpack",
+        "exists": true
+      },
+      {
+        "source_id": 104,
+        "Handle": "everyday-tote",
+        "exists": true
+      },
+      {
+        "source_id": 254,
+        "Handle": "everyday-tote-v1",
+        "exists": true
+      },
+      {
+        "source_id": 97,
+        "Handle": "travel-duffelpack",
+        "exists": true
+      }
+    ]
+  }
+}

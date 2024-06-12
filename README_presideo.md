@@ -65,6 +65,6 @@ The following tokens will be replaced as described:
 
 ## Run Prompt Tests 
 - [x] To run all prompts, against all configurations, against all userdata sets: 
-- `.venv/bin/python main.py dataset/bags-prompts.csv dataset/bags-configs.csv dataset/bags-userdata.csv`
+- `.venv/bin/python main.py dataset/bags-prompts.csv dataset/bags-configs-fulltest.csv dataset/bags-userdata.csv`
 - [x] To copy the individual results into a single index file for the front-end to load: 
 - `.venv/bin/python indexer.py index_results`

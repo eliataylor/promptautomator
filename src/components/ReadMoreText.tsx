@@ -19,7 +19,7 @@ const ReadMoreText: React.FC<ReadMoreTextProps> = ({ text,  }) => {
     setIsExpanded(!isExpanded);
   };
 
-  const displayedText = isExpanded ? text : text.slice(0, maxStrLength);
+  const displayedText = text.length <= maxStrLength ? text : text.slice(0, maxStrLength);
 
   return (
     <Typography variant="body1" component="div">
