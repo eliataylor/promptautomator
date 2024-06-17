@@ -31,10 +31,10 @@ To navigate the interface and review results from testing this example dataset f
 > #### Use this [Google Sheet](https://docs.google.com/spreadsheets/d/1xK9i_Qh_J1kbAMlPSlXf7nrT1HRV3RXzcq_0dmqPgNI/edit#gid=1914178484) 
 
 1. Reuse the "Prompts" sheet:
-- Give your AI a persona in the Instructions column, 
-- Write your prompt in the Prompt column. 
-- Describe the expected response structure in the Response colum.
-- Group your Prompt tests by setting any value in Prompt ID column.
+- _Instructions_: Give your AI a persona. 
+- _Prompt_: Write your prompt. 
+- _Response_: Your expected response structure
+- _Prompt ID_: Any id to group prompts
 
 The following tokens will be replaced as described:
 > - `__FILENAME__` gets replaced with the Survey Data Answers
@@ -45,11 +45,15 @@ The following tokens will be replaced as described:
 - Write the Questions down the Rows and add responses to questions along Columns. Question-Answers will be grouped into a paragraph during testing. 
 
 3. Reuse the "Configs" sheet:
-- Selected any text based Model from OpenAI's list
-- Select which Executable. See below 
-- Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file. You can use `indexer.py`  to convert them from CSVs
+- _Model_: Selected any text based [OpenAIs Model](https://platform.openai.com/docs/models)
+- _File Path_: Set the file path to any data set optionally referenced in your prompt. Embeddings requires a .pkl file. All others currently require a .json file OR a valid OpenAI file ID. You can use `indexer.py`  to convert them from CSVs
+- _Fine Tuning_: Set your Fine-Tuning configs to be passed directly into the prompt
+- _Executable_: Select which Executable. (Threads / Completion / Embeddings)
+- _File Search_ / _Code Interpret_: True or False, only used in Threads
+- _Assistant_ / _Vector Store_: True, False, or a valid OpenAI id to reuse. Setting an ID will speed up further tests and reduce API usage. 
+
 - Columns D-G only apply to "Thread" executables since Assistants can be built to these tools collectively and individually. After your first run, the results will include IDs for the columns enabled. For example, `asst-###`, `file_###`, `vs-###`. To speed up further tests and reduce API usage, change these Columns to the IDs created during each run. 
-- Set your Fine-Tuning configs to be passed directly into the prompt
+
 
 
 4. Export each CSV sheet to `bags/[sheetname].csv` 
