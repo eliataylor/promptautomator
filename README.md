@@ -18,7 +18,7 @@ view demo: https://promptautomator.taylormadetraffic.com
 
 ## Run [Demo](https://promptautomator.taylormadetraffic.com):
 Review and compare results (preloaded with example dataset for writing playlists and playlists themes)
-- `npm install`
+- `npm install --force`
 - `npm start`
 - `open http://localhost:3000/`
 
