@@ -20,13 +20,13 @@ view demo: https://promptautomator.taylormadetraffic.com
 - `git push origin master`
 
 ## Run [Demo](https://promptautomator.taylormadetraffic.com):
-To navigate the interface and review results from testing this example dataset for writing playlists and playlists themes:
+To navigate the interface and review results from testing this example dataset:
 - `npm install --force`
 - `npm start`
 - `open http://localhost:3000/`
 
 ---
-## To index and test your own data:
+## 1. To index and test your own data:
 
 > #### Use this [Google Sheet](https://docs.google.com/spreadsheets/d/1xK9i_Qh_J1kbAMlPSlXf7nrT1HRV3RXzcq_0dmqPgNI/edit#gid=1914178484) 
 
@@ -58,15 +58,19 @@ The following tokens will be replaced as described:
 
 5. Index your surveys for the React app to display: `.venv/bin/python indexer.py index_surveys dataset/bags-userdata.csv `
 
-## Normalize your dataset
--[x] Clean up the Shopify data (this replaces `normalize_dataset` from the public repo)
+## 2. Normalize your dataset
+- Clean up the Shopify data (this replaces `normalize_dataset` from the public repo)
 - `node preprocesses/shopify-cleaner.js dataset/bags.csv`
 
--[x] If testing Embeddings, convert your JSON to a PKL:  
+- If testing Embeddings, convert your JSON to a PKL:  
 `.venv/bin/python indexer.py build_embeddings public/bags.json`
 
-## Run Prompt Tests 
-- [x] To run all prompts, against all configurations, against all userdata sets: 
+## 3. Run Prompt Tests 
+- To run all prompts, against all configurations, against all userdata sets: 
 - `.venv/bin/python main.py dataset/bags-prompts.csv dataset/bags-configs-fulltest.csv dataset/bags-userdata.csv`
-- [x] To copy the individual results into a single index file for the front-end to load: 
+- To copy the individual results into a single index file for the front-end to load: 
 - `.venv/bin/python indexer.py index_results`
+- Run the project:
+  - `npm install --force`
+  - `npm start`
+  - `open http://localhost:3000/`
