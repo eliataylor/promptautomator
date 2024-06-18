@@ -1,4 +1,4 @@
-## A tool to automate testing and comparison ChatGPT prompts, configurations, and responses  
+## A tool to automate testing and comparing ChatGPT responses based on variations in prompts and configurations   
 
 ---- 
 <figure style="text-align: center;">
