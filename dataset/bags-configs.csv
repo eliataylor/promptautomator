@@ -1,3 +1,0 @@
-Model,Executable,File Path,Assistant,File Search,Vector Store,Code Interpreter,Fine Tuning
-gpt-4-turbo,Completion,,,TRUE,FALSE,FALSE,
-gpt-4-turbo,Thread,,TRUE,TRUE,TRUE,FALSE,

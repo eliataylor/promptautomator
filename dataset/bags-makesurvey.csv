@@ -1,2 +1,0 @@
-Prompt ID,Prompt,Instruction,Response
-make-survey,Write 5 survey questions to determine a user's needs and preferences in bags.,"You are a merchandising expert, especially focused in reviewing bags of all sizes and styles","[{title, description}]"
