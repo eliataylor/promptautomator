@@ -1,13 +1,6 @@
 ## A tool to automate testing and comparison OpenAI prompts, configurations, and responses  
 
----- 
-<figure style="text-align: center;">
-  <img src="public/presideo.svg" alt="Presideo Logo">
-</figure>
-
-### Special Thanks to [Presideo Creative](https://presidiodev.com/) for [sponsoring this project](https://github.com/sponsors/eliataylor)
-
----
+----
 
 ![interface.png](public%2Finterface.png)
 view demo: https://promptautomator.taylormadetraffic.com
