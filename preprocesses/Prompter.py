@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from loguru import logger
 from openai import AssistantEventHandler
 from openai import OpenAI
+import tiktoken
 
 from .Embeddings import Embeddings
 from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file, get_nested
@@ -115,31 +116,45 @@ class Prompter:
             f = open(self.config["file_path"], "r")
             content = f.read()
 
-            if len(content) > 16385:
-                content = json.dumps(json.loads(content))  # strip pretty logger.info if too long
-            # if len(content) > 16385:
-            #    maybe try csv instead?
-
             message.append(
                 {"role": "system", "content": f"Make your recommendation based on this data: \n\n {content}"})
 
         message.append({"role": "user", "content": self.opts_thread["messages"][0]["content"]})
 
-        try:
-            response_str = self.openai.chat.completions.create(
-                model=self.opts_assistant['model'],
-                messages=message
-            )
+        total_tokens = self.count_total_tokens(self.config["model"], message)
+        if total_tokens > 16385:
+            msg = f"Too many tokens: {self.get_config_id()} ({self.test_id}) measured {total_tokens} tokens"
+            logger.critical(msg)
             self.ended = datetime.datetime.now()
-            response_str = get_nested(response_str, ['choices', 0, 'message', 'content'],
-                                      default="Failed to access ChatCompletion correctly")
-            logger.debug(f"\nCOMPLETION RESULTS:\n {response_str}")
-            response_json = find_json(response_str)
-            self.validate_response(response_json, response_str)
-        except Exception as e:
-            self.ended = datetime.datetime.now()
-            logger.error(f"Completion Failed: {e}")
-            self.validate_response(None, str(e))
+            self.validate_response(None, msg)
+        else:
+            try:
+                response_str = self.openai.chat.completions.create(
+                    model=self.opts_assistant['model'],
+                    messages=message
+                )
+                self.ended = datetime.datetime.now()
+                response_str = get_nested(response_str, ['choices', 0, 'message', 'content'],
+                                          default=json.dumps(response_str, indent=2))
+                logger.debug(f"\nCOMPLETION RESULTS:\n {response_str}")
+                response_json = find_json(response_str)
+                self.validate_response(response_json, response_str)
+            except Exception as e:
+                self.ended = datetime.datetime.now()
+                logger.error(f"Completion Failed: {e}")
+                self.validate_response(None, str(e))
+
+    def count_total_tokens(self, model_name, messages):
+        # Load the tokenizer for the specified model
+        encoding = tiktoken.encoding_for_model(model_name)
+
+        total_tokens = 0
+
+        # Encode each message and accumulate the token count
+        for message in messages:
+            total_tokens += len(encoding.encode(message['content']))
+
+        return total_tokens
 
     async def create_file(self):
         if self.config["file_path"] == "":
@@ -203,7 +218,7 @@ class Prompter:
         else:
             self.assistant = self.openai.beta.assistants.create(**self.opts_assistant)
 
-        if self.config["file_search"]:
+        if self.vector is not None and self.config["file_search"]:
             self.openai.beta.assistants.update(self.assistant.id,
                                                tool_resources={"file_search": {
                                                    "vector_store_ids": [self.vector.id]}}
@@ -223,7 +238,7 @@ class Prompter:
             self.thread = self.openai.beta.threads.create(**self.opts_thread)
 
     async def create_vector_store(self):
-        if self.file is None or "id" not in self.file:
+        if self.file is None or hasattr(self.file, "id") is False:
             return None
         if "vector_store" in self.config and isinstance(self.config["vector_store"], str) and self.config["vector_store"][0:3] == 'vs_':
             self.vector = self.openai.beta.vector_stores.retrieve(self.config["vector_store"])

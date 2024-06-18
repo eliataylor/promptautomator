@@ -1,6 +1,13 @@
 ## A tool to automate testing and comparison ChatGPT prompts, configurations, and responses  
 
-> ### To speed up development consider [sponsoring this project](https://github.com/sponsors/eliataylor)
+---- 
+<figure style="text-align: center;">
+  <img src="public/presideo.svg" alt="Presideo Logo">
+</figure>
+
+### Special Thanks to [Presideo Creative](https://presidiodev.com/) for [sponsoring this project](https://github.com/sponsors/eliataylor)
+
+---
 
 ![interface.png](public%2Finterface.png)
 view demo: https://promptautomator.taylormadetraffic.com
@@ -9,6 +16,7 @@ view demo: https://promptautomator.taylormadetraffic.com
 
 ## Environment Setup 
 - `git clone git@github.com:eliataylor/promptautomator.git`
+- `cd promptautomator`
 - `cp .env.public .env`
 - update your `.env` file your OpenAI key
 - `python3.9 -m venv .venv`

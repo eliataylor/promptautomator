@@ -1,8 +1,8 @@
 {
-  "name": "openai-perm-tester",
+  "name": "Prompt Automator",
   "version": "1.0.0",
   "description": "A way to test various permutations of OpenAI's API tools",
-  "main": "test.js",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -19,7 +19,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "typescript": "^5.4.5"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "runtest": "node test.js",

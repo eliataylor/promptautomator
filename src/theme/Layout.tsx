@@ -69,16 +69,20 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
     return (
         <Box sx={{display: 'flex'}}>
             <Grid container>
-
                 <Grid item>
                     <LookupDrawer/>
                 </Grid>
                 <Grid item
                       style={{width: selectedSourceId && window.innerWidth > 600 ? window.innerWidth - 300 : '100%'}}>
                     <AppBar position="sticky" color={'transparent'}>
-                        <Grid container justifyContent={'space-between'} alignItems={'center'} padding={1} spacing={2}>
+                        <Grid container justifyContent={'space-between'} alignItems={'center'} alignContent={'center'} padding={1} spacing={2} >
                             <Grid item>
+                                <img src={'/presideo.svg'} width={36} height={36} />
+                            </Grid>
+
+                            <Grid item style={{flexGrow:1}}>
                                 <TextField
+                                    fullWidth={true}
                                     select
                                     size={'small'}
                                     variant={'filled'}

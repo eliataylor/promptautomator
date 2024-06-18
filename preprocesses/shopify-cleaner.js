@@ -20,7 +20,8 @@ function csvToJsonObject(filePath, keysToPreserve) {
                         let newKey = key;
                         if (newKey === "Product ID") newKey = 'source_id';
                         if (newKey === "Body (HTML)") newKey = 'Description';
-                        if (newKey === "Variant Price") newKey = 'Price USD $';
+                        if (newKey === "Variant Price") newKey = 'Price USD';
+                        if (newKey === "Variant Grams") newKey = 'Weight';
 
                         obj[newKey] = keysToPreserve[key] === 'number' ? parseInt(data[key]) : data[key];
                         if (typeof keysToPreserve[key] === 'function') {
@@ -70,8 +71,12 @@ const keysToPreserve = {
     'Product Category':'string',
     'Type':'string',
     'Tags':'string',
-    'Variant Grams':'number',
-    'Variant Price':'number'
+    'Variant Grams':(val) => {
+        return `${val} grams`
+    },
+    'Variant Price':(val) => {
+        return `$${val}`
+    },
 };
 
 transformCsvToJson(csvFilePath, keysToPreserve);

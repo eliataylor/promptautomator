@@ -7,6 +7,7 @@ view demo: https://promptautomator.taylormadetraffic.com
 
 ## Environment Setup 
 - `git clone git@github.com:eliataylor/presideo-prompter.git`
+- `cd presideo-prompter`
 - `cp .env.public .env`
 - update your `.env` file your OpenAI key
 - `python3.9 -m venv .venv`
