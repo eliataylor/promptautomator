@@ -12,7 +12,7 @@ from openai import OpenAI
 import tiktoken
 
 from .Embeddings import Embeddings
-from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file, get_nested
+from .Utils import find_id_property, find_json, adler32, stringify_survey, find_nearby_file
 
 load_dotenv()
 
@@ -134,8 +134,8 @@ class Prompter:
                     messages=message
                 )
                 self.ended = datetime.datetime.now()
-                response_str = get_nested(response_str, ['choices', 0, 'message', 'content'],
-                                          default=json.dumps(response_str, indent=2))
+                response_str = response_str.choices[0].message.content
+                # get_nested(response_str, ['choices', 0, 'message', 'content'], default=json.dumps(response_str, indent=2))
                 logger.debug(f"\nCOMPLETION RESULTS:\n {response_str}")
                 response_json = find_json(response_str)
                 self.validate_response(response_json, response_str)

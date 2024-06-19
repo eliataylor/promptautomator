@@ -81,7 +81,6 @@ The following tokens will be replaced as described:
 
 ## DEV ISSUES / ROADMAP
 - [ ] Implement Code Interpreter
-- [ ] Don't create embeddings on numeric only values or add currency symbol
 - [ ] Validate JSON response by reading requested format from instructions
 - [ ] Optimize reuse to reduce token usage
 - [ ] Pass along Fine-Tuning variables like `{temperature:1, max_tokens:256, top_p:1, frequency_penalty:0, presence_penalty:0}`
