@@ -5,7 +5,7 @@
   <img src="public/presideo.svg" alt="Presideo Logo" height="50" >
 </figure>
 
-### Special Thanks to [Presideo Creative](https://presidiodev.com/) for [sponsoring this project](https://github.com/sponsors/eliataylor)
+### Special Thanks to [Presidio Creative](https://presidiodev.com/) for [sponsoring this project](https://github.com/sponsors/eliataylor)
 
 ---
 
